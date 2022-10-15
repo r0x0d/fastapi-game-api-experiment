@@ -1,0 +1,15 @@
+{
+    "python.formatting.provider": "black",
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "carnage",
+            "database": "carnage",
+            "username": "carnage",
+            "password": "carnage"
+        }
+    ]
+}
