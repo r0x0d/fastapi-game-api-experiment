@@ -8,7 +8,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 class BaseMixin:
     __name__ = "BaseMixin"
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4())
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     created_at = Column(DateTime, default=datetime.now(), nullable=False)
     updated_at = Column(DateTime, default=datetime.now(), nullable=False)
     deleted_at = Column(DateTime, default=None, nullable=True)

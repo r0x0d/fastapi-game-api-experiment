@@ -5,7 +5,6 @@ Revises: faffe495bb96
 Create Date: 2022-10-12 02:29:14.502293
 
 """
-import uuid
 from datetime import datetime
 
 import sqlalchemy as sa
@@ -25,7 +24,6 @@ def upgrade() -> None:
             "id",
             UUID(as_uuid=True),
             primary_key=True,
-            default=uuid.uuid4(),
             nullable=False,
         ),
         sa.Column("name", sa.String(length=100), nullable=False),
