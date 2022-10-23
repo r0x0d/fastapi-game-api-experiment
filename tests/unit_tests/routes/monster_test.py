@@ -1,9 +1,11 @@
-from uuid import uuid4
-import pytest
-from httpx import AsyncClient
-from carnage.routes import monster
 from collections import namedtuple
 from datetime import datetime
+from uuid import uuid4
+
+import pytest
+from httpx import AsyncClient
+
+from carnage.routes import monster
 from tests.unit_tests.conftest import DummySchemaFields
 
 MonsterOutput = namedtuple(
@@ -52,7 +54,7 @@ BASE_URL = "http://test/monster"
                     monster_type_id=uuid4(),
                     size_id=uuid4(),
                     aligment_id=uuid4(),
-                )
+                ),
             ]
         ),
     ),
@@ -94,7 +96,7 @@ async def test_get(output, application_instance, monkeypatch):
                     monster_type_id=uuid4(),
                     size_id=uuid4(),
                     aligment_id=uuid4(),
-                )
+                ),
             ]
         ),
     ),
@@ -176,7 +178,8 @@ async def test_put(data, application_instance, monkeypatch):
     )
     async with AsyncClient(app=application_instance, base_url=BASE_URL) as ac:
         response = await ac.put(
-            "/26609c62-5270-11ed-8d79-641c67e34d72", json=data
+            "/26609c62-5270-11ed-8d79-641c67e34d72",
+            json=data,
         )
     assert response.status_code == 204
 

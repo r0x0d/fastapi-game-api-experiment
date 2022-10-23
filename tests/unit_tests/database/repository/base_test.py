@@ -42,7 +42,8 @@ def test_select_by_name(database_session_mock):
 def test_update(database_session_mock):
     repository = base.BaseRepository(model=DummySqlModel)
     repository.update(
-        values={"test": 1}, identifier="c32c033a-4d00-11ed-979e-641c67e34d72"
+        values={"test": 1},
+        identifier="c32c033a-4d00-11ed-979e-641c67e34d72",
     )
     assert repository.session.execute.called_once()
     assert repository.session.commit.called_once()

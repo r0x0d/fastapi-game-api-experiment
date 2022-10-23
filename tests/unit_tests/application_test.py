@@ -1,5 +1,6 @@
-from carnage import application
 from fastapi import FastAPI
+
+from carnage import application
 
 
 def test_create_app():

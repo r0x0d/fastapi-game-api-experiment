@@ -1,5 +1,6 @@
-from carnage.database.seeds import manager
 import pytest
+
+from carnage.database.seeds import manager
 
 
 def test_seed_manager_init(database_session_mock):
@@ -9,7 +10,8 @@ def test_seed_manager_init(database_session_mock):
 
 
 @pytest.mark.parametrize(
-    ("all_seeds", "seed_name"), ((False, "monster"), (True, None))
+    ("all_seeds", "seed_name"),
+    ((False, "monster"), (True, None)),
 )
 def test_seed(database_session_mock, all_seeds, seed_name):
     seed = manager.SeedManager()
