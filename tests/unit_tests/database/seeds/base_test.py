@@ -1,6 +1,8 @@
 from unittest import mock
-from carnage.database.seeds import base
+
 import pytest
+
+from carnage.database.seeds import base
 
 
 def test_monster_seed_init(database_session_mock):

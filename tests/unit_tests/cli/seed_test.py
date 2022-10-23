@@ -1,7 +1,8 @@
 import argparse
 from collections import namedtuple
-import pytest
 from unittest import mock
+
+import pytest
 
 from carnage.cli import seed
 
@@ -24,7 +25,8 @@ namespace = namedtuple("Namespace", ("all", "name"))
 
 @mock.patch.object(seed, "SeedManager")
 @pytest.mark.parametrize(
-    ("args_all", "args_name"), ((True, None), (False, "test"))
+    ("args_all", "args_name"),
+    ((True, None), (False, "test")),
 )
 def test_run(seed_manager_mock, args_all, args_name):
     args = namespace(args_all, args_name)
@@ -37,7 +39,11 @@ def test_run(seed_manager_mock, args_all, args_name):
     ("args_all", "args_name", "match"),
     (
         (False, None, "At least one of them needs to be used."),
-        (True, "test", "Only `--all` or `--name` can be used at the time. Not both."),
+        (
+            True,
+            "test",
+            "Only `--all` or `--name` can be used at the time. Not both.",
+        ),
     ),
 )
 def test_run_assertion_error(args_all, args_name, match):

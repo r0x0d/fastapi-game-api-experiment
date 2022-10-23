@@ -1,6 +1,5 @@
 import argparse
 from collections import namedtuple
-import pytest
 from unittest import mock
 
 from carnage.cli import serve

@@ -1,12 +1,14 @@
+import uuid
 from collections import namedtuple
-from sqlalchemy.ext.declarative import declarative_base
+from unittest import mock
+
+import pytest
 from sqlalchemy import Column, String
 from sqlalchemy.dialects.postgresql import UUID
-import uuid
-import pytest
-from carnage.database.repository import base
-from unittest import mock
+from sqlalchemy.ext.declarative import declarative_base
+
 from carnage.application import create_app
+from carnage.database.repository import base
 
 BaseModel = declarative_base()
 
@@ -18,7 +20,8 @@ class DummySqlModel(BaseModel):
 
 
 DummySchemaFields = namedtuple(
-    "DummySchemaFields", ("id", "created_at", "updated_at", "deleted_at")
+    "DummySchemaFields",
+    ("id", "created_at", "updated_at", "deleted_at"),
 )
 
 
