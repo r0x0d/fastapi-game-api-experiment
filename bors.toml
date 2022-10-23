@@ -1,0 +1,5 @@
+status = ["Linux - Python (3.10)"]
+block_labels = ["do-not-merge-yet"]
+cut_body_after = "<details>"
+timeout_sec = 36000                 # ten hours
+use_squash_merge = true
