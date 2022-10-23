@@ -17,7 +17,7 @@ async def get() -> list[ListSizeSchema]:
     return [ListSizeSchema.from_orm(item) for item in result]
 
 
-@router.get("/<identifier>", response_model=ListSizeSchema)
+@router.get("/{identifier}", response_model=ListSizeSchema)
 async def get_by_id(identifier: str) -> ListSizeSchema:
     result = repository.select_by_id(identifier=identifier)
     return ListSizeSchema.from_orm(result[0])

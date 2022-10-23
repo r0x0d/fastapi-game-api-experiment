@@ -1,4 +1,7 @@
+anyio==3.6.2 # Also for FastAPI to use TestClient properly.
 covdefaults==2.2.0
 coverage==6.3.3
-pytest==7.1.2
+httpx==0.23.0 # Required by FastAPI to use TestClient with both async and sync.
+pytest==7.1.3
+pytest-env==0.7.0
 python-dotenv==0.21.0
