@@ -4,18 +4,17 @@ from carnage.database.seeds.monster import MonsterSeed
 from carnage.database.seeds.monster_type import MonsterTypeSeed
 from carnage.database.seeds.size import SizeSeed
 
-# WARNING: Do not change the order of this dictionary.
-MAPPING_OF_SEEDS: dict[str, BaseSeed] = {
-    AligmentSeed.name: AligmentSeed(),
-    SizeSeed.name: SizeSeed(),
-    MonsterTypeSeed.name: MonsterTypeSeed(),
-    MonsterSeed.name: MonsterSeed(),
-}
-
 
 class SeedManager:
-    def __init__(self) -> None:
-        pass
+    @property
+    def seed_mapping(self) -> dict[str, BaseSeed]:
+        # WARNING: Do not change the order of this dictionary.
+        return {
+            AligmentSeed.name: AligmentSeed(),
+            SizeSeed.name: SizeSeed(),
+            MonsterTypeSeed.name: MonsterTypeSeed(),
+            MonsterSeed.name: MonsterSeed(),
+        }
 
     def seed(
         self,
@@ -24,12 +23,12 @@ class SeedManager:
     ) -> None:
         """ """
         if all_seeds:
-            for _, seed in MAPPING_OF_SEEDS.items():
+            for _, seed in self.seed_mapping.items():
                 seed.seed()
             return
 
-        if seed_name not in MAPPING_OF_SEEDS:
+        if seed_name not in self.seed_mapping:
             raise AssertionError("Couldn't find the desired seed.")
 
-        seed = MAPPING_OF_SEEDS[seed_name]
+        seed = self.seed_mapping[seed_name]
         seed.seed()

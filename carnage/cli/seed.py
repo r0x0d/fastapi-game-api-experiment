@@ -14,7 +14,7 @@ def add_subparser(
         parents: Parent parsers, needed to ensure tree structure in argparse
     """
     seed_parser = subparsers.add_parser(
-        "seed",
+        name="seed",
         parents=parents,
         help="Seed the database with pre-defined data.",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,

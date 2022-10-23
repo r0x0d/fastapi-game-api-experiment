@@ -4,5 +4,8 @@ from carnage.database.repository.base import BaseRepository
 
 
 class AligmentRepository(BaseRepository):
-    def __init__(self, model: BaseModel = AligmentModel) -> None:
+    def __init__(
+        self,
+        model: BaseModel = AligmentModel,
+    ) -> None:
         super().__init__(model)

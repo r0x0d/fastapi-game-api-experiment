@@ -16,7 +16,7 @@ def add_subparser(
         parents: Parent parsers, needed to ensure tree structure in argparse
     """
     serve_parser = subparsers.add_parser(
-        "serve",
+        name="serve",
         parents=parents,
         help="Run carnage backend.",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,

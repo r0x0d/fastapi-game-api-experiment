@@ -11,5 +11,7 @@
             "username": "carnage",
             "password": "carnage"
         }
-    ]
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
 }
