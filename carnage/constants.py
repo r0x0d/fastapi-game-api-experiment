@@ -1,6 +1,8 @@
 import os
 
-if os.getenv("DEVELOPMENT", False):  # pragma: no cover
+DEVELOPMENT: str = os.getenv("DEVELOPMENT", "")
+
+if DEVELOPMENT:  # pragma: no cover
     from dotenv import load_dotenv
 
     load_dotenv()
