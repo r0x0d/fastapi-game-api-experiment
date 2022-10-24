@@ -31,7 +31,7 @@ def database_session_mock(monkeypatch):
 
 
 @pytest.fixture()
-def application_instance():
+def application_instance(database_session_mock):
     return create_app()
 
 

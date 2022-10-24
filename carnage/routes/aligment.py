@@ -14,10 +14,7 @@ repository = AligmentRepository()
 @router.get("/", response_model=list[ListAligmentSchema])
 async def get() -> list[ListAligmentSchema]:
     result = repository.select()
-    a = [ListAligmentSchema.from_orm(item) for item in result]
-    print(a)
-    return a
-    # return [ListAligmentSchema.from_orm(item) for item in result]
+    return [ListAligmentSchema.from_orm(item) for item in result]
 
 
 @router.get("/{identifier}", response_model=ListAligmentSchema)
