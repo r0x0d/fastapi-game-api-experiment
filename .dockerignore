@@ -1,0 +1,11 @@
+venv
+.venv
+.tox
+.vscode
+.pytest_cache
+.mypy_cache
+htmlcov
+.git
+dist
+.coverage
+coverage.xml
