@@ -4,6 +4,7 @@
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/r0x0d/carnage.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/r0x0d/carnage/alerts/)
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/r0x0d/carnage.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/r0x0d/carnage/context:python)
 [![Code Scanning - Action](https://github.com/r0x0d/carnage/actions/workflows/codeql.yml/badge.svg)](https://github.com/r0x0d/carnage/actions/workflows/codeql.yml)
+[![Bors enabled](https://bors.tech/images/badge_small.svg)](https://app.bors.tech/repositories/55439)
 
 # carnage
 
