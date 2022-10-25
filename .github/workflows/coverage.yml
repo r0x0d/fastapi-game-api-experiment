@@ -26,7 +26,7 @@ jobs:
               pip_cache_path: ~/.cache/pypoetry,
             }
         python:
-          - { version: "3.10", tox: py310 }
+          - { version: "3.11", tox: py311 }
 
     runs-on: ${{ matrix.platform.distro }}
 
