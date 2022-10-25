@@ -437,7 +437,7 @@ testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "pygments (>=2.
 
 [[package]]
 name = "pytest-env"
-version = "0.7.0"
+version = "0.8.1"
 description = "py.test plugin that allows you to add environment variables."
 category = "dev"
 optional = false
@@ -656,7 +656,7 @@ python-versions = ">=3.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "9c0ab0d7ea6c7c3b24f03aae65a7672943275169f1fe74efcb077cb520e74bdf"
+content-hash = "564cbe83ee4b7a33fa13046008bd397b758e9226a7a4f086e75591afc5a39e9e"
 
 [metadata.files]
 alembic = [
@@ -1198,8 +1198,8 @@ pytest = [
     {file = "pytest-7.2.0.tar.gz", hash = "sha256:c4014eb40e10f11f355ad4e3c2fb2c6c6d1919c73f3b5a433de4708202cade59"},
 ]
 pytest-env = [
-    {file = "pytest_env-0.7.0-py3-none-any.whl", hash = "sha256:a11102037f91ab765390e6da684a99797ede08971f355eed53c7d1365d852467"},
-    {file = "pytest_env-0.7.0.tar.gz", hash = "sha256:89b6a7a00174ee289029358364b37b688e964d2cb05a8b9e4514d4ab52b134bb"},
+    {file = "pytest_env-0.8.1-py3-none-any.whl", hash = "sha256:8c0605ae09a5b7e41c20ebcc44f2c906eea9654095b4b0c342b3814bcc3a8492"},
+    {file = "pytest_env-0.8.1.tar.gz", hash = "sha256:d7b2f5273ec6d1e221757998bc2f50d2474ed7d0b9331b92556011fadc4e9abf"},
 ]
 python-dotenv = [
     {file = "python-dotenv-0.21.0.tar.gz", hash = "sha256:b77d08274639e3d34145dfa6c7008e66df0f04b7be7a75fd0d5292c191d79045"},
