@@ -6,13 +6,13 @@ import pytest
 from httpx import AsyncClient
 
 from carnage.routes import item_rarity
-from tests.unit_tests.conftest import DummySchemaFields
+from tests.unit_tests.conftest import APPLICATION_PREFIX, DummySchemaFields
 
 ItemRarityOutput = namedtuple(
     "ItemRarityOutput",
     (*DummySchemaFields._fields, "name", "description"),
 )
-BASE_URL = "http://test/item_rarity"
+BASE_URL = f"http://test/{APPLICATION_PREFIX}/item_rarity"
 
 
 @pytest.mark.anyio

@@ -6,13 +6,13 @@ import pytest
 from httpx import AsyncClient
 
 from carnage.routes import spell_school
-from tests.unit_tests.conftest import DummySchemaFields
+from tests.unit_tests.conftest import APPLICATION_PREFIX, DummySchemaFields
 
 SpellSchoolOutput = namedtuple(
     "SpellSchoolOutput",
     (*DummySchemaFields._fields, "name", "description"),
 )
-BASE_URL = "http://test/spell_school"
+BASE_URL = f"http://test/{APPLICATION_PREFIX}/spell_school"
 
 
 @pytest.mark.anyio

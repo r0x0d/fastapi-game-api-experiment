@@ -10,6 +10,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from carnage.application import create_app
 from carnage.database.repository import base
 
+APPLICATION_PREFIX: str = "api/v1"
+
 BaseModel = declarative_base()
 
 

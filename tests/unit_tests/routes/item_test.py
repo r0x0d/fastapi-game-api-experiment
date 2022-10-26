@@ -6,7 +6,7 @@ import pytest
 from httpx import AsyncClient
 
 from carnage.routes import item
-from tests.unit_tests.conftest import DummySchemaFields
+from tests.unit_tests.conftest import APPLICATION_PREFIX, DummySchemaFields
 
 ItemOutput = namedtuple(
     "ItemOutput",
@@ -26,7 +26,7 @@ ItemOutput = namedtuple(
         "item_magical_type_id",
     ),
 )
-BASE_URL = "http://test/item"
+BASE_URL = f"http://test/{APPLICATION_PREFIX}/item"
 
 
 @pytest.mark.anyio

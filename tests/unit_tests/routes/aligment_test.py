@@ -6,13 +6,13 @@ import pytest
 from httpx import AsyncClient
 
 from carnage.routes import aligment
-from tests.unit_tests.conftest import DummySchemaFields
+from tests.unit_tests.conftest import APPLICATION_PREFIX, DummySchemaFields
 
 AligmentOutput = namedtuple(
     "AligmentOutput",
     (*DummySchemaFields._fields, "name", "description"),
 )
-BASE_URL = "http://test/aligment"
+BASE_URL = f"http://test/{APPLICATION_PREFIX}/aligment"
 
 
 @pytest.mark.anyio
