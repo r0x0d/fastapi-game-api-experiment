@@ -6,13 +6,13 @@ import pytest
 from httpx import AsyncClient
 
 from carnage.routes import size
-from tests.unit_tests.conftest import DummySchemaFields
+from tests.unit_tests.conftest import APPLICATION_PREFIX, DummySchemaFields
 
 SizeOutput = namedtuple(
     "SizeOutput",
     (*DummySchemaFields._fields, "name", "description"),
 )
-BASE_URL = "http://test/size"
+BASE_URL = f"http://test/{APPLICATION_PREFIX}/size"
 
 
 @pytest.mark.anyio

@@ -6,7 +6,7 @@ import pytest
 from httpx import AsyncClient
 
 from carnage.routes import spell
-from tests.unit_tests.conftest import DummySchemaFields
+from tests.unit_tests.conftest import APPLICATION_PREFIX, DummySchemaFields
 
 SpellOutput = namedtuple(
     "SpellOutput",
@@ -19,7 +19,7 @@ SpellOutput = namedtuple(
         "spell_range_type_id",
     ),
 )
-BASE_URL = "http://test/spell"
+BASE_URL = f"http://test/{APPLICATION_PREFIX}/spell"
 
 
 @pytest.mark.anyio

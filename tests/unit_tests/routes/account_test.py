@@ -6,13 +6,13 @@ import pytest
 from httpx import AsyncClient
 
 from carnage.routes import account
-from tests.unit_tests.conftest import DummySchemaFields
+from tests.unit_tests.conftest import APPLICATION_PREFIX, DummySchemaFields
 
 AccountOutput = namedtuple(
     "AccountOutput",
     (*DummySchemaFields._fields, "username", "provider"),
 )
-BASE_URL = "http://test/account"
+BASE_URL = f"http://test/{APPLICATION_PREFIX}/account"
 
 
 @pytest.mark.anyio

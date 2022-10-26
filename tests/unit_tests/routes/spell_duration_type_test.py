@@ -6,13 +6,13 @@ import pytest
 from httpx import AsyncClient
 
 from carnage.routes import spell_duration_type
-from tests.unit_tests.conftest import DummySchemaFields
+from tests.unit_tests.conftest import APPLICATION_PREFIX, DummySchemaFields
 
 SpellDurationTypeOutput = namedtuple(
     "SpellDurationTypeOutput",
     (*DummySchemaFields._fields, "name", "description"),
 )
-BASE_URL = "http://test/spell_duration_type"
+BASE_URL = f"http://test/{APPLICATION_PREFIX}/spell_duration_type"
 
 
 @pytest.mark.anyio

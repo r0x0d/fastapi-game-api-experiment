@@ -6,13 +6,13 @@ import pytest
 from httpx import AsyncClient
 
 from carnage.routes import monster_type
-from tests.unit_tests.conftest import DummySchemaFields
+from tests.unit_tests.conftest import APPLICATION_PREFIX, DummySchemaFields
 
 MonsterTypeOutput = namedtuple(
     "MonsterTypeOutput",
     (*DummySchemaFields._fields, "name", "description"),
 )
-BASE_URL = "http://test/monster_type"
+BASE_URL = f"http://test/{APPLICATION_PREFIX}/monster_type"
 
 
 @pytest.mark.anyio
