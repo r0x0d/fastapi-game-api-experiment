@@ -1,8 +1,8 @@
-"""${message}
+"""add spell schools table
 
-Revision ID: ${up_revision}
-Revises: ${down_revision | comma,n}
-Create Date: ${create_date}
+Revision ID: cb4455d1fe66
+Revises: 9c1fb4c99354
+Create Date: 2022-10-25 20:13:25.992391
 
 """
 from datetime import datetime
@@ -10,13 +10,12 @@ from datetime import datetime
 import sqlalchemy as sa
 from alembic import op
 from sqlalchemy.dialects.postgresql import UUID
-${imports if imports else ""}
 
 # revision identifiers, used by Alembic.
-revision = ${repr(up_revision)}
-down_revision = ${repr(down_revision)}
-branch_labels = ${repr(branch_labels)}
-depends_on = ${repr(depends_on)}
+revision = "cb4455d1fe66"
+down_revision = "9c1fb4c99354"
+branch_labels = None
+depends_on = None
 
 
 def upgrade() -> None:
@@ -43,9 +42,8 @@ def upgrade() -> None:
         ),
         sa.Column("deleted_at", sa.DateTime(), default=None, nullable=True),
     ]
-    op.create_table("<table_name>", *columns)
-
+    op.create_table("spell_schools", *columns)
 
 
 def downgrade() -> None:
-    op.drop_table("<table_name>")
+    op.drop_table("spell_schools")

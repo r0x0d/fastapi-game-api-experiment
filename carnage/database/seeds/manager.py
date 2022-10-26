@@ -5,6 +5,10 @@ from carnage.database.seeds.monster import MonsterSeed
 from carnage.database.seeds.monster_type import MonsterTypeSeed
 from carnage.database.seeds.setting import SettingSeed
 from carnage.database.seeds.size import SizeSeed
+from carnage.database.seeds.spell import SpellSeed
+from carnage.database.seeds.spell_duration_type import SpellDurationTypeSeed
+from carnage.database.seeds.spell_range_type import SpellRangeTypeSeed
+from carnage.database.seeds.spell_school import SpellSchoolSeed
 
 
 class SeedManager:
@@ -18,6 +22,10 @@ class SeedManager:
             SizeSeed.name: SizeSeed(),
             MonsterTypeSeed.name: MonsterTypeSeed(),
             MonsterSeed.name: MonsterSeed(),
+            SpellSchoolSeed.name: SpellSchoolSeed(),
+            SpellRangeTypeSeed.name: SpellRangeTypeSeed(),
+            SpellDurationTypeSeed.name: SpellDurationTypeSeed(),
+            SpellSeed.name: SpellSeed(),
         }
 
     def seed(

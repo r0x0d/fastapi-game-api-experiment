@@ -16,6 +16,20 @@ class SettingSeed(BaseSeed):
         },
     ]
 
+    def validate_seed(self, seed: dict[str, str]) -> bool:
+        print(
+            f"Validating the current seed with environment: {seed['environment']}",  # noqa
+        )
+
+        result = self.repository.select_by_environment(  # type: ignore
+            environment=seed["environment"],
+        )
+        if result:
+            print("Seed already exists in the database")
+            return True
+
+        return False
+
     def __init__(
         self,
         repository: Type[SettingRepository] = SettingRepository,
