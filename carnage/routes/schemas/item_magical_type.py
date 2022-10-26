@@ -1,21 +1,7 @@
-from pydantic import BaseModel
+from pydantic_sqlalchemy import sqlalchemy_to_pydantic
 
-from carnage.routes.schemas.base import BaseSchema
+from carnage.database.models.item_magical_type import ItemMagicalTypeModel
 
-
-class ListItemMagicalTypeSchema(BaseSchema):
-    name: str
-    description: str | None
-
-    class Config:
-        orm_mode = True
-
-
-class UpdateItemMagicalTypeSchema(BaseModel):
-    name: str
-    description: str | None
-
-
-class CreateItemMagicalTypeSchema(BaseModel):
-    name: str
-    description: str | None
+ListItemMagicalTypeSchema = sqlalchemy_to_pydantic(ItemMagicalTypeModel)
+UpdateItemMagicalTypeSchema = sqlalchemy_to_pydantic(ItemMagicalTypeModel)
+CreateItemMagicalTypeSchema = sqlalchemy_to_pydantic(ItemMagicalTypeModel)

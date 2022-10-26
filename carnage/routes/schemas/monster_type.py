@@ -1,21 +1,7 @@
-from pydantic import BaseModel
+from pydantic_sqlalchemy import sqlalchemy_to_pydantic
 
-from carnage.routes.schemas.base import BaseSchema
+from carnage.database.models.monster_type import MonsterTypeModel
 
-
-class ListMonsterTypeSchema(BaseSchema):
-    name: str
-    description: str | None
-
-    class Config:
-        orm_mode = True
-
-
-class UpdateMonsterTypeSchema(BaseModel):
-    name: str
-    description: str | None
-
-
-class CreateMonsterTypeSchema(BaseModel):
-    name: str
-    description: str | None
+ListMonsterTypeSchema = sqlalchemy_to_pydantic(MonsterTypeModel)
+UpdateMonsterTypeSchema = sqlalchemy_to_pydantic(MonsterTypeModel, config=None)
+CreateMonsterTypeSchema = sqlalchemy_to_pydantic(MonsterTypeModel, config=None)

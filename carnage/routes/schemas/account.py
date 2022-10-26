@@ -1,22 +1,19 @@
-from pydantic import BaseModel
+from pydantic_sqlalchemy import sqlalchemy_to_pydantic
 
-from carnage.routes.schemas.base import BaseSchema
+from carnage.database.models.account import AccountModel
 
-
-class ListAccountSchema(BaseSchema):
-    username: str
-    provider: str
-
-    class Config:
-        orm_mode = True
-
-
-class UpdateAccountSchema(BaseModel):
-    username: str
-    password: str | None
-
-
-class CreateAccountSchema(BaseModel):
-    username: str
-    password: str | None
-    provider: str = "carnage"
+ListAccountSchema = sqlalchemy_to_pydantic(
+    AccountModel,
+    exclude=("password", "secret_key"),
+)
+UpdateAccountSchema = sqlalchemy_to_pydantic(
+    AccountModel,
+    config=None,
+    exclude=("provider", "secret_key"),
+)
+CreateAccountSchema = sqlalchemy_to_pydantic(
+    AccountModel,
+    config=None,
+    exclude=("secret_key"),
+)
+CreateAccountSchema.provider = "carnage"

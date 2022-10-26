@@ -38,6 +38,7 @@ pydantic = "1.10.2"
 sqlalchemy = "1.4.42"
 uvicorn = { version = "0.19.0", extras = ["standard"]}
 httpx = "0.23.0"
+pydantic-sqlalchemy = "0.0.9"
 
 [tool.poetry.dev-dependencies]
 anyio = "3.6.2"

@@ -1,21 +1,13 @@
-from pydantic import BaseModel
+from pydantic_sqlalchemy import sqlalchemy_to_pydantic
 
-from carnage.routes.schemas.base import BaseSchema
+from carnage.database.models.spell_duration_type import SpellDurationTypeModel
 
-
-class ListSpellDurationTypeSchema(BaseSchema):
-    name: str
-    description: str | None
-
-    class Config:
-        orm_mode = True
-
-
-class UpdateSpellDurationTypeSchema(BaseModel):
-    name: str
-    description: str | None
-
-
-class CreateSpellDurationTypeSchema(BaseModel):
-    name: str
-    description: str | None
+ListSpellDurationTypeSchema = sqlalchemy_to_pydantic(SpellDurationTypeModel)
+UpdateSpellDurationTypeSchema = sqlalchemy_to_pydantic(
+    SpellDurationTypeModel,
+    config=None,
+)
+CreateSpellDurationTypeSchema = sqlalchemy_to_pydantic(
+    SpellDurationTypeModel,
+    config=None,
+)

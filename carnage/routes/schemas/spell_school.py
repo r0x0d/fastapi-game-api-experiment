@@ -1,21 +1,7 @@
-from pydantic import BaseModel
+from pydantic_sqlalchemy import sqlalchemy_to_pydantic
 
-from carnage.routes.schemas.base import BaseSchema
+from carnage.database.models.spell_school import SpellSchoolModel
 
-
-class ListSpellSchoolSchema(BaseSchema):
-    name: str
-    description: str | None
-
-    class Config:
-        orm_mode = True
-
-
-class UpdateSpellSchoolSchema(BaseModel):
-    name: str
-    description: str | None
-
-
-class CreateSpellSchoolSchema(BaseModel):
-    name: str
-    description: str | None
+ListSpellSchoolSchema = sqlalchemy_to_pydantic(SpellSchoolModel)
+UpdateSpellSchoolSchema = sqlalchemy_to_pydantic(SpellSchoolModel, config=None)
+CreateSpellSchoolSchema = sqlalchemy_to_pydantic(SpellSchoolModel, config=None)
