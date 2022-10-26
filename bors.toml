@@ -1,4 +1,4 @@
-status = ["Linux - Python (3.10)"]
+status = ["Linux - Python (3.11)", "CodeQL%"]
 block_labels = ["do-not-merge-yet"]
 cut_body_after = "<details>"
 timeout_sec = 36000                 # ten hours
