@@ -5,6 +5,7 @@ from uuid import uuid4
 import pytest
 from httpx import AsyncClient
 
+from carnage.database.models.account import ProviderEnum
 from carnage.routes import account
 from tests.unit_tests.conftest import DummySchemaFields
 
@@ -27,7 +28,7 @@ BASE_URL = "http://test/account"
                     updated_at=datetime.now(),
                     deleted_at=None,
                     username="test_username",
-                    provider="carnage",
+                    provider=ProviderEnum.carnage,
                 ),
             ]
         ),
@@ -58,7 +59,7 @@ async def test_get(output, application_instance, monkeypatch):
                     updated_at=datetime.now(),
                     deleted_at=None,
                     username="test_username",
-                    provider="carnage",
+                    provider=ProviderEnum.carnage,
                 ),
             ]
         ),
@@ -84,7 +85,7 @@ async def test_get_by_id(output, application_instance, monkeypatch):
             {
                 "username": "test_username",
                 "password": "test_password",
-                "provider": "carnage",
+                "provider": 0,
             }
         ),
     ),
