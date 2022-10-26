@@ -10,6 +10,10 @@ from carnage.routes import (
     account,
     aligment,
     authentication,
+    item,
+    item_base_type,
+    item_magical_type,
+    item_rarity,
     monster,
     monster_type,
     size,
@@ -30,6 +34,10 @@ APPLICATION_ROUTERS: list[APIRouter] = [
     spell_duration_type.router,
     spell_range_type.router,
     spell.router,
+    item_rarity.router,
+    item_base_type.router,
+    item_magical_type.router,
+    item.router,
 ]
 
 

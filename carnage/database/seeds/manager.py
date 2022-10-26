@@ -1,6 +1,10 @@
 from carnage.database.seeds.account import AccountSeed
 from carnage.database.seeds.aligment import AligmentSeed
 from carnage.database.seeds.base import BaseSeed
+from carnage.database.seeds.item import ItemSeed
+from carnage.database.seeds.item_base_type import ItemBaseTypeSeed
+from carnage.database.seeds.item_magical_type import ItemMagicalTypeSeed
+from carnage.database.seeds.item_rarity import ItemRaritySeed
 from carnage.database.seeds.monster import MonsterSeed
 from carnage.database.seeds.monster_type import MonsterTypeSeed
 from carnage.database.seeds.setting import SettingSeed
@@ -26,6 +30,10 @@ class SeedManager:
             SpellRangeTypeSeed.name: SpellRangeTypeSeed(),
             SpellDurationTypeSeed.name: SpellDurationTypeSeed(),
             SpellSeed.name: SpellSeed(),
+            ItemRaritySeed.name: ItemRaritySeed(),
+            ItemBaseTypeSeed.name: ItemBaseTypeSeed(),
+            ItemMagicalTypeSeed.name: ItemMagicalTypeSeed(),
+            ItemSeed.name: ItemSeed(),
         }
 
     def seed(
