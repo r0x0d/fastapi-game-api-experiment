@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import APIRouter, FastAPI
 from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.middleware.httpsredirect import HTTPSRedirectMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
@@ -13,7 +13,24 @@ from carnage.routes import (
     monster,
     monster_type,
     size,
+    spell,
+    spell_duration_type,
+    spell_range_type,
+    spell_school,
 )
+
+APPLICATION_ROUTERS: list[APIRouter] = [
+    aligment.router,
+    monster.router,
+    monster_type.router,
+    size.router,
+    account.router,
+    authentication.router,
+    spell_school.router,
+    spell_duration_type.router,
+    spell_range_type.router,
+    spell.router,
+]
 
 
 def add_middleware(app: FastAPI) -> None:
@@ -34,12 +51,7 @@ def create_app() -> FastAPI:
     """."""
     app = FastAPI()
 
-    app.include_router(aligment.router)
-    app.include_router(monster.router)
-    app.include_router(monster_type.router)
-    app.include_router(size.router)
-    app.include_router(account.router)
-    app.include_router(authentication.router)
+    [app.include_router(router) for router in APPLICATION_ROUTERS]
 
     add_middleware(app)
 

@@ -21,6 +21,18 @@ class AccountSeed(BaseSeed):
         },
     ]
 
+    def validate_seed(self, seed: dict[str, str]) -> bool:
+        print(f"Validating the current seed with username: {seed['username']}")
+
+        result = self.repository.select_by_username(  # type: ignore
+            username=seed["username"],
+        )
+        if result:
+            print("Seed already exists in the database")
+            return True
+
+        return False
+
     def __init__(
         self,
         repository: Type[AccountRepository] = AccountRepository,
