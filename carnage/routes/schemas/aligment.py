@@ -1,21 +1,7 @@
-from pydantic import BaseModel
+from pydantic_sqlalchemy import sqlalchemy_to_pydantic
 
-from carnage.routes.schemas.base import BaseSchema
+from carnage.database.models.aligment import AligmentModel
 
-
-class ListAligmentSchema(BaseSchema):
-    name: str
-    description: str | None
-
-    class Config:
-        orm_mode = True
-
-
-class UpdateAligmentSchema(BaseModel):
-    name: str
-    description: str | None
-
-
-class CreateAligmentSchema(BaseModel):
-    name: str
-    description: str | None
+ListAligmentSchema = sqlalchemy_to_pydantic(AligmentModel)
+UpdateAligmentSchema = sqlalchemy_to_pydantic(AligmentModel, config=None)
+CreateAligmentSchema = sqlalchemy_to_pydantic(AligmentModel, config=None)

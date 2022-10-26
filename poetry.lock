@@ -394,6 +394,21 @@ dotenv = ["python-dotenv (>=0.10.4)"]
 email = ["email-validator (>=1.0.3)"]
 
 [[package]]
+name = "pydantic-sqlalchemy"
+version = "0.0.9"
+description = "Tools to convert SQLAlchemy models to Pydantic models"
+category = "main"
+optional = false
+python-versions = ">=3.6,<4.0"
+
+[package.dependencies]
+pydantic = ">=1.5.1,<2.0.0"
+sqlalchemy = ">=1.3.16,<2.0.0"
+
+[package.extras]
+dev = ["flake8[dev] (>=3.7.9,<4.0.0)", "autoflake[dev] (>=1.3.1,<2.0.0)", "jupyter[dev] (>=1.0.0,<2.0.0)"]
+
+[[package]]
 name = "pyparsing"
 version = "3.0.9"
 description = "pyparsing module - Classes and methods to define and execute parsing grammars"
@@ -634,7 +649,7 @@ python-versions = ">=3.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.11"
-content-hash = "bb7caa7a50b0be89e7f87136dedfe012e832cd1be6049f1d9f9f8fb5e6bcb433"
+content-hash = "bc68e136c7698d53a08a6215a94df81d8e85bebf0a254796a964d80dfb8974b0"
 
 [metadata.files]
 alembic = []
@@ -670,6 +685,7 @@ psycopg2-binary = []
 py = []
 pycparser = []
 pydantic = []
+pydantic-sqlalchemy = []
 pyparsing = []
 pytest = []
 pytest-env = []

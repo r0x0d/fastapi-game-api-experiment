@@ -1,21 +1,7 @@
-from pydantic import BaseModel
+from pydantic_sqlalchemy import sqlalchemy_to_pydantic
 
-from carnage.routes.schemas.base import BaseSchema
+from carnage.database.models.item_base_type import ItemBaseTypeModel
 
-
-class ListItemBaseTypeSchema(BaseSchema):
-    name: str
-    description: str | None
-
-    class Config:
-        orm_mode = True
-
-
-class UpdateItemBaseTypeSchema(BaseModel):
-    name: str
-    description: str | None
-
-
-class CreateItemBaseTypeSchema(BaseModel):
-    name: str
-    description: str | None
+ListItemBaseTypeSchema = sqlalchemy_to_pydantic(ItemBaseTypeModel)
+UpdateItemBaseTypeSchema = sqlalchemy_to_pydantic(ItemBaseTypeModel)
+CreateItemBaseTypeSchema = sqlalchemy_to_pydantic(ItemBaseTypeModel)

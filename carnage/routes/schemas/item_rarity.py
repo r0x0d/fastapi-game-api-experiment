@@ -1,21 +1,7 @@
-from pydantic import BaseModel
+from pydantic_sqlalchemy import sqlalchemy_to_pydantic
 
-from carnage.routes.schemas.base import BaseSchema
+from carnage.database.models.item_rarity import ItemRarityModel
 
-
-class ListItemRaritySchema(BaseSchema):
-    name: str
-    description: str | None
-
-    class Config:
-        orm_mode = True
-
-
-class UpdateItemRaritySchema(BaseModel):
-    name: str
-    description: str | None
-
-
-class CreateItemRaritySchema(BaseModel):
-    name: str
-    description: str | None
+ListItemRaritySchema = sqlalchemy_to_pydantic(ItemRarityModel)
+UpdateItemRaritySchema = sqlalchemy_to_pydantic(ItemRarityModel)
+CreateItemRaritySchema = sqlalchemy_to_pydantic(ItemRarityModel)

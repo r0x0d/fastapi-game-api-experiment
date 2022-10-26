@@ -1,21 +1,7 @@
-from pydantic import BaseModel
+from pydantic_sqlalchemy import sqlalchemy_to_pydantic
 
-from carnage.routes.schemas.base import BaseSchema
+from carnage.database.models.size import SizeModel
 
-
-class ListSizeSchema(BaseSchema):
-    name: str
-    description: str | None
-
-    class Config:
-        orm_mode = True
-
-
-class UpdateSizeSchema(BaseModel):
-    name: str
-    description: str | None
-
-
-class CreateSizeSchema(BaseModel):
-    name: str
-    description: str | None
+ListSizeSchema = sqlalchemy_to_pydantic(SizeModel)
+UpdateSizeSchema = sqlalchemy_to_pydantic(SizeModel, config=None)
+CreateSizeSchema = sqlalchemy_to_pydantic(SizeModel, config=None)

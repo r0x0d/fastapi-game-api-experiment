@@ -1,21 +1,13 @@
-from pydantic import BaseModel
+from pydantic_sqlalchemy import sqlalchemy_to_pydantic
 
-from carnage.routes.schemas.base import BaseSchema
+from carnage.database.models.spell_range_type import SpellRangeTypeModel
 
-
-class ListSpellRangeTypeSchema(BaseSchema):
-    name: str
-    description: str | None
-
-    class Config:
-        orm_mode = True
-
-
-class UpdateSpellRangeTypeSchema(BaseModel):
-    name: str
-    description: str | None
-
-
-class CreateSpellRangeTypeSchema(BaseModel):
-    name: str
-    description: str | None
+ListSpellRangeTypeSchema = sqlalchemy_to_pydantic(SpellRangeTypeModel)
+UpdateSpellRangeTypeSchema = sqlalchemy_to_pydantic(
+    SpellRangeTypeModel,
+    config=None,
+)
+CreateSpellRangeTypeSchema = sqlalchemy_to_pydantic(
+    SpellRangeTypeModel,
+    config=None,
+)
