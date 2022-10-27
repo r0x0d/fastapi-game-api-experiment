@@ -20,16 +20,16 @@ def test_add_subparser():
     )
 
 
-namespace = namedtuple("Namespace", ("all", "name"))
+namespace = namedtuple("Namespace", ("all", "name", "list_seeds"))
 
 
 @mock.patch.object(seed, "SeedManager")
 @pytest.mark.parametrize(
-    ("args_all", "args_name"),
-    ((True, None), (False, "test")),
+    ("args_all", "args_name", "args_list_seed"),
+    ((True, None, False), (False, "test", False), (False, None, True)),
 )
-def test_run(seed_manager_mock, args_all, args_name):
-    args = namespace(args_all, args_name)
+def test_run(seed_manager_mock, args_all, args_name, args_list_seed):
+    args = namespace(args_all, args_name, args_list_seed)
 
     seed.run(args=args)
     assert seed_manager_mock.seed.called_once()
@@ -47,9 +47,17 @@ def test_run(seed_manager_mock, args_all, args_name):
     ),
 )
 def test_run_assertion_error(args_all, args_name, match):
-    args = namespace(args_all, args_name)
+    args = namespace(args_all, args_name, False)
     with pytest.raises(
         AssertionError,
         match=match,
     ):
         seed.run(args=args)
+
+
+def test_print_seeds_table(capsys):
+    manager_mock = mock.Mock()
+    manager_mock.seed_mapping = {"test": "test"}
+
+    seed._print_seeds_table(manager_mock)
+    assert isinstance(capsys.readouterr().out, str)

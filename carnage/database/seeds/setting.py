@@ -1,3 +1,4 @@
+import logging
 from typing import Any, Type
 
 from cryptography.fernet import Fernet
@@ -5,6 +6,8 @@ from cryptography.fernet import Fernet
 from carnage.constants import DEVELOPMENT
 from carnage.database.repository.setting import SettingRepository
 from carnage.database.seeds.base import BaseSeed
+
+logger = logging.getLogger(__name__)
 
 
 class SettingSeed(BaseSeed):
@@ -17,15 +20,16 @@ class SettingSeed(BaseSeed):
     ]
 
     def validate_seed(self, seed: dict[str, str]) -> bool:
-        print(
-            f"Validating the current seed with environment: {seed['environment']}",  # noqa
+        logger.debug(
+            "Validating the current seed with environment: '%s'",
+            seed["environment"],
         )
 
         result = self.repository.select_by_environment(  # type: ignore
             environment=seed["environment"],
         )
         if result:
-            print("Seed already exists in the database")
+            logger.debug("Seed already exists in the database")
             return True
 
         return False

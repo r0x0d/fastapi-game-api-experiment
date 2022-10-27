@@ -1,3 +1,4 @@
+import logging
 from unittest import mock
 
 import pytest
@@ -19,14 +20,15 @@ def test_monster_seed_init(database_session_mock):
         (False),
     ),
 )
-def test_seed(seed_exist, database_session_mock, capsys, monkeypatch):
+def test_seed(seed_exist, database_session_mock, caplog, monkeypatch):
+    caplog.set_level(logging.INFO)
     seed = base.BaseSeed(mock.Mock())
     monkeypatch.setattr(seed, "validate_seed", lambda seed: seed_exist)
     seed.data = [{"name": "test"}]
     seed.seed()
 
     if not seed_exist:
-        assert "Seeded base" in capsys.readouterr().out
+        assert "Seeded 'base' successfully" in caplog.records[-1].message
 
 
 def test_seed_value_error():

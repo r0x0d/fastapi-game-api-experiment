@@ -1,3 +1,5 @@
+import logging
+
 from carnage.database.seeds.account import AccountSeed
 from carnage.database.seeds.aligment import AligmentSeed
 from carnage.database.seeds.base import BaseSeed
@@ -13,6 +15,8 @@ from carnage.database.seeds.spell import SpellSeed
 from carnage.database.seeds.spell_duration_type import SpellDurationTypeSeed
 from carnage.database.seeds.spell_range_type import SpellRangeTypeSeed
 from carnage.database.seeds.spell_school import SpellSchoolSeed
+
+logger = logging.getLogger(__name__)
 
 
 class SeedManager:
@@ -45,10 +49,11 @@ class SeedManager:
         if all_seeds:
             for _, seed in self.seed_mapping.items():
                 seed.seed()
-            return
+        else:
+            if seed_name not in self.seed_mapping:
+                raise AssertionError("Couldn't find the desired seed.")
 
-        if seed_name not in self.seed_mapping:
-            raise AssertionError("Couldn't find the desired seed.")
+            seed = self.seed_mapping[seed_name]
+            seed.seed()
 
-        seed = self.seed_mapping[seed_name]
-        seed.seed()
+        logger.info("Done with seeding.")

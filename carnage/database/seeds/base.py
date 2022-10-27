@@ -1,6 +1,9 @@
+import logging
 from typing import Any, Type
 
 from carnage.database.repository.base import BaseRepository
+
+logger = logging.getLogger(__name__)
 
 
 class BaseSeed:
@@ -14,11 +17,14 @@ class BaseSeed:
         self.repository = repository()
 
     def validate_seed(self, seed: dict[str, str]) -> bool:
-        print(f"Validating the current seed with name: {seed['name']}")
+        logger.debug(
+            "Validating the current seed with name: '%s'",
+            seed["name"],
+        )
 
         result = self.repository.select_by_name(name=seed["name"])
         if result:
-            print("Seed already exists in the database")
+            logger.debug("Seed already exists in the database")
             return True
 
         return False
@@ -30,4 +36,4 @@ class BaseSeed:
         for seed in self.data:
             if not self.validate_seed(seed=seed):
                 self.repository.insert(self.data)
-                print(f"Seeded {self.name}")
+                logger.info("Seeded '%s' successfully", self.name)
