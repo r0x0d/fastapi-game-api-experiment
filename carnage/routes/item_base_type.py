@@ -1,41 +1,38 @@
-from fastapi import APIRouter
+from typing import Type
 
 from carnage.database.repository.item_base_type import ItemBaseTypeRepository
+from carnage.routes.base import BaseRoute
 from carnage.routes.schemas.item_base_type import (
     CreateItemBaseTypeSchema,
     ListItemBaseTypeSchema,
     UpdateItemBaseTypeSchema,
 )
 
-router = APIRouter(prefix="/item_base_type", tags=["item-base-type"])
-repository = ItemBaseTypeRepository()
+
+class ItemBaseTypeRoute(BaseRoute):
+    def __init__(
+        self,
+        name: str = "item_base_type",
+        tags: list[str] = ["item", "item-base-type"],
+        repository: Type[ItemBaseTypeRepository] = ItemBaseTypeRepository,
+        get_response_model: Type[
+            ListItemBaseTypeSchema
+        ] = ListItemBaseTypeSchema,
+        post_response_model: Type[
+            CreateItemBaseTypeSchema
+        ] = CreateItemBaseTypeSchema,
+        put_response_model: Type[
+            UpdateItemBaseTypeSchema
+        ] = UpdateItemBaseTypeSchema,
+    ) -> None:
+        super().__init__(
+            name,
+            tags,
+            repository,
+            get_response_model,
+            post_response_model,
+            put_response_model,
+        )
 
 
-@router.get("/", response_model=list[ListItemBaseTypeSchema])
-async def get() -> list[ListItemBaseTypeSchema]:
-    result = repository.select()
-    return [ListItemBaseTypeSchema.from_orm(item) for item in result]
-
-
-@router.get("/{identifier}", response_model=ListItemBaseTypeSchema)
-async def get_by_id(identifier: str) -> ListItemBaseTypeSchema:
-    result = repository.select_by_id(identifier=identifier)
-    return ListItemBaseTypeSchema.from_orm(result[0])
-
-
-@router.post("/", status_code=201)
-async def post(request: CreateItemBaseTypeSchema) -> None:
-    repository.insert(values=request.dict())
-
-
-@router.put("/{identifier}", status_code=204)
-async def put(
-    request: UpdateItemBaseTypeSchema,
-    identifier: str,
-) -> None:
-    repository.update(values=request.dict(), identifier=identifier)
-
-
-@router.delete("/{identifier}", status_code=204)
-async def delete(identifier: str) -> None:
-    repository.delete(identifier=identifier)
+item_base_type_route = ItemBaseTypeRoute()

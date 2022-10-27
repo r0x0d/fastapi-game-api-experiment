@@ -26,7 +26,6 @@ async def test_google_login(application_instance, monkeypatch):
 
 @pytest.mark.anyio
 async def test_google_auth(application_instance):
-
     with mock.patch.object(
         authentication.oauth.google,
         "authorize_access_token",
