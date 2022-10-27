@@ -1,43 +1,40 @@
-from fastapi import APIRouter
+from typing import Type
 
 from carnage.database.repository.spell_range_type import (
     SpellRangeTypeRepository,
 )
+from carnage.routes.base import BaseRoute
 from carnage.routes.schemas.spell_range_type import (
     CreateSpellRangeTypeSchema,
     ListSpellRangeTypeSchema,
     UpdateSpellRangeTypeSchema,
 )
 
-router = APIRouter(prefix="/spell_range_type", tags=["spell-range-type"])
-repository = SpellRangeTypeRepository()
+
+class SpellRangeTypeRoute(BaseRoute):
+    def __init__(
+        self,
+        name: str = "spell_range_type",
+        tags: list[str] = ["spell", "spell-range-type"],
+        repository: Type[SpellRangeTypeRepository] = SpellRangeTypeRepository,
+        get_response_model: Type[
+            ListSpellRangeTypeSchema
+        ] = ListSpellRangeTypeSchema,
+        post_response_model: Type[
+            CreateSpellRangeTypeSchema
+        ] = CreateSpellRangeTypeSchema,
+        put_response_model: Type[
+            UpdateSpellRangeTypeSchema
+        ] = UpdateSpellRangeTypeSchema,
+    ) -> None:
+        super().__init__(
+            name,
+            tags,
+            repository,
+            get_response_model,
+            post_response_model,
+            put_response_model,
+        )
 
 
-@router.get("/", response_model=list[ListSpellRangeTypeSchema])
-async def get() -> list[ListSpellRangeTypeSchema]:
-    result = repository.select()
-    return [ListSpellRangeTypeSchema.from_orm(item) for item in result]
-
-
-@router.get("/{identifier}", response_model=ListSpellRangeTypeSchema)
-async def get_by_id(identifier: str) -> ListSpellRangeTypeSchema:
-    result = repository.select_by_id(identifier=identifier)
-    return ListSpellRangeTypeSchema.from_orm(result[0])
-
-
-@router.post("/", status_code=201)
-async def post(request: CreateSpellRangeTypeSchema) -> None:
-    repository.insert(values=request.dict())
-
-
-@router.put("/{identifier}", status_code=204)
-async def put(
-    request: UpdateSpellRangeTypeSchema,
-    identifier: str,
-) -> None:
-    repository.update(values=request.dict(), identifier=identifier)
-
-
-@router.delete("/{identifier}", status_code=204)
-async def delete(identifier: str) -> None:
-    repository.delete(identifier=identifier)
+spell_range_type_route = SpellRangeTypeRoute()

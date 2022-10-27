@@ -1,41 +1,32 @@
-from fastapi import APIRouter
+from typing import Type
 
 from carnage.database.repository.aligment import AligmentRepository
+from carnage.routes.base import BaseRoute
 from carnage.routes.schemas.aligment import (
     CreateAligmentSchema,
     ListAligmentSchema,
     UpdateAligmentSchema,
 )
 
-router = APIRouter(prefix="/aligment", tags=["aligment"])
-repository = AligmentRepository()
+
+class AligmentRoute(BaseRoute):
+    def __init__(
+        self,
+        name: str = "aligment",
+        tags: list[str] = ["aligment"],
+        repository: Type[AligmentRepository] = AligmentRepository,
+        get_response_model: Type[ListAligmentSchema] = ListAligmentSchema,
+        post_response_model: Type[CreateAligmentSchema] = CreateAligmentSchema,
+        put_response_model: Type[UpdateAligmentSchema] = UpdateAligmentSchema,
+    ) -> None:
+        super().__init__(
+            name,
+            tags,
+            repository,
+            get_response_model,
+            post_response_model,
+            put_response_model,
+        )
 
 
-@router.get("/", response_model=list[ListAligmentSchema])
-async def get() -> list[ListAligmentSchema]:
-    result = repository.select()
-    return [ListAligmentSchema.from_orm(item) for item in result]
-
-
-@router.get("/{identifier}", response_model=ListAligmentSchema)
-async def get_by_id(identifier: str) -> ListAligmentSchema:
-    result = repository.select_by_id(identifier=identifier)
-    return ListAligmentSchema.from_orm(result[0])
-
-
-@router.post("/", status_code=201)
-async def post(request: CreateAligmentSchema) -> None:
-    repository.insert(values=request.dict())
-
-
-@router.put("/{identifier}", status_code=204)
-async def put(
-    request: UpdateAligmentSchema,
-    identifier: str,
-) -> None:
-    repository.update(values=request.dict(), identifier=identifier)
-
-
-@router.delete("/{identifier}", status_code=204)
-async def delete(identifier: str) -> None:
-    repository.delete(identifier=identifier)
+aligment_route = AligmentRoute()

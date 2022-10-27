@@ -1,4 +1,4 @@
-from fastapi import APIRouter, FastAPI
+from fastapi import FastAPI
 from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.middleware.httpsredirect import HTTPSRedirectMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
@@ -6,39 +6,42 @@ from starlette.middleware.sessions import SessionMiddleware
 
 from carnage.constants import DEVELOPMENT
 from carnage.database.repository.setting import SettingRepository
-from carnage.routes import (
-    account,
-    aligment,
-    authentication,
-    item,
-    item_base_type,
-    item_magical_type,
-    item_rarity,
-    monster,
-    monster_type,
-    size,
-    spell,
-    spell_duration_type,
-    spell_range_type,
-    spell_school,
-)
+from carnage.routes.account import account_route
+from carnage.routes.aligment import aligment_route
+from carnage.routes.authentication import authentication_route
+from carnage.routes.item import item_route
+from carnage.routes.item_base_type import item_base_type_route
+from carnage.routes.item_magical_type import item_magical_type_route
+from carnage.routes.item_rarity import item_rarity_route
+from carnage.routes.monster import monster_route
+from carnage.routes.monster_type import monster_type_route
+from carnage.routes.size import size_route
+from carnage.routes.spell import spell_route
+from carnage.routes.spell_duration_type import spell_duration_type_route
+from carnage.routes.spell_range_type import spell_range_type_route
+from carnage.routes.spell_school import spell_school_route
 
-APPLICATION_ROUTERS: list[APIRouter] = [
-    aligment.router,
-    monster.router,
-    monster_type.router,
-    size.router,
-    account.router,
-    authentication.router,
-    spell_school.router,
-    spell_duration_type.router,
-    spell_range_type.router,
-    spell.router,
-    item_rarity.router,
-    item_base_type.router,
-    item_magical_type.router,
-    item.router,
-]
+
+def add_router(app: FastAPI) -> None:
+    [
+        app.include_router(router=router, prefix="/api/v1")
+        for router in [
+            account_route.router,
+            aligment_route.router,
+            authentication_route.router,
+            item_base_type_route.router,
+            item_magical_type_route.router,
+            item_rarity_route.router,
+            item_route.router,
+            monster_route.router,
+            monster_type_route.router,
+            size_route.router,
+            spell_duration_type_route.router,
+            spell_range_type_route.router,
+            spell_route.router,
+            spell_school_route.router,
+        ]
+    ]
 
 
 def add_middleware(app: FastAPI) -> None:
@@ -59,11 +62,7 @@ def create_app() -> FastAPI:
     """."""
     app = FastAPI()
 
-    [
-        app.include_router(router=router, prefix="/api/v1")
-        for router in APPLICATION_ROUTERS
-    ]
-
+    add_router(app)
     add_middleware(app)
 
     return app

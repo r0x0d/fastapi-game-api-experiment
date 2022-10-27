@@ -59,7 +59,7 @@ BASE_URL = f"http://test/{APPLICATION_PREFIX}/item"
 )
 async def test_get(output, application_instance, monkeypatch):
     monkeypatch.setattr(
-        item.repository,
+        item.item_route.repository,
         "select",
         lambda: output,
     )
@@ -100,7 +100,7 @@ async def test_get(output, application_instance, monkeypatch):
 )
 async def test_get_by_id(output, application_instance, monkeypatch):
     monkeypatch.setattr(
-        item.repository,
+        item.item_route.repository,
         "select_by_id",
         lambda identifier: output,
     )
@@ -134,7 +134,7 @@ async def test_get_by_id(output, application_instance, monkeypatch):
 )
 async def test_post(data, application_instance, monkeypatch):
     monkeypatch.setattr(
-        item.repository,
+        item.item_route.repository,
         "insert",
         lambda values: None,
     )
@@ -167,7 +167,7 @@ async def test_post(data, application_instance, monkeypatch):
 )
 async def test_put(data, application_instance, monkeypatch):
     monkeypatch.setattr(
-        item.repository,
+        item.item_route.repository,
         "update",
         lambda values, identifier: None,
     )
@@ -182,7 +182,7 @@ async def test_put(data, application_instance, monkeypatch):
 @pytest.mark.anyio
 async def test_delete(application_instance, monkeypatch):
     monkeypatch.setattr(
-        item.repository,
+        item.item_route.repository,
         "delete",
         lambda identifier: None,
     )
