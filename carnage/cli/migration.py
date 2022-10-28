@@ -31,7 +31,6 @@ def run(args: argparse.Namespace) -> None:
     """."""
     logger.info("Running carnage migration")
     alembicArgs = [
-        "--raiseerr",
         "upgrade",
         "head",
     ]

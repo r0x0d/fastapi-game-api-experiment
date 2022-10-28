@@ -1,19 +1,19 @@
-"""add map schemas table
+"""add players table
 
-Revision ID: 8a31d6b9e7ad
-Revises: 105b44e2cd80
-Create Date: 2022-10-28 21:13:43.104909
+Revision ID: 23800d534c41
+Revises: a0f9352b5811
+Create Date: 2022-10-28 22:24:33.022942
 
 """
 from datetime import datetime
 
 import sqlalchemy as sa
 from alembic import op
-from sqlalchemy.dialects.postgresql import JSONB, UUID
+from sqlalchemy.dialects.postgresql import UUID
 
 # revision identifiers, used by Alembic.
-revision = "8a31d6b9e7ad"
-down_revision = "105b44e2cd80"
+revision = "23800d534c41"
+down_revision = "a0f9352b5811"
 branch_labels = None
 depends_on = None
 
@@ -28,16 +28,17 @@ def upgrade() -> None:
         ),
         sa.Column("name", sa.String(length=100), nullable=False),
         sa.Column("description", sa.String(), nullable=False),
+        sa.Column("is_alive", sa.Boolean(), nullable=False, default=True),
         sa.Column(
-            "schema",
-            JSONB(none_as_null=False),
+            "map_id",
+            UUID(as_uuid=True),
+            sa.ForeignKey("maps.id"),
             nullable=False,
-            default={},
         ),
         sa.Column(
-            "map_difficulty_id",
+            "vocation_id",
             UUID(as_uuid=True),
-            sa.ForeignKey("map_difficulties.id"),
+            sa.ForeignKey("vocations.id"),
             nullable=False,
         ),
         sa.Column(
@@ -54,8 +55,8 @@ def upgrade() -> None:
         ),
         sa.Column("deleted_at", sa.DateTime(), default=None, nullable=True),
     ]
-    op.create_table("map_schemas", *columns)
+    op.create_table("players", *columns)
 
 
 def downgrade() -> None:
-    op.drop_table("map_schemas")
+    op.drop_table("players")

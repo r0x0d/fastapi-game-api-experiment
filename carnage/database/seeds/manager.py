@@ -12,6 +12,7 @@ from carnage.database.seeds.map_difficulty import MapDifficultySeed
 from carnage.database.seeds.map_schema import MapSchemaSeed
 from carnage.database.seeds.monster import MonsterSeed
 from carnage.database.seeds.monster_type import MonsterTypeSeed
+from carnage.database.seeds.player import PlayerSeed
 from carnage.database.seeds.race import RaceSeed
 from carnage.database.seeds.setting import SettingSeed
 from carnage.database.seeds.size import SizeSeed
@@ -50,6 +51,7 @@ class SeedManager:
             MapDifficultySeed.name: MapDifficultySeed(),
             MapSchemaSeed.name: MapSchemaSeed(),
             MapSeed.name: MapSeed(),
+            PlayerSeed.name: PlayerSeed(),
         }
 
     def seed(

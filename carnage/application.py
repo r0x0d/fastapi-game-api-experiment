@@ -18,6 +18,7 @@ from carnage.routes.map_difficulty import map_difficulty_route
 from carnage.routes.map_schema import map_schema_route
 from carnage.routes.monster import monster_route
 from carnage.routes.monster_type import monster_type_route
+from carnage.routes.player import player_route
 from carnage.routes.race import race_route
 from carnage.routes.size import size_route
 from carnage.routes.spell import spell_route
@@ -52,6 +53,7 @@ def add_router(app: FastAPI) -> None:
             map_route.router,
             map_schema_route.router,
             map_difficulty_route.router,
+            player_route.router,
         ]
     ]
 

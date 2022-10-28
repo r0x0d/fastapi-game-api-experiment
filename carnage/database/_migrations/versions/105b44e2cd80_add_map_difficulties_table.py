@@ -1,7 +1,7 @@
 """add map difficulties table
 
 Revision ID: 105b44e2cd80
-Revises: 7b06c2af1b88
+Revises: dc8743764847
 Create Date: 2022-10-28 21:23:59.754318
 
 """
