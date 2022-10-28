@@ -1,3 +1,5 @@
+from unittest import mock
+
 import pytest
 
 from carnage.database.seeds import account
@@ -17,13 +19,12 @@ def test_account_seed_init(database_session_mock):
         (False),
     ),
 )
-def test_validate_seed(seed_exist, database_session_mock, monkeypatch):
+def test_validate_seed(seed_exist, database_session_mock):
     seed = account.AccountSeed()
-    monkeypatch.setattr(
+    with mock.patch.object(
         seed.repository,
         "select_by_username",
         lambda username: seed_exist,
-    )
-
-    # We don't care too much about the rest
-    assert seed.validate_seed(seed={"username": "test"}) == seed_exist
+    ):
+        # We don't care too much about the rest
+        assert seed.validate_seed(seed={"username": "test"}) == seed_exist
