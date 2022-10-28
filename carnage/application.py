@@ -15,6 +15,7 @@ from carnage.routes.item_magical_type import item_magical_type_route
 from carnage.routes.item_rarity import item_rarity_route
 from carnage.routes.monster import monster_route
 from carnage.routes.monster_type import monster_type_route
+from carnage.routes.race import race_route
 from carnage.routes.size import size_route
 from carnage.routes.spell import spell_route
 from carnage.routes.spell_duration_type import spell_duration_type_route
@@ -40,6 +41,7 @@ def add_router(app: FastAPI) -> None:
             spell_range_type_route.router,
             spell_route.router,
             spell_school_route.router,
+            race_route.router,
         ]
     ]
 
