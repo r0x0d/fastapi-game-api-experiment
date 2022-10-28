@@ -1,3 +1,4 @@
+import logging
 from typing import Any, Type
 
 from argon2 import PasswordHasher
@@ -6,6 +7,8 @@ from cryptography.fernet import Fernet
 from carnage.database.models.account import ProviderEnum
 from carnage.database.repository.account import AccountRepository
 from carnage.database.seeds.base import BaseSeed
+
+logger = logging.getLogger(__name__)
 
 ph = PasswordHasher()
 
@@ -22,13 +25,16 @@ class AccountSeed(BaseSeed):
     ]
 
     def validate_seed(self, seed: dict[str, str]) -> bool:
-        print(f"Validating the current seed with username: {seed['username']}")
+        logger.debug(
+            "Validating the current seed with username: '%s'",
+            seed["username"],
+        )
 
         result = self.repository.select_by_username(  # type: ignore
             username=seed["username"],
         )
         if result:
-            print("Seed already exists in the database")
+            logger.debug("Seed already exists in the database")
             return True
 
         return False

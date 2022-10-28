@@ -1,9 +1,12 @@
 import argparse
+import logging
 
 import uvicorn
 
 from carnage.application import create_app
 from carnage.cli import SubparserType
+
+logger = logging.getLogger(__name__)
 
 
 def add_subparser(
@@ -37,6 +40,10 @@ def add_subparser(
 
 def run(args: argparse.Namespace) -> None:
     """."""
+    logger.debug(
+        "Serving carnage at host '%s' with port '%s'.",
+        (args.host, args.port),
+    )
     config = uvicorn.Config(
         create_app(),
         host=args.host,

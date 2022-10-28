@@ -39,18 +39,19 @@ class AuthenticationRoute:
             methods=["GET"],
             status_code=200,
         )
-        self.router.add_api_route(
-            "/",
-            self.homepage,
-            methods=["GET"],
-            status_code=200,
-        )
-        self.router.add_api_route(
-            "/logout",
-            self.logout,
-            methods=["GET"],
-            status_code=200,
-        )
+        if DEVELOPMENT:  # pragma: no cover
+            self.router.add_api_route(
+                "/",
+                self.homepage,
+                methods=["GET"],
+                status_code=200,
+            )
+            self.router.add_api_route(
+                "/logout",
+                self.logout,
+                methods=["GET"],
+                status_code=200,
+            )
 
     async def google_login(self, request: Request) -> RedirectResponse:
         redirect_uri = request.url_for("google_auth")
