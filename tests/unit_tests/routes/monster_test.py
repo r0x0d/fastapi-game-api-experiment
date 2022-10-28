@@ -1,11 +1,12 @@
 from collections import namedtuple
 from datetime import datetime
+from unittest import mock
 from uuid import uuid4
 
 import pytest
 from httpx import AsyncClient
 
-from carnage.routes import monster
+from carnage.routes.monster import monster_route
 from tests.unit_tests.conftest import APPLICATION_PREFIX, DummySchemaFields
 
 MonsterOutput = namedtuple(
@@ -59,17 +60,20 @@ BASE_URL = f"http://test/{APPLICATION_PREFIX}/monster"
         ),
     ),
 )
-async def test_get(output, application_instance, monkeypatch):
-    monkeypatch.setattr(
-        monster.monster_route.repository,
+async def test_get(output, application_instance):
+    with mock.patch.object(
+        monster_route.repository,
         "select",
         lambda: output,
-    )
-    async with AsyncClient(app=application_instance, base_url=BASE_URL) as ac:
-        response = await ac.get("/")
-    assert response.status_code == 200
-    assert isinstance(response.json(), list)
-    assert len(response.json()) > 0
+    ):
+        async with AsyncClient(
+            app=application_instance,
+            base_url=BASE_URL,
+        ) as ac:
+            response = await ac.get("/")
+        assert response.status_code == 200
+        assert isinstance(response.json(), list)
+        assert len(response.json()) > 0
 
 
 @pytest.mark.anyio
@@ -101,16 +105,19 @@ async def test_get(output, application_instance, monkeypatch):
         ),
     ),
 )
-async def test_get_by_id(output, application_instance, monkeypatch):
-    monkeypatch.setattr(
-        monster.monster_route.repository,
+async def test_get_by_id(output, application_instance):
+    with mock.patch.object(
+        monster_route.repository,
         "select_by_id",
         lambda identifier: output,
-    )
-    async with AsyncClient(app=application_instance, base_url=BASE_URL) as ac:
-        response = await ac.get("/26609c62-5270-11ed-8d79-641c67e34d72")
-    assert response.status_code == 200
-    assert isinstance(response.json(), dict)
+    ):
+        async with AsyncClient(
+            app=application_instance,
+            base_url=BASE_URL,
+        ) as ac:
+            response = await ac.get("/26609c62-5270-11ed-8d79-641c67e34d72")
+        assert response.status_code == 200
+        assert isinstance(response.json(), dict)
 
 
 @pytest.mark.anyio
@@ -136,15 +143,18 @@ async def test_get_by_id(output, application_instance, monkeypatch):
         ),
     ),
 )
-async def test_post(data, application_instance, monkeypatch):
-    monkeypatch.setattr(
-        monster.monster_route.repository,
+async def test_post(data, application_instance):
+    with mock.patch.object(
+        monster_route.repository,
         "insert",
         lambda values: None,
-    )
-    async with AsyncClient(app=application_instance, base_url=BASE_URL) as ac:
-        response = await ac.post("/", json=data)
-    assert response.status_code == 201
+    ):
+        async with AsyncClient(
+            app=application_instance,
+            base_url=BASE_URL,
+        ) as ac:
+            response = await ac.post("/", json=data)
+        assert response.status_code == 201
 
 
 @pytest.mark.anyio
@@ -170,27 +180,33 @@ async def test_post(data, application_instance, monkeypatch):
         ),
     ),
 )
-async def test_put(data, application_instance, monkeypatch):
-    monkeypatch.setattr(
-        monster.monster_route.repository,
+async def test_put(data, application_instance):
+    with mock.patch.object(
+        monster_route.repository,
         "update",
         lambda values, identifier: None,
-    )
-    async with AsyncClient(app=application_instance, base_url=BASE_URL) as ac:
-        response = await ac.put(
-            "/26609c62-5270-11ed-8d79-641c67e34d72",
-            json=data,
-        )
+    ):
+        async with AsyncClient(
+            app=application_instance,
+            base_url=BASE_URL,
+        ) as ac:
+            response = await ac.put(
+                "/26609c62-5270-11ed-8d79-641c67e34d72",
+                json=data,
+            )
     assert response.status_code == 204
 
 
 @pytest.mark.anyio
-async def test_delete(application_instance, monkeypatch):
-    monkeypatch.setattr(
-        monster.monster_route.repository,
+async def test_delete(application_instance):
+    with mock.patch.object(
+        monster_route.repository,
         "delete",
         lambda identifier: None,
-    )
-    async with AsyncClient(app=application_instance, base_url=BASE_URL) as ac:
-        response = await ac.delete("/26609c62-5270-11ed-8d79-641c67e34d72")
-    assert response.status_code == 204
+    ):
+        async with AsyncClient(
+            app=application_instance,
+            base_url=BASE_URL,
+        ) as ac:
+            response = await ac.delete("/26609c62-5270-11ed-8d79-641c67e34d72")
+        assert response.status_code == 204

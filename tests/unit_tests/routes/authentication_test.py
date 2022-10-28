@@ -10,7 +10,7 @@ BASE_URL = f"http://test/{APPLICATION_PREFIX}/authentication"
 
 
 @pytest.mark.anyio
-async def test_google_login(application_instance, monkeypatch):
+async def test_google_login(application_instance):
     with mock.patch.object(
         authentication.oauth.google,
         "authorize_access_token",

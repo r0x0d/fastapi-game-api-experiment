@@ -1,4 +1,5 @@
 from collections import namedtuple
+from unittest import mock
 
 import pytest
 from fastapi import FastAPI
@@ -14,5 +15,5 @@ def test_create_app(database_session_mock, monkeypatch):
 
 @pytest.mark.parametrize(("development"), (("1"), ("")))
 def test_add_middleware(development, database_session_mock, monkeypatch):
-    monkeypatch.setattr(application, "DEVELOPMENT", development)
-    application.add_middleware(FastAPI())
+    with mock.patch.object(application, "DEVELOPMENT", development):
+        application.add_middleware(FastAPI())
