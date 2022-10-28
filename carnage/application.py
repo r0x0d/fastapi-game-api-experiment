@@ -21,6 +21,8 @@ from carnage.routes.spell import spell_route
 from carnage.routes.spell_duration_type import spell_duration_type_route
 from carnage.routes.spell_range_type import spell_range_type_route
 from carnage.routes.spell_school import spell_school_route
+from carnage.routes.vocation import vocation_route
+from carnage.routes.vocation_spell import vocation_spell_route
 
 
 def add_router(app: FastAPI) -> None:
@@ -42,6 +44,8 @@ def add_router(app: FastAPI) -> None:
             spell_route.router,
             spell_school_route.router,
             race_route.router,
+            vocation_route.router,
+            vocation_spell_route.router,
         ]
     ]
 
@@ -56,7 +60,7 @@ def add_middleware(app: FastAPI) -> None:
         app.add_middleware(HTTPSRedirectMiddleware)
         app.add_middleware(
             TrustedHostMiddleware,
-            allowed_hosts=["carnage.io", "*.carnage.io"],
+            allowed_hosts=["carnage.rip", "*.carnage.rip"],
         )
 
 

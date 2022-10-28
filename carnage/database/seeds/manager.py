@@ -16,6 +16,8 @@ from carnage.database.seeds.spell import SpellSeed
 from carnage.database.seeds.spell_duration_type import SpellDurationTypeSeed
 from carnage.database.seeds.spell_range_type import SpellRangeTypeSeed
 from carnage.database.seeds.spell_school import SpellSchoolSeed
+from carnage.database.seeds.vocation import VocationSeed
+from carnage.database.seeds.vocation_spell import VocationSpellSeed
 
 logger = logging.getLogger(__name__)
 
@@ -40,6 +42,8 @@ class SeedManager:
             ItemMagicalTypeSeed.name: ItemMagicalTypeSeed(),
             ItemSeed.name: ItemSeed(),
             RaceSeed.name: RaceSeed(),
+            VocationSeed.name: VocationSeed(),
+            VocationSpellSeed.name: VocationSpellSeed(),
         }
 
     def seed(
