@@ -45,3 +45,4 @@ test: setup clean
 
 test-coverage: setup clean
 	tox
+	coverage html
