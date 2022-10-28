@@ -8,7 +8,7 @@
 
 # carnage
 
-A hardcode game
+A hardcore game
 
 # Usage
 
