@@ -9,11 +9,11 @@ from carnage import application
 SettingOutput = namedtuple("SettingOutput", ("secret_key"))
 
 
-def test_create_app(database_session_mock, monkeypatch):
+def test_create_app(database_session_mock):
     assert isinstance(application.create_app(), FastAPI)
 
 
 @pytest.mark.parametrize(("development"), (("1"), ("")))
-def test_add_middleware(development, database_session_mock, monkeypatch):
+def test_add_middleware(development, database_session_mock):
     with mock.patch.object(application, "DEVELOPMENT", development):
         application.add_middleware(FastAPI())
