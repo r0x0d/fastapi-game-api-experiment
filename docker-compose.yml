@@ -17,10 +17,27 @@ services:
 
   database:
     # Official Postgres image from DockerHub (we use the last version)
-    image: 'postgres:latest'
+    image: postgres:latest
     ports:
       - 5432:5432
 
     # The `env_file` tag allows us to declare an environment file
     env_file:
       - .env.db # The name of your environment file (the one at the repository root)
+    depends_on:
+      - pgadmin
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@carnage.rip
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_LISTEN_PORT: 80
+    ports:
+      - "8080:80"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+volumes:
+  pgadmin-data:
