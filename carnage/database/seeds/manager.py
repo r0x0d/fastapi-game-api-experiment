@@ -9,6 +9,7 @@ from carnage.database.seeds.item_magical_type import ItemMagicalTypeSeed
 from carnage.database.seeds.item_rarity import ItemRaritySeed
 from carnage.database.seeds.monster import MonsterSeed
 from carnage.database.seeds.monster_type import MonsterTypeSeed
+from carnage.database.seeds.race import RaceSeed
 from carnage.database.seeds.setting import SettingSeed
 from carnage.database.seeds.size import SizeSeed
 from carnage.database.seeds.spell import SpellSeed
@@ -38,6 +39,7 @@ class SeedManager:
             ItemBaseTypeSeed.name: ItemBaseTypeSeed(),
             ItemMagicalTypeSeed.name: ItemMagicalTypeSeed(),
             ItemSeed.name: ItemSeed(),
+            RaceSeed.name: RaceSeed(),
         }
 
     def seed(
