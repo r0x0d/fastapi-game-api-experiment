@@ -1,8 +1,8 @@
 """add maps table
 
-Revision ID: 7b06c2af1b88
+Revision ID: a0f9352b5811
 Revises: 8a31d6b9e7ad
-Create Date: 2022-10-28 21:13:45.686149
+Create Date: 2022-10-28 22:24:29.940836
 
 """
 from datetime import datetime
@@ -12,7 +12,7 @@ from alembic import op
 from sqlalchemy.dialects.postgresql import JSONB, UUID
 
 # revision identifiers, used by Alembic.
-revision = "7b06c2af1b88"
+revision = "a0f9352b5811"
 down_revision = "8a31d6b9e7ad"
 branch_labels = None
 depends_on = None
@@ -38,7 +38,7 @@ def upgrade() -> None:
             "plot",
             JSONB(none_as_null=False),
             nullable=False,
-            defalut={},
+            default={},
         ),
         sa.Column(
             "created_at",
