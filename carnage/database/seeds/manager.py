@@ -7,6 +7,9 @@ from carnage.database.seeds.item import ItemSeed
 from carnage.database.seeds.item_base_type import ItemBaseTypeSeed
 from carnage.database.seeds.item_magical_type import ItemMagicalTypeSeed
 from carnage.database.seeds.item_rarity import ItemRaritySeed
+from carnage.database.seeds.map import MapSeed
+from carnage.database.seeds.map_difficulty import MapDifficultySeed
+from carnage.database.seeds.map_schema import MapSchemaSeed
 from carnage.database.seeds.monster import MonsterSeed
 from carnage.database.seeds.monster_type import MonsterTypeSeed
 from carnage.database.seeds.race import RaceSeed
@@ -44,6 +47,9 @@ class SeedManager:
             RaceSeed.name: RaceSeed(),
             VocationSeed.name: VocationSeed(),
             VocationSpellSeed.name: VocationSpellSeed(),
+            MapDifficultySeed.name: MapDifficultySeed(),
+            MapSchemaSeed.name: MapSchemaSeed(),
+            MapSeed.name: MapSeed(),
         }
 
     def seed(
