@@ -13,6 +13,9 @@ from carnage.routes.item import item_route
 from carnage.routes.item_base_type import item_base_type_route
 from carnage.routes.item_magical_type import item_magical_type_route
 from carnage.routes.item_rarity import item_rarity_route
+from carnage.routes.map import map_route
+from carnage.routes.map_difficulty import map_difficulty_route
+from carnage.routes.map_schema import map_schema_route
 from carnage.routes.monster import monster_route
 from carnage.routes.monster_type import monster_type_route
 from carnage.routes.race import race_route
@@ -46,6 +49,9 @@ def add_router(app: FastAPI) -> None:
             race_route.router,
             vocation_route.router,
             vocation_spell_route.router,
+            map_route.router,
+            map_schema_route.router,
+            map_difficulty_route.router,
         ]
     ]
 
