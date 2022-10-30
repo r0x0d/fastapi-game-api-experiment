@@ -1,4 +1,4 @@
-from carnage.database.repository import map
+from carnage.database.repository.map import map
 
 
 def test_map_repository_init(database_session_mock):

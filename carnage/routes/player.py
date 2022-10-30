@@ -1,12 +1,15 @@
 from typing import Type
 
+from pydantic import BaseModel
+from pydantic_sqlalchemy import sqlalchemy_to_pydantic
+
+from carnage.database.models.player import PlayerModel
 from carnage.database.repository.player import PlayerRepository
 from carnage.routes.base import BaseRoute
-from carnage.routes.schemas.player import (
-    CreatePlayerSchema,
-    ListPlayerSchema,
-    UpdatePlayerSchema,
-)
+
+ListPlayerSchema = sqlalchemy_to_pydantic(PlayerModel)
+UpdatePlayerSchema = sqlalchemy_to_pydantic(PlayerModel, config=None)
+CreatePlayerSchema = sqlalchemy_to_pydantic(PlayerModel, config=None)
 
 
 class PlayerRoute(BaseRoute):
@@ -15,9 +18,9 @@ class PlayerRoute(BaseRoute):
         name: str = "player",
         tags: list[str] = ["player"],
         repository: Type[PlayerRepository] = PlayerRepository,
-        get_response_model: Type[ListPlayerSchema] = ListPlayerSchema,
-        post_response_model: Type[CreatePlayerSchema] = CreatePlayerSchema,
-        put_response_model: Type[UpdatePlayerSchema] = UpdatePlayerSchema,
+        get_response_model: BaseModel = ListPlayerSchema,
+        post_response_model: BaseModel = CreatePlayerSchema,
+        put_response_model: BaseModel = UpdatePlayerSchema,
     ) -> None:
         super().__init__(
             name,
@@ -29,4 +32,4 @@ class PlayerRoute(BaseRoute):
         )
 
 
-player_route = PlayerRoute()
+route = PlayerRoute()

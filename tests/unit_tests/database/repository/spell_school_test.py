@@ -1,4 +1,4 @@
-from carnage.database.repository import spell_school
+from carnage.database.repository.spell import spell_school
 
 
 def test_spell_school_repository_init(database_session_mock):

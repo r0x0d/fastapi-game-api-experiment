@@ -6,54 +6,47 @@ from starlette.middleware.sessions import SessionMiddleware
 
 from carnage.constants import DEVELOPMENT
 from carnage.database.repository.setting import SettingRepository
-from carnage.routes.account import account_route
-from carnage.routes.aligment import aligment_route
-from carnage.routes.authentication import authentication_route
-from carnage.routes.item import item_route
-from carnage.routes.item_base_type import item_base_type_route
-from carnage.routes.item_magical_type import item_magical_type_route
-from carnage.routes.item_rarity import item_rarity_route
-from carnage.routes.map import map_route
-from carnage.routes.map_difficulty import map_difficulty_route
-from carnage.routes.map_schema import map_schema_route
-from carnage.routes.monster import monster_route
-from carnage.routes.monster_type import monster_type_route
-from carnage.routes.player import player_route
-from carnage.routes.race import race_route
-from carnage.routes.size import size_route
-from carnage.routes.spell import spell_route
-from carnage.routes.spell_duration_type import spell_duration_type_route
-from carnage.routes.spell_range_type import spell_range_type_route
-from carnage.routes.spell_school import spell_school_route
-from carnage.routes.vocation import vocation_route
-from carnage.routes.vocation_spell import vocation_spell_route
+from carnage.routes import (
+    account,
+    aligment,
+    authentication,
+    item,
+    map,
+    monster,
+    player,
+    race,
+    size,
+    spell,
+    vocation,
+)
 
 
 def add_router(app: FastAPI) -> None:
     [
         app.include_router(router=router, prefix="/api/v1")
-        for router in [
-            account_route.router,
-            aligment_route.router,
-            authentication_route.router,
-            item_base_type_route.router,
-            item_magical_type_route.router,
-            item_rarity_route.router,
-            item_route.router,
-            monster_route.router,
-            monster_type_route.router,
-            size_route.router,
-            spell_duration_type_route.router,
-            spell_range_type_route.router,
-            spell_route.router,
-            spell_school_route.router,
-            race_route.router,
-            vocation_route.router,
-            vocation_spell_route.router,
-            map_route.router,
-            map_schema_route.router,
-            map_difficulty_route.router,
-            player_route.router,
+        for router in [  # append .router
+            account.route.router,
+            aligment.route.router,
+            authentication.route.router,
+            player.route.router,
+            race.route.router,
+            size.route.router,
+            item.item_rarity.route.router,
+            item.item_base_type.route.router,
+            item.item_magical_type.route.router,
+            item.item_rarity.route.router,
+            item.item.route.router,
+            monster.monster.route.router,
+            monster.monster_type.route.router,
+            spell.spell_duration_type.route.router,
+            spell.spell_range_type.route.router,
+            spell.spell.route.router,
+            spell.spell_school.route.router,
+            vocation.vocation.route.router,
+            vocation.vocation_spell.route.router,
+            map.map.route.router,
+            map.map_schema.route.router,
+            map.map_difficulty.route.router,
         ]
     ]
 

@@ -1,4 +1,4 @@
-from carnage.database.repository import item
+from carnage.database.repository.item import item
 
 
 def test_item_repository_init(database_session_mock):

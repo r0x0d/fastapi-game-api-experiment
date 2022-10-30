@@ -1,12 +1,27 @@
 from typing import Type
 
+from pydantic_sqlalchemy import sqlalchemy_to_pydantic
+
+from carnage.database.models.account import AccountModel
+from carnage.database.models.base import BaseModel
 from carnage.database.repository.account import AccountRepository
 from carnage.routes.base import BaseRoute
-from carnage.routes.schemas.account import (
-    CreateAccountSchema,
-    ListAccountSchema,
-    UpdateAccountSchema,
+
+ListAccountSchema = sqlalchemy_to_pydantic(
+    AccountModel,
+    exclude=("password", "secret_key"),
 )
+UpdateAccountSchema = sqlalchemy_to_pydantic(
+    AccountModel,
+    config=None,
+    exclude=("provider", "secret_key"),
+)
+CreateAccountSchema = sqlalchemy_to_pydantic(
+    AccountModel,
+    config=None,
+    exclude=("secret_key"),
+)
+CreateAccountSchema.provider = "carnage"
 
 
 class AccountRoute(BaseRoute):
@@ -15,9 +30,9 @@ class AccountRoute(BaseRoute):
         name: str = "account",
         tags: list[str] = ["account"],
         repository: Type[AccountRepository] = AccountRepository,
-        get_response_model: Type[ListAccountSchema] = ListAccountSchema,
-        post_response_model: Type[CreateAccountSchema] = CreateAccountSchema,
-        put_response_model: Type[UpdateAccountSchema] = UpdateAccountSchema,
+        get_response_model: BaseModel = ListAccountSchema,
+        post_response_model: BaseModel = CreateAccountSchema,
+        put_response_model: BaseModel = UpdateAccountSchema,
     ) -> None:
         super().__init__(
             name,
@@ -29,4 +44,4 @@ class AccountRoute(BaseRoute):
         )
 
 
-account_route = AccountRoute()
+route = AccountRoute()

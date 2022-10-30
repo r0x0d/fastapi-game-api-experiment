@@ -1,7 +1,0 @@
-from pydantic_sqlalchemy import sqlalchemy_to_pydantic
-
-from carnage.database.models.item_magical_type import ItemMagicalTypeModel
-
-ListItemMagicalTypeSchema = sqlalchemy_to_pydantic(ItemMagicalTypeModel)
-UpdateItemMagicalTypeSchema = sqlalchemy_to_pydantic(ItemMagicalTypeModel)
-CreateItemMagicalTypeSchema = sqlalchemy_to_pydantic(ItemMagicalTypeModel)

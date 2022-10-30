@@ -1,4 +1,4 @@
-from carnage.database.seeds import item_rarity
+from carnage.database.seeds.item import item_rarity
 
 
 def test_item_rarity_seed_init(database_session_mock):

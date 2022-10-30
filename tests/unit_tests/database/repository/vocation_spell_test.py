@@ -1,4 +1,4 @@
-from carnage.database.repository import vocation_spell
+from carnage.database.repository.vocation import vocation_spell
 
 
 def test_vocation_spell_repository_init(database_session_mock):

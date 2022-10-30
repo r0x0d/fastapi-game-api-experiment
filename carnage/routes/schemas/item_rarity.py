@@ -1,7 +1,0 @@
-from pydantic_sqlalchemy import sqlalchemy_to_pydantic
-
-from carnage.database.models.item_rarity import ItemRarityModel
-
-ListItemRaritySchema = sqlalchemy_to_pydantic(ItemRarityModel)
-UpdateItemRaritySchema = sqlalchemy_to_pydantic(ItemRarityModel)
-CreateItemRaritySchema = sqlalchemy_to_pydantic(ItemRarityModel)

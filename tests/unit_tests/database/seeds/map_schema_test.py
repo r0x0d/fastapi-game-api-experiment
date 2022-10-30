@@ -1,4 +1,4 @@
-from carnage.database.seeds import map_schema
+from carnage.database.seeds.map import map_schema
 
 
 def test_map_schema_seed_init(database_session_mock):

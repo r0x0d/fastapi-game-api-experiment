@@ -1,4 +1,4 @@
-from carnage.database.repository import monster_type
+from carnage.database.repository.monster import monster_type
 
 
 def test_monster_type_repository_init(database_session_mock):
