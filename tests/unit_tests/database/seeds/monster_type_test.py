@@ -1,4 +1,4 @@
-from carnage.database.seeds import monster_type
+from carnage.database.seeds.monster import monster_type
 
 
 def test_monster_type_seed_init(database_session_mock):

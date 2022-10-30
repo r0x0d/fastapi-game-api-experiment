@@ -1,4 +1,4 @@
-from carnage.database.repository import spell_duration_type
+from carnage.database.repository.spell import spell_duration_type
 
 
 def test_spell_duration_type_repository_init(database_session_mock):

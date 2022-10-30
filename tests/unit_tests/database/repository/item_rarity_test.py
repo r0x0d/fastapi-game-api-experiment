@@ -1,4 +1,4 @@
-from carnage.database.repository import item_rarity
+from carnage.database.repository.item import item_rarity
 
 
 def test_item_rarity_repository_init(database_session_mock):

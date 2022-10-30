@@ -7,7 +7,7 @@ import pytest
 from httpx import AsyncClient
 
 from carnage.database.models.account import ProviderEnum
-from carnage.routes.account import account_route
+from carnage.routes.account import route
 from tests.unit_tests.conftest import APPLICATION_PREFIX, DummySchemaFields
 
 AccountOutput = namedtuple(
@@ -37,7 +37,7 @@ BASE_URL = f"http://test/{APPLICATION_PREFIX}/account"
 )
 async def test_get(output, application_instance):
     with mock.patch.object(
-        account_route.repository,
+        route.repository,
         "select",
         lambda: output,
     ):
@@ -71,7 +71,7 @@ async def test_get(output, application_instance):
 )
 async def test_get_by_id(output, application_instance):
     with mock.patch.object(
-        account_route.repository,
+        route.repository,
         "select_by_id",
         lambda identifier: output,
     ):
@@ -99,7 +99,7 @@ async def test_get_by_id(output, application_instance):
 )
 async def test_post(data, application_instance):
     with mock.patch.object(
-        account_route.repository,
+        route.repository,
         "insert",
         lambda values: None,
     ):
@@ -125,7 +125,7 @@ async def test_post(data, application_instance):
 )
 async def test_put(data, application_instance):
     with mock.patch.object(
-        account_route.repository,
+        route.repository,
         "update",
         lambda values, identifier: None,
     ):
@@ -143,7 +143,7 @@ async def test_put(data, application_instance):
 @pytest.mark.anyio
 async def test_delete(application_instance):
     with mock.patch.object(
-        account_route.repository,
+        route.repository,
         "delete",
         lambda identifier: None,
     ):

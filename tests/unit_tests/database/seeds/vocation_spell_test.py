@@ -2,7 +2,7 @@ from unittest import mock
 
 import pytest
 
-from carnage.database.seeds import vocation_spell
+from carnage.database.seeds.vocation import vocation_spell
 
 
 def test_vocation_spell_seed_init(database_session_mock):

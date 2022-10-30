@@ -1,4 +1,4 @@
-from carnage.database.seeds import spell_range_type
+from carnage.database.seeds.spell import spell_range_type
 
 
 def test_spell_range_type_seed_init(database_session_mock):

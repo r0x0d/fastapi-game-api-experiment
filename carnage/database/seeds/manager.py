@@ -3,25 +3,29 @@ import logging
 from carnage.database.seeds.account import AccountSeed
 from carnage.database.seeds.aligment import AligmentSeed
 from carnage.database.seeds.base import BaseSeed
-from carnage.database.seeds.item import ItemSeed
-from carnage.database.seeds.item_base_type import ItemBaseTypeSeed
-from carnage.database.seeds.item_magical_type import ItemMagicalTypeSeed
-from carnage.database.seeds.item_rarity import ItemRaritySeed
-from carnage.database.seeds.map import MapSeed
-from carnage.database.seeds.map_difficulty import MapDifficultySeed
-from carnage.database.seeds.map_schema import MapSchemaSeed
-from carnage.database.seeds.monster import MonsterSeed
-from carnage.database.seeds.monster_type import MonsterTypeSeed
+from carnage.database.seeds.item import (
+    ItemBaseTypeSeed,
+    ItemMagicalTypeSeed,
+    ItemRaritySeed,
+    ItemSeed,
+)
+from carnage.database.seeds.map import (
+    MapDifficultySeed,
+    MapSchemaSeed,
+    MapSeed,
+)
+from carnage.database.seeds.monster import MonsterSeed, MonsterTypeSeed
 from carnage.database.seeds.player import PlayerSeed
 from carnage.database.seeds.race import RaceSeed
 from carnage.database.seeds.setting import SettingSeed
 from carnage.database.seeds.size import SizeSeed
-from carnage.database.seeds.spell import SpellSeed
-from carnage.database.seeds.spell_duration_type import SpellDurationTypeSeed
-from carnage.database.seeds.spell_range_type import SpellRangeTypeSeed
-from carnage.database.seeds.spell_school import SpellSchoolSeed
-from carnage.database.seeds.vocation import VocationSeed
-from carnage.database.seeds.vocation_spell import VocationSpellSeed
+from carnage.database.seeds.spell import (
+    SpellDurationTypeSeed,
+    SpellRangeTypeSeed,
+    SpellSchoolSeed,
+    SpellSeed,
+)
+from carnage.database.seeds.vocation import VocationSeed, VocationSpellSeed
 
 logger = logging.getLogger(__name__)
 

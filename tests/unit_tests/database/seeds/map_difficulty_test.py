@@ -2,7 +2,7 @@ from unittest import mock
 
 import pytest
 
-from carnage.database.seeds import map_difficulty
+from carnage.database.seeds.map import map_difficulty
 
 
 def test_map_difficulty_seed_init(database_session_mock):

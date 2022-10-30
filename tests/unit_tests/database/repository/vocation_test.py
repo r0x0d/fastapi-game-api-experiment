@@ -1,4 +1,4 @@
-from carnage.database.repository import vocation
+from carnage.database.repository.vocation import vocation
 
 
 def test_vocation_repository_init(database_session_mock):

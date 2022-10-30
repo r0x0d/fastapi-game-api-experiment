@@ -84,4 +84,4 @@ class AuthenticationRoute:
             return RedirectResponse(url="/")
 
 
-authentication_route = AuthenticationRoute()
+route = AuthenticationRoute()

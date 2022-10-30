@@ -1,7 +1,0 @@
-from pydantic_sqlalchemy import sqlalchemy_to_pydantic
-
-from carnage.database.models.item_base_type import ItemBaseTypeModel
-
-ListItemBaseTypeSchema = sqlalchemy_to_pydantic(ItemBaseTypeModel)
-UpdateItemBaseTypeSchema = sqlalchemy_to_pydantic(ItemBaseTypeModel)
-CreateItemBaseTypeSchema = sqlalchemy_to_pydantic(ItemBaseTypeModel)
