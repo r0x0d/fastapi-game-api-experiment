@@ -3,16 +3,16 @@ import logging
 from carnage.database.seeds.account import AccountSeed
 from carnage.database.seeds.aligment import AligmentSeed
 from carnage.database.seeds.base import BaseSeed
+from carnage.database.seeds.dungeon import (
+    DungeonDifficultySeed,
+    DungeonSchemaSeed,
+    DungeonSeed,
+)
 from carnage.database.seeds.item import (
     ItemBaseTypeSeed,
     ItemMagicalTypeSeed,
     ItemRaritySeed,
     ItemSeed,
-)
-from carnage.database.seeds.map import (
-    MapDifficultySeed,
-    MapSchemaSeed,
-    MapSeed,
 )
 from carnage.database.seeds.monster import MonsterSeed, MonsterTypeSeed
 from carnage.database.seeds.player import PlayerSeed
@@ -52,9 +52,9 @@ class SeedManager:
             RaceSeed.name: RaceSeed(),
             VocationSeed.name: VocationSeed(),
             VocationSpellSeed.name: VocationSpellSeed(),
-            MapDifficultySeed.name: MapDifficultySeed(),
-            MapSchemaSeed.name: MapSchemaSeed(),
-            MapSeed.name: MapSeed(),
+            DungeonDifficultySeed.name: DungeonDifficultySeed(),
+            DungeonSchemaSeed.name: DungeonSchemaSeed(),
+            DungeonSeed.name: DungeonSeed(),
             PlayerSeed.name: PlayerSeed(),
         }
 

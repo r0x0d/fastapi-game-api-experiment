@@ -6,20 +6,14 @@ from uuid import uuid4
 import pytest
 from httpx import AsyncClient
 
-from carnage.routes.player import route
+from carnage.routes.dungeon.dungeon import route
 from tests.unit_tests.conftest import APPLICATION_PREFIX, DummySchemaFields
 
-PlayerOutput = namedtuple(
-    "PlayerOutput",
-    (
-        *DummySchemaFields._fields,
-        "name",
-        "description",
-        "dungeon_id",
-        "vocation_id",
-    ),
+DungeonOutput = namedtuple(
+    "DungeonOutput",
+    (*DummySchemaFields._fields, "name", "description", "dungeon_schema_id"),
 )
-BASE_URL = f"http://test/{APPLICATION_PREFIX}/player"
+BASE_URL = f"http://test/{APPLICATION_PREFIX}/dungeon"
 
 
 @pytest.mark.anyio
@@ -28,15 +22,14 @@ BASE_URL = f"http://test/{APPLICATION_PREFIX}/player"
     (
         (
             [
-                PlayerOutput(
+                DungeonOutput(
                     id=uuid4(),
                     created_at=datetime.now(),
                     updated_at=datetime.now(),
                     deleted_at=None,
                     name="test_name",
                     description="test_description",
-                    dungeon_id=uuid4(),
-                    vocation_id=uuid4(),
+                    dungeon_schema_id=uuid4(),
                 ),
             ]
         ),
@@ -64,15 +57,14 @@ async def test_get(output, application_instance):
     (
         (
             [
-                PlayerOutput(
+                DungeonOutput(
                     id=uuid4(),
                     created_at=datetime.now(),
                     updated_at=datetime.now(),
                     deleted_at=None,
                     name="test_name",
                     description="test_description",
-                    dungeon_id=uuid4(),
-                    vocation_id=uuid4(),
+                    dungeon_schema_id=uuid4(),
                 ),
             ]
         ),
@@ -99,10 +91,9 @@ async def test_get_by_id(output, application_instance):
     (
         (
             {
-                "name": "test_name",
+                "level": "test_level",
                 "description": "test_description",
-                "dungeon_id": str(uuid4()),
-                "vocation_type_id": str(uuid4()),
+                "dungeon_schema_id": str(uuid4()),
             }
         ),
     ),
@@ -127,10 +118,9 @@ async def test_post(data, application_instance):
     (
         (
             {
-                "name": "test_name",
+                "level": "test_level",
                 "description": "test_description",
-                "dungeon_id": str(uuid4()),
-                "vocation_type_id": str(uuid4()),
+                "dungeon_schema_id": str(uuid4()),
             }
         ),
     ),
