@@ -24,14 +24,13 @@ from carnage.routes import (
 def add_router(app: FastAPI) -> None:
     [
         app.include_router(router=router, prefix="/api/v1")
-        for router in [  # append .router
+        for router in [
             account.route.router,
             aligment.route.router,
             authentication.route.router,
             player.route.router,
             race.route.router,
             size.route.router,
-            item.item_rarity.route.router,
             item.item_base_type.route.router,
             item.item_magical_type.route.router,
             item.item_rarity.route.router,

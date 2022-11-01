@@ -1,18 +1,35 @@
 from typing import Type
 
-from pydantic import BaseModel
 from pydantic_sqlalchemy import sqlalchemy_to_pydantic
 
 from carnage.database.models.item import ItemMagicalTypeModel
 from carnage.database.repository.item import ItemMagicalTypeRepository
 from carnage.routes.base import BaseRoute
 
-ListItemMagicalTypeSchema = sqlalchemy_to_pydantic(ItemMagicalTypeModel)
-UpdateItemMagicalTypeSchema = sqlalchemy_to_pydantic(ItemMagicalTypeModel)
-CreateItemMagicalTypeSchema = sqlalchemy_to_pydantic(ItemMagicalTypeModel)
+
+class ListItemMagicalTypeSchema(
+    sqlalchemy_to_pydantic(ItemMagicalTypeModel),  # type: ignore
+):
+    pass
+
+
+class UpdateItemMagicalTypeSchema(
+    sqlalchemy_to_pydantic(ItemMagicalTypeModel),  # type: ignore
+):
+    pass
+
+
+class CreateItemMagicalTypeSchema(
+    sqlalchemy_to_pydantic(ItemMagicalTypeModel),  # type: ignore
+):
+    pass
 
 
 class ItemMagicalTypeRoute(BaseRoute):
+    list_schema = ListItemMagicalTypeSchema
+    create_schema = CreateItemMagicalTypeSchema
+    update_schema = UpdateItemMagicalTypeSchema
+
     def __init__(
         self,
         name: str = "item_magical_type",
@@ -20,18 +37,28 @@ class ItemMagicalTypeRoute(BaseRoute):
         repository: Type[
             ItemMagicalTypeRepository
         ] = ItemMagicalTypeRepository,
-        get_response_model: BaseModel = ListItemMagicalTypeSchema,
-        post_response_model: BaseModel = CreateItemMagicalTypeSchema,
-        put_response_model: BaseModel = UpdateItemMagicalTypeSchema,
     ) -> None:
         super().__init__(
             name,
             tags,
             repository,
-            get_response_model,
-            post_response_model,
-            put_response_model,
         )
+
+    async def get(self) -> list[ListItemMagicalTypeSchema]:
+        return await super().get()
+
+    async def get_by_id(self, identifier: str) -> ListItemMagicalTypeSchema:
+        return await super().get_by_id(identifier)
+
+    async def post(self, request: CreateItemMagicalTypeSchema) -> None:
+        return await super().post(request)
+
+    async def put(
+        self,
+        request: UpdateItemMagicalTypeSchema,
+        identifier: str,
+    ) -> None:
+        return await super().put(request, identifier)
 
 
 route = ItemMagicalTypeRoute()
