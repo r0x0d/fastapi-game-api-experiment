@@ -1,41 +1,68 @@
 from typing import Type
 
-from pydantic import BaseModel
 from pydantic_sqlalchemy import sqlalchemy_to_pydantic
 
 from carnage.database.models.aligment import AligmentModel
 from carnage.database.repository.aligment import AligmentRepository
 from carnage.routes.base import BaseRoute
 
-ListAligmentSchema = sqlalchemy_to_pydantic(AligmentModel)
-UpdateAligmentSchema = sqlalchemy_to_pydantic(
-    AligmentModel,
-    config=None,
-)
-CreateAligmentSchema = sqlalchemy_to_pydantic(
-    AligmentModel,
-    config=None,
-)
+
+class ListAligmentSchema(
+    sqlalchemy_to_pydantic(AligmentModel),  # type: ignore
+):
+    pass
+
+
+class UpdateAligmentSchema(
+    sqlalchemy_to_pydantic(  # type: ignore
+        AligmentModel,
+        config=None,
+    ),
+):
+    pass
+
+
+class CreateAligmentSchema(
+    sqlalchemy_to_pydantic(  # type: ignore
+        AligmentModel,
+        config=None,
+    ),
+):
+    pass
 
 
 class AligmentRoute(BaseRoute):
+    list_schema = ListAligmentSchema
+    create_schema = CreateAligmentSchema
+    update_schema = UpdateAligmentSchema
+
     def __init__(
         self,
         name: str = "aligment",
         tags: list[str] = ["aligment"],
         repository: Type[AligmentRepository] = AligmentRepository,
-        get_response_model: BaseModel = ListAligmentSchema,
-        post_response_model: BaseModel = CreateAligmentSchema,
-        put_response_model: BaseModel = UpdateAligmentSchema,
     ) -> None:
         super().__init__(
             name,
             tags,
             repository,
-            get_response_model,
-            post_response_model,
-            put_response_model,
         )
+
+    async def get(self) -> list[ListAligmentSchema]:
+        return await super().get()
+
+    async def get_by_id(self, identifier: str) -> ListAligmentSchema:
+        return await super().get_by_id(identifier)
+
+    async def post(self, request: CreateAligmentSchema) -> None:
+        return await super().post(request)
+
+    async def put(
+        self,
+        request: UpdateAligmentSchema,
+        identifier: str,
+    ) -> None:
+        return await super().put(request, identifier)
 
 
 route = AligmentRoute()

@@ -7,33 +7,32 @@ from carnage.database.repository.base import BaseRepository
 
 
 class BaseRoute:
+    list_schema = BaseModel
+    create_schema = BaseModel
+    update_schema = BaseModel
+
     def __init__(
         self,
         name: str = "base",
         tags: list[str] = ["base"],
         repository: Type[BaseRepository] = BaseRepository,
-        get_response_model: Type[BaseModel] = BaseModel,
-        post_request_model: Type[BaseModel] = BaseModel,
-        put_request_model: Type[BaseModel] = BaseModel,
     ) -> None:
+        self.name = name
         self.repository = repository()
-        self.get_response_model = get_response_model
-        self.post_request_model = post_request_model
-        self.put_request_model = put_request_model
         self.router = APIRouter(prefix=f"/{name}", tags=tags)
         self.router.add_api_route(
             "/",
             self.get,
             methods=["GET"],
             status_code=200,
-            response_model=list[get_response_model],  # type: ignore
+            response_model=list[self.list_schema],  # type: ignore
         )
         self.router.add_api_route(
             "/{identifier}",
             self.get_by_id,
             methods=["GET"],
             status_code=200,
-            response_model=get_response_model,
+            response_model=self.list_schema,
         )
         self.router.add_api_route(
             "/",
@@ -54,18 +53,13 @@ class BaseRoute:
             status_code=204,
         )
 
-        # Updating the type annotations for both `post` and `put` as we can't
-        # use `self.x` as a type annotation,
-        self.post.__annotations__.update({"request": self.post_request_model})
-        self.put.__annotations__.update({"request": self.put_request_model})
-
     async def get(self) -> list[BaseModel]:
         result = self.repository.select()
-        return [self.get_response_model.from_orm(item) for item in result]
+        return [self.list_schema.from_orm(item) for item in result]
 
     async def get_by_id(self, identifier: str) -> BaseModel:
         result = self.repository.select_by_id(identifier=identifier)
-        return self.get_response_model.from_orm(result[0])
+        return self.list_schema.from_orm(result[0])
 
     async def post(self, request: BaseModel) -> None:
         self.repository.insert(values=request.dict())

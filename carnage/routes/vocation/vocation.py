@@ -1,35 +1,62 @@
 from typing import Type
 
-from pydantic import BaseModel
 from pydantic_sqlalchemy import sqlalchemy_to_pydantic
 
 from carnage.database.models.vocation import VocationModel
 from carnage.database.repository.vocation import VocationRepository
 from carnage.routes.base import BaseRoute
 
-ListVocationSchema = sqlalchemy_to_pydantic(VocationModel)
-UpdateVocationSchema = sqlalchemy_to_pydantic(VocationModel, config=None)
-CreateVocationSchema = sqlalchemy_to_pydantic(VocationModel, config=None)
+
+class ListVocationSchema(
+    sqlalchemy_to_pydantic(VocationModel),  # type: ignore
+):
+    pass
+
+
+class UpdateVocationSchema(
+    sqlalchemy_to_pydantic(VocationModel, config=None),  # type: ignore
+):
+    pass
+
+
+class CreateVocationSchema(
+    sqlalchemy_to_pydantic(VocationModel, config=None),  # type: ignore
+):
+    pass
 
 
 class VocationRoute(BaseRoute):
+    list_schema = ListVocationSchema
+    create_schema = CreateVocationSchema
+    update_schema = UpdateVocationSchema
+
     def __init__(
         self,
         name: str = "vocation",
         tags: list[str] = ["vocation"],
         repository: Type[VocationRepository] = VocationRepository,
-        get_response_model: BaseModel = ListVocationSchema,
-        post_response_model: BaseModel = CreateVocationSchema,
-        put_response_model: BaseModel = UpdateVocationSchema,
     ) -> None:
         super().__init__(
             name,
             tags,
             repository,
-            get_response_model,
-            post_response_model,
-            put_response_model,
         )
+
+    async def get(self) -> list[ListVocationSchema]:
+        return await super().get()
+
+    async def get_by_id(self, identifier: str) -> ListVocationSchema:
+        return await super().get_by_id(identifier)
+
+    async def post(self, request: CreateVocationSchema) -> None:
+        return await super().post(request)
+
+    async def put(
+        self,
+        request: UpdateVocationSchema,
+        identifier: str,
+    ) -> None:
+        return await super().put(request, identifier)
 
 
 route = VocationRoute()

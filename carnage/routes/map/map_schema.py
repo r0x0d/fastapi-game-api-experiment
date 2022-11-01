@@ -8,56 +8,68 @@ from carnage.database.models.map import MapSchemaModel
 from carnage.database.repository.map import MapSchemaRepository
 from carnage.routes.base import BaseRoute
 
-_ListMapSchemaSchema = sqlalchemy_to_pydantic(
-    MapSchemaModel,
-    exclude=("schema",),
-)
-_UpdateMapSchemaSchema = sqlalchemy_to_pydantic(
-    MapSchemaModel,
-    config=None,
-    exclude=("schema",),
-)
-_CreateMapSchemaSchema = sqlalchemy_to_pydantic(
-    MapSchemaModel,
-    config=None,
-    exclude=("schema",),
-)
 
-
-class ListMapSchemaSchema(_ListMapSchemaSchema):  # type: ignore
+class ListMapSchemaSchema(
+    sqlalchemy_to_pydantic(  # type: ignore
+        MapSchemaModel,
+        exclude=("schema",),
+    ),
+):
     _schema: JSONB = Field(alias="schema")
 
 
-class CreateMapSchemaSchema(_CreateMapSchemaSchema):  # type: ignore
+class CreateMapSchemaSchema(
+    sqlalchemy_to_pydantic(  # type: ignore
+        MapSchemaModel,
+        config=None,
+        exclude=("schema",),
+    ),
+):
     _schema: JSONB = Field(alias="schema")
 
 
-class UpdateMapSchemaSchema(_UpdateMapSchemaSchema):  # type: ignore
+class UpdateMapSchemaSchema(
+    sqlalchemy_to_pydantic(  # type: ignore
+        MapSchemaModel,
+        config=None,
+        exclude=("schema",),
+    ),
+):
     _schema: JSONB = Field(alias="schema")
 
 
 class MapSchemaRoute(BaseRoute):
+    list_schema = ListMapSchemaSchema
+    create_schema = CreateMapSchemaSchema
+    update_schema = UpdateMapSchemaSchema
+
     def __init__(
         self,
         name: str = "map_schema",
         tags: list[str] = ["map", "map_schema"],
         repository: Type[MapSchemaRepository] = MapSchemaRepository,
-        get_response_model: Type[ListMapSchemaSchema] = ListMapSchemaSchema,
-        post_response_model: Type[
-            CreateMapSchemaSchema
-        ] = CreateMapSchemaSchema,
-        put_response_model: Type[
-            UpdateMapSchemaSchema
-        ] = UpdateMapSchemaSchema,
     ) -> None:
         super().__init__(
             name,
             tags,
             repository,
-            get_response_model,
-            post_response_model,
-            put_response_model,
         )
+
+    async def get(self) -> list[ListMapSchemaSchema]:
+        return await super().get()
+
+    async def get_by_id(self, identifier: str) -> ListMapSchemaSchema:
+        return await super().get_by_id(identifier)
+
+    async def post(self, request: CreateMapSchemaSchema) -> None:
+        return await super().post(request)
+
+    async def put(
+        self,
+        request: UpdateMapSchemaSchema,
+        identifier: str,
+    ) -> None:
+        return await super().put(request, identifier)
 
 
 route = MapSchemaRoute()
