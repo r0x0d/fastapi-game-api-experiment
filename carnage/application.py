@@ -10,8 +10,8 @@ from carnage.routes import (
     account,
     aligment,
     authentication,
+    dungeon,
     item,
-    map,
     monster,
     player,
     race,
@@ -43,9 +43,9 @@ def add_router(app: FastAPI) -> None:
             spell.spell_school.route.router,
             vocation.vocation.route.router,
             vocation.vocation_spell.route.router,
-            map.map.route.router,
-            map.map_schema.route.router,
-            map.map_difficulty.route.router,
+            dungeon.dungeon.route.router,
+            dungeon.dungeon_schema.route.router,
+            dungeon.dungeon_difficulty.route.router,
         ]
     ]
 

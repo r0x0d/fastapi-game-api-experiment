@@ -13,5 +13,5 @@ def test_seed(database_session_mock):
     seed.seed()
 
     for data in seed.data:
-        assert "map_id" in data
+        assert "dungeon_id" in data
         assert "vocation_id" in data
