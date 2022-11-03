@@ -1,3 +1,4 @@
+from pydantic import Field
 from pydantic_sqlalchemy import sqlalchemy_to_pydantic
 
 from carnage.database.models.dungeon import DungeonSchemaModel
@@ -9,7 +10,7 @@ class ListDungeonSchemaSchema(
         exclude=("schema",),
     ),
 ):
-    pass
+    dungeon_schema: str = Field(alias="schema")
 
 
 class CreateDungeonSchemaSchema(
@@ -19,7 +20,7 @@ class CreateDungeonSchemaSchema(
         exclude=("schema",),
     ),
 ):
-    pass
+    dungeon_schema: str = Field(alias="schema")
 
 
 class UpdateDungeonSchemaSchema(
@@ -29,4 +30,4 @@ class UpdateDungeonSchemaSchema(
         exclude=("schema",),
     ),
 ):
-    pass
+    dungeon_schema: str = Field(alias="schema")

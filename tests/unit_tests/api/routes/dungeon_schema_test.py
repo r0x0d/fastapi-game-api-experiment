@@ -15,6 +15,8 @@ DungeonSchemaOutput = namedtuple(
         *DummySchemaFields._fields,
         "name",
         "description",
+        "schema",
+        "version",
         "dungeon_difficulty_id",
     ),
 )
@@ -34,6 +36,8 @@ BASE_URL = f"http://test/{APPLICATION_PREFIX}/dungeon_schema"
                     deleted_at=None,
                     name="test_name",
                     description="test_description",
+                    schema="test",
+                    version=1,
                     dungeon_difficulty_id=uuid4(),
                 ),
             ]
@@ -69,6 +73,8 @@ async def test_get(output, application_instance):
                     deleted_at=None,
                     name="test_name",
                     description="test_description",
+                    schema="test",
+                    version=1,
                     dungeon_difficulty_id=uuid4(),
                 ),
             ]
@@ -98,6 +104,8 @@ async def test_get_by_id(output, application_instance):
             {
                 "level": "test_level",
                 "description": "test_description",
+                "schema": "test",
+                "version": 1,
                 "dungeon_difficulty_id": str(uuid4()),
             }
         ),
@@ -125,6 +133,8 @@ async def test_post(data, application_instance):
             {
                 "level": "test_level",
                 "description": "test_description",
+                "schema": "test",
+                "version": 1,
                 "dungeon_difficulty_id": str(uuid4()),
             }
         ),

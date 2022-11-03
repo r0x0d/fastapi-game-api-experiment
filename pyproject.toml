@@ -40,6 +40,7 @@ uvicorn = { version = "0.19.0", extras = ["standard"] }
 httpx = "0.23.0"
 pydantic-sqlalchemy = "0.0.9"
 rich = "12.6.0"
+Jinja2 = "3.1.2"
 
 [tool.poetry.dev-dependencies]
 anyio = "3.6.2"
@@ -72,3 +73,6 @@ warn_unused_ignores = true
 module = ["tests.*"]
 disallow_untyped_defs = false
 ignore_errors = true
+
+[tool.flake8]
+per-file-ignores = ""
