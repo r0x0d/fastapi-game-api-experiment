@@ -1,5 +1,5 @@
 from sqlalchemy import Column, ForeignKey, String
-from sqlalchemy.dialects.postgresql import JSONB, UUID
+from sqlalchemy.dialects.postgresql import UUID
 
 from carnage.database.models.base import BaseModel
 
@@ -9,7 +9,7 @@ class DungeonSchemaModel(BaseModel):
 
     name = Column(String(100))
     description = Column(String())
-    schema = Column(JSONB(none_as_null=False))
+    schema = Column(String())
 
     # ForeignKeys
     dungeon_difficulty_id = Column(
