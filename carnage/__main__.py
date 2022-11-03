@@ -4,7 +4,7 @@ import logging
 import platform
 import sys
 
-from carnage.cli import migration, seed, serve
+from carnage.cli import seed, serve
 from carnage.logger import setup_logger_handler
 
 
@@ -34,7 +34,6 @@ def create_argument_parser() -> argparse.ArgumentParser:
 
     seed.add_subparser(subparsers, parents=parent_parsers)
     serve.add_subparser(subparsers, parents=parent_parsers)
-    migration.add_subparser(subparsers, parents=parent_parsers)
 
     return parser
 
