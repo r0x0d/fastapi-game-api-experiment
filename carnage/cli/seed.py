@@ -50,7 +50,7 @@ def _print_seeds_table(manager: SeedManager) -> None:
 
     table.add_column("Name", justify="left", style="cyan", no_wrap=False)
 
-    for name, _ in manager.seed_mapping.items():
+    for name, _ in manager.seed_mapping().items():
         table.add_row(name)
 
     console = Console()

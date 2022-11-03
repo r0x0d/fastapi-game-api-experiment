@@ -35,6 +35,11 @@ def upgrade() -> None:
             default={},
         ),
         sa.Column(
+            "version",
+            sa.Integer(),
+            nullable=False,
+        ),
+        sa.Column(
             "dungeon_difficulty_id",
             UUID(as_uuid=True),
             sa.ForeignKey("dungeon_difficulties.id"),
