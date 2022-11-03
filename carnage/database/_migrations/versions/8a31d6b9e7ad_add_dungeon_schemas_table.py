@@ -9,7 +9,7 @@ from datetime import datetime
 
 import sqlalchemy as sa
 from alembic import op
-from sqlalchemy.dialects.postgresql import JSONB, UUID
+from sqlalchemy.dialects.postgresql import UUID
 
 # revision identifiers, used by Alembic.
 revision = "8a31d6b9e7ad"
@@ -30,7 +30,7 @@ def upgrade() -> None:
         sa.Column("description", sa.String(), nullable=False),
         sa.Column(
             "schema",
-            JSONB(none_as_null=False),
+            sa.String(),
             nullable=False,
             default={},
         ),
