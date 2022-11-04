@@ -6,8 +6,8 @@ from uuid import uuid4
 import pytest
 from httpx import AsyncClient
 
+from carnage.api.routes.account import route
 from carnage.database.models.account import ProviderEnum
-from carnage.routes.account import route
 from tests.unit_tests.conftest import APPLICATION_PREFIX, DummySchemaFields
 
 AccountOutput = namedtuple(
