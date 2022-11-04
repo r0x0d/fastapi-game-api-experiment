@@ -6,7 +6,7 @@ from uuid import uuid4
 import pytest
 from httpx import AsyncClient
 
-from carnage.routes.dungeon.dungeon import route
+from carnage.api.routes.dungeon.dungeon import route
 from tests.unit_tests.conftest import APPLICATION_PREFIX, DummySchemaFields
 
 DungeonOutput = namedtuple(

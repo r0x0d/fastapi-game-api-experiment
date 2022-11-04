@@ -3,7 +3,7 @@ from unittest import mock
 import pytest
 from httpx import AsyncClient
 
-from carnage.routes import authentication
+from carnage.api.routes import authentication
 from tests.unit_tests.conftest import APPLICATION_PREFIX
 
 BASE_URL = f"http://test/{APPLICATION_PREFIX}/authentication"

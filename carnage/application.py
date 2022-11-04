@@ -4,9 +4,7 @@ from fastapi.middleware.httpsredirect import HTTPSRedirectMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from starlette.middleware.sessions import SessionMiddleware
 
-from carnage.constants import DEVELOPMENT
-from carnage.database.repository.setting import SettingRepository
-from carnage.routes import (
+from carnage.api.routes import (
     account,
     aligment,
     authentication,
@@ -19,6 +17,8 @@ from carnage.routes import (
     spell,
     vocation,
 )
+from carnage.constants import DEVELOPMENT
+from carnage.database.repository.setting import SettingRepository
 
 
 def add_router(app: FastAPI) -> None:

@@ -6,7 +6,7 @@ from uuid import uuid4
 import pytest
 from httpx import AsyncClient
 
-from carnage.routes.spell.spell_duration_type import route
+from carnage.api.routes.spell.spell_duration_type import route
 from tests.unit_tests.conftest import APPLICATION_PREFIX, DummySchemaFields
 
 SpellDurationTypeOutput = namedtuple(

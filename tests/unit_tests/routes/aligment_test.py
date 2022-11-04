@@ -6,7 +6,7 @@ from uuid import uuid4
 import pytest
 from httpx import AsyncClient
 
-from carnage.routes.aligment import route
+from carnage.api.routes.aligment import route
 from tests.unit_tests.conftest import APPLICATION_PREFIX, DummySchemaFields
 
 AligmentOutput = namedtuple(
