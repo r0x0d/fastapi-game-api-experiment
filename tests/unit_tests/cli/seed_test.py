@@ -57,7 +57,7 @@ def test_run_assertion_error(args_all, args_name, match):
 
 def test_print_seeds_table(capsys):
     manager_mock = mock.Mock()
-    manager_mock.seed_mapping = {"test": "test"}
+    manager_mock.seed_mapping = lambda: {"test": "test"}
 
     seed._print_seeds_table(manager_mock)
     assert isinstance(capsys.readouterr().out, str)

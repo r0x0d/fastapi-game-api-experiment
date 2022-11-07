@@ -31,7 +31,6 @@ logger = logging.getLogger(__name__)
 
 
 class SeedManager:
-    @property
     def seed_mapping(self) -> dict[str, BaseSeed]:
         # WARNING: Do not change the order of this dictionary.
         return {
@@ -64,14 +63,15 @@ class SeedManager:
         seed_name: str | None = None,
     ) -> None:
         """ """
+        seeds_mapping = self.seed_mapping()
         if all_seeds:
-            for _, seed in self.seed_mapping.items():
+            for _, seed in seeds_mapping.items():
                 seed.seed()
         else:
-            if seed_name not in self.seed_mapping:
+            if seed_name not in seeds_mapping:
                 raise AssertionError("Couldn't find the desired seed.")
 
-            seed = self.seed_mapping[seed_name]
+            seed = seeds_mapping[seed_name]
             seed.seed()
 
         logger.info("Done with seeding.")

@@ -36,6 +36,7 @@ def upgrade() -> None:
         sa.Column("base_magical_damage", sa.Integer()),
         sa.Column("base_armor_resistance", sa.Integer()),
         sa.Column("base_magical_resistance", sa.Integer()),
+        sa.Column("is_boss", sa.Boolean(), nullable=False, default=False),
         sa.Column(
             "monster_type_id",
             UUID(as_uuid=True),

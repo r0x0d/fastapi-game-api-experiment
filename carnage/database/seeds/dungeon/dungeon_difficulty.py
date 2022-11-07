@@ -19,7 +19,6 @@ class DungeonDifficultySeed(BaseSeed):
             "description": "",
         },
         {"level": "Hard", "description": ""},
-        {"level": "Impossible", "description": ""},
         {"level": "Nightmare", "description": ""},
     ]
 
