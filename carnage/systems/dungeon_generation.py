@@ -1,11 +1,10 @@
-import json
 import logging
-import re
 from functools import lru_cache
 from random import choice, randint
 from typing import Any
 
 import jinja2
+import yaml
 
 from carnage.database.models.monster.monster import MonsterModel
 from carnage.database.repository.dungeon import DungeonSchemaRepository
@@ -28,9 +27,9 @@ def _render_jinja_template(
 ) -> dict[str, Any]:
     template = jinja2.Template(schema)
     rendered_template = template.render(jinja_arguments)
-    return json.loads(
-        re.sub(r'("(?:\\?.)*?")|,\s*([]}])', r"\1\2", rendered_template),
-    )
+    # We were supposed to use json.loads, but we generate an invalid json, so
+    # yaml it is!.
+    return yaml.safe_load(rendered_template)
 
 
 def generate_dungeon(
