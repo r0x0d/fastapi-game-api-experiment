@@ -21,9 +21,9 @@ class PlayerRoute(BaseRoute):
         repository: Type[PlayerRepository] = PlayerRepository,
     ) -> None:
         super().__init__(
-            name,
-            tags,
-            repository,
+            name=name,
+            tags=tags,
+            repository=repository,
         )
 
     async def get(self) -> list[ListPlayerSchema]:

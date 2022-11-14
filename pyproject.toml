@@ -34,13 +34,14 @@ cryptography = "38.0.3"
 fastapi = "0.87.0"
 itsdangerous = "2.1.2"
 psycopg2-binary = "2.9.5"
-pydantic = "1.10.2"
+pydantic = { version = "1.10.2", extras = ["email"] }
 sqlalchemy = "1.4.44"
 uvicorn = { version = "0.19.0", extras = ["standard"] }
 httpx = "0.23.0"
 pydantic-sqlalchemy = "0.0.9"
 rich = "12.6.0"
 Jinja2 = "3.1.2"
+python-jose = { version = "3.3.0", extras = ["cryptography"] }
 
 [tool.poetry.dev-dependencies]
 anyio = "3.6.2"
@@ -48,7 +49,6 @@ covdefaults = "2.2.0"
 coverage = "6.5.0"
 pytest = "7.2.0"
 pytest-env = "0.8.1"
-python-dotenv = "0.21.0"
 tox = "3.27.1"
 black = { version = "22.10.0", allow-prereleases = true }
 

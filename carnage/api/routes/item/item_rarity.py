@@ -21,9 +21,9 @@ class ItemRarityRoute(BaseRoute):
         repository: Type[ItemRarityRepository] = ItemRarityRepository,
     ) -> None:
         super().__init__(
-            name,
-            tags,
-            repository,
+            name=name,
+            tags=tags,
+            repository=repository,
         )
 
     async def get(self) -> list[ListItemRaritySchema]:

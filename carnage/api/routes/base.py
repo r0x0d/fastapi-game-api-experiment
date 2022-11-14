@@ -1,8 +1,9 @@
 from typing import Type
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 from pydantic import BaseModel
 
+from carnage.api.auth.authentication import JWTBearer
 from carnage.database.repository.base import BaseRepository
 
 
@@ -16,10 +17,15 @@ class BaseRoute:
         name: str = "base",
         tags: list[str] = ["base"],
         repository: Type[BaseRepository] = BaseRepository,
+        dependencies: list[Depends] = [Depends(JWTBearer())],
     ) -> None:
         self.name = name
         self.repository = repository()
-        self.router = APIRouter(prefix=f"/{name}", tags=tags)
+        self.router = APIRouter(
+            prefix=f"/{name}",
+            tags=tags,
+            dependencies=dependencies,
+        )
         self.router.add_api_route(
             "/",
             self.get,
@@ -64,11 +70,7 @@ class BaseRoute:
     async def post(self, request: BaseModel) -> None:
         self.repository.insert(values=request.dict())
 
-    async def put(
-        self,
-        request: BaseModel,
-        identifier: str,
-    ) -> None:
+    async def put(self, request: BaseModel, identifier: str) -> None:
         self.repository.update(values=request.dict(), identifier=identifier)
 
     async def delete(self, identifier: str) -> None:

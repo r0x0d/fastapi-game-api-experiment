@@ -21,9 +21,9 @@ class AccountRoute(BaseRoute):
         repository: Type[AccountRepository] = AccountRepository,
     ) -> None:
         super().__init__(
-            name,
-            tags,
-            repository,
+            name=name,
+            tags=tags,
+            repository=repository,
         )
 
     async def get(self) -> list[ListAccountSchema]:

@@ -21,9 +21,9 @@ class SpellSchoolRoute(BaseRoute):
         repository: Type[SpellSchoolRepository] = SpellSchoolRepository,
     ) -> None:
         super().__init__(
-            name,
-            tags,
-            repository,
+            name=name,
+            tags=tags,
+            repository=repository,
         )
 
     async def get(self) -> list[ListSpellSchoolSchema]:

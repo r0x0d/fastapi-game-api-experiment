@@ -38,6 +38,5 @@ services:
       - "8080:80"
     volumes:
       - pgadmin-data:/var/lib/pgadmin
-
 volumes:
   pgadmin-data:

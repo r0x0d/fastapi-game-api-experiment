@@ -21,9 +21,9 @@ class DungeonSchemaRoute(BaseRoute):
         repository: Type[DungeonSchemaRepository] = DungeonSchemaRepository,
     ) -> None:
         super().__init__(
-            name,
-            tags,
-            repository,
+            name=name,
+            tags=tags,
+            repository=repository,
         )
 
     async def get(self) -> list[ListDungeonSchemaSchema]:

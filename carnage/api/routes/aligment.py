@@ -21,9 +21,9 @@ class AligmentRoute(BaseRoute):
         repository: Type[AligmentRepository] = AligmentRepository,
     ) -> None:
         super().__init__(
-            name,
-            tags,
-            repository,
+            name=name,
+            tags=tags,
+            repository=repository,
         )
 
     async def get(self) -> list[ListAligmentSchema]:
