@@ -23,9 +23,9 @@ class MonsterTypeRoute(BaseRoute):
         repository: Type[MonsterTypeRepository] = MonsterTypeRepository,
     ) -> None:
         super().__init__(
-            name,
-            tags,
-            repository,
+            name=name,
+            tags=tags,
+            repository=repository,
         )
 
     async def get(self) -> list[ListMonsterTypeSchema]:

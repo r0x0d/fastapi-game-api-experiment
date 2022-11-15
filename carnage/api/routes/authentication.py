@@ -1,11 +1,10 @@
-import json
-
 from authlib.integrations.starlette_client import OAuth
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, HTTPException, Request
 from starlette.config import Config
 from starlette.responses import HTMLResponse, RedirectResponse
 
-from carnage.constants import DEVELOPMENT
+from carnage.api.auth.authentication import generate_jwt
+from carnage.constants import CARNAGE_ENVIRONMENT
 from carnage.database.repository.account import AccountRepository
 
 config = Config()
@@ -22,7 +21,7 @@ class AuthenticationRoute:
     def __init__(
         self,
     ) -> None:
-        self.repository = AccountRepository()
+        self.account_repository = AccountRepository()
         self.router = APIRouter(
             prefix="/authentication",
             tags=["authentication"],
@@ -39,16 +38,10 @@ class AuthenticationRoute:
             methods=["GET"],
             status_code=200,
         )
-        if DEVELOPMENT:  # pragma: no cover
+        if CARNAGE_ENVIRONMENT == "development":  # pragma: no cover
             self.router.add_api_route(
                 "/",
                 self.homepage,
-                methods=["GET"],
-                status_code=200,
-            )
-            self.router.add_api_route(
-                "/logout",
-                self.logout,
                 methods=["GET"],
                 status_code=200,
             )
@@ -59,29 +52,30 @@ class AuthenticationRoute:
 
     async def google_auth(self, request: Request) -> str:
         token = await oauth.google.authorize_access_token(request)
-        user = token["userinfo"]
-        return user
+        claims = token["userinfo"]
+
+        user = self.account_repository.select_by_username(
+            username=claims["email"],
+        )
+        if not user:
+            raise HTTPException(
+                status_code=403,
+                detail="Couldn't find the user.",
+            )
+
+        return generate_jwt(claims=claims)
 
     # Only used or testing purposes
-    if DEVELOPMENT:  # pragma: no cover
+    if CARNAGE_ENVIRONMENT == "development":  # pragma: no cover
 
         async def homepage(self, request: Request) -> HTMLResponse:
-            user = request.session.get("user")
-            if user:
-                data = json.dumps(user)
-                html = f"<pre>{data}</pre>" '<a href="/logout">logout</a>'
-                return HTMLResponse(html)
             return HTMLResponse(
                 """
     <li>
-        <a href="/authentication/google/login">Google Login</a>
+        <a href="/api/v1/authentication/google/login">Google Login</a>
     </li>
     """,
             )
-
-        async def logout(self, request: Request) -> RedirectResponse:
-            request.session.pop("user", None)
-            return RedirectResponse(url="/")
 
 
 route = AuthenticationRoute()

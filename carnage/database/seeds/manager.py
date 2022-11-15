@@ -17,7 +17,6 @@ from carnage.database.seeds.item import (
 from carnage.database.seeds.monster import MonsterSeed, MonsterTypeSeed
 from carnage.database.seeds.player import PlayerSeed
 from carnage.database.seeds.race import RaceSeed
-from carnage.database.seeds.setting import SettingSeed
 from carnage.database.seeds.size import SizeSeed
 from carnage.database.seeds.spell import (
     SpellDurationTypeSeed,
@@ -34,7 +33,6 @@ class SeedManager:
     def seed_mapping(self) -> dict[str, BaseSeed]:
         # WARNING: Do not change the order of this dictionary.
         return {
-            SettingSeed.name: SettingSeed(),
             AccountSeed.name: AccountSeed(),
             AligmentSeed.name: AligmentSeed(),
             SizeSeed.name: SizeSeed(),

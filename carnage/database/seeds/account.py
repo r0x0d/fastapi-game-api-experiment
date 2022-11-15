@@ -17,9 +17,15 @@ class AccountSeed(BaseSeed):
     name: str = "account"
     data: list[dict[str, str | Any]] = [
         {
-            "username": "admin@carnage.io",
+            "username": "admin@carnage.world",
             "password": ph.hash("admin"),
             "provider": ProviderEnum.carnage,
+            "secret_key": Fernet.generate_key(),
+        },
+        {
+            "username": "rodolfo.olivieri3@gmail.com",
+            "password": ph.hash("admin"),
+            "provider": ProviderEnum.google,
             "secret_key": Fernet.generate_key(),
         },
     ]

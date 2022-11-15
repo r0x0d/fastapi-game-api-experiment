@@ -21,9 +21,9 @@ class VocationSpellRoute(BaseRoute):
         repository: Type[VocationSpellRepository] = VocationSpellRepository,
     ) -> None:
         super().__init__(
-            name,
-            tags,
-            repository,
+            name=name,
+            tags=tags,
+            repository=repository,
         )
 
     async def get(self) -> list[ListVocationSpellSchema]:

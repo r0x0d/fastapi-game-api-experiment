@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.middleware.httpsredirect import HTTPSRedirectMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
@@ -17,8 +18,7 @@ from carnage.api.routes import (
     spell,
     vocation,
 )
-from carnage.constants import DEVELOPMENT
-from carnage.database.repository.setting import SettingRepository
+from carnage.constants import CARNAGE_ENVIRONMENT, CARNAGE_SECRET_KEY
 
 
 def add_router(app: FastAPI) -> None:
@@ -51,16 +51,22 @@ def add_router(app: FastAPI) -> None:
 
 
 def add_middleware(app: FastAPI) -> None:
-    setting_repository = SettingRepository()
-
-    result = setting_repository.select_by_environment()
-    app.add_middleware(SessionMiddleware, secret_key=result[0].secret_key)
+    app.add_middleware(SessionMiddleware, secret_key=CARNAGE_SECRET_KEY)
     app.add_middleware(GZipMiddleware, minimum_size=1000)
-    if not DEVELOPMENT:
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=[
+            "*",
+        ],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+    if CARNAGE_ENVIRONMENT == "production":
         app.add_middleware(HTTPSRedirectMiddleware)
         app.add_middleware(
             TrustedHostMiddleware,
-            allowed_hosts=["carnage.rip", "*.carnage.rip"],
+            allowed_hosts=["carnage.world", "*.carnage.world"],
         )
 
 

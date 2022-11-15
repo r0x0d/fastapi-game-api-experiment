@@ -1,5 +1,6 @@
 import uuid
 from collections import namedtuple
+from time import time
 from unittest import mock
 
 import pytest
@@ -7,6 +8,7 @@ from sqlalchemy import Column, String
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.ext.declarative import declarative_base
 
+from carnage.api.auth.authentication import generate_jwt
 from carnage.application import create_app
 from carnage.database.repository import base
 
@@ -35,6 +37,12 @@ def database_session_mock(monkeypatch):
 @pytest.fixture()
 def application_instance(database_session_mock):
     return create_app()
+
+
+@pytest.fixture()
+def get_fake_jwt():
+    jwt = generate_jwt(claims={"email": "test@test.com", "exp": time() + 2})
+    return jwt
 
 
 @pytest.fixture

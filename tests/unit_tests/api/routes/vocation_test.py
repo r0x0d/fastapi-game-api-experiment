@@ -54,7 +54,7 @@ BASE_URL = f"http://test/{APPLICATION_PREFIX}/vocation"
         ),
     ),
 )
-async def test_get(output, application_instance):
+async def test_get(output, application_instance, get_fake_jwt):
     with mock.patch.object(
         route.repository,
         "select",
@@ -63,6 +63,7 @@ async def test_get(output, application_instance):
         async with AsyncClient(
             app=application_instance,
             base_url=BASE_URL,
+            headers={"Authorization": f"Bearer {get_fake_jwt}"},
         ) as ac:
             response = await ac.get("/")
         assert response.status_code == 200
@@ -96,7 +97,7 @@ async def test_get(output, application_instance):
         ),
     ),
 )
-async def test_get_by_id(output, application_instance):
+async def test_get_by_id(output, application_instance, get_fake_jwt):
     with mock.patch.object(
         route.repository,
         "select_by_id",
@@ -105,6 +106,7 @@ async def test_get_by_id(output, application_instance):
         async with AsyncClient(
             app=application_instance,
             base_url=BASE_URL,
+            headers={"Authorization": f"Bearer {get_fake_jwt}"},
         ) as ac:
             response = await ac.get("/26609c62-5270-11ed-8d79-641c67e34d72")
         assert response.status_code == 200
@@ -131,7 +133,7 @@ async def test_get_by_id(output, application_instance):
         ),
     ),
 )
-async def test_post(data, application_instance):
+async def test_post(data, application_instance, get_fake_jwt):
     with mock.patch.object(
         route.repository,
         "insert",
@@ -140,6 +142,7 @@ async def test_post(data, application_instance):
         async with AsyncClient(
             app=application_instance,
             base_url=BASE_URL,
+            headers={"Authorization": f"Bearer {get_fake_jwt}"},
         ) as ac:
             response = await ac.post("/", json=data)
         assert response.status_code == 201
@@ -165,7 +168,7 @@ async def test_post(data, application_instance):
         ),
     ),
 )
-async def test_put(data, application_instance):
+async def test_put(data, application_instance, get_fake_jwt):
     with mock.patch.object(
         route.repository,
         "update",
@@ -174,6 +177,7 @@ async def test_put(data, application_instance):
         async with AsyncClient(
             app=application_instance,
             base_url=BASE_URL,
+            headers={"Authorization": f"Bearer {get_fake_jwt}"},
         ) as ac:
             response = await ac.put(
                 "/26609c62-5270-11ed-8d79-641c67e34d72",
@@ -183,7 +187,7 @@ async def test_put(data, application_instance):
 
 
 @pytest.mark.anyio
-async def test_delete(application_instance):
+async def test_delete(application_instance, get_fake_jwt):
     with mock.patch.object(
         route.repository,
         "delete",
@@ -192,6 +196,7 @@ async def test_delete(application_instance):
         async with AsyncClient(
             app=application_instance,
             base_url=BASE_URL,
+            headers={"Authorization": f"Bearer {get_fake_jwt}"},
         ) as ac:
             response = await ac.delete("/26609c62-5270-11ed-8d79-641c67e34d72")
         assert response.status_code == 204

@@ -23,9 +23,9 @@ class ItemMagicalTypeRoute(BaseRoute):
         ] = ItemMagicalTypeRepository,
     ) -> None:
         super().__init__(
-            name,
-            tags,
-            repository,
+            name=name,
+            tags=tags,
+            repository=repository,
         )
 
     async def get(self) -> list[ListItemMagicalTypeSchema]:
