@@ -8,7 +8,7 @@ from carnage.api.routes.authentication.base import BaseAuthentication
 from carnage.database.models.account import ProviderEnum
 
 
-class GoogleAuthentication(BaseAuthentication):
+class GoogleAuthenticationRoute(BaseAuthentication):
     def __init__(
         self,
         name: str = "google",
@@ -61,4 +61,4 @@ class GoogleAuthentication(BaseAuthentication):
         return generate_jwt(claims)
 
 
-route = GoogleAuthentication()
+route = GoogleAuthenticationRoute()

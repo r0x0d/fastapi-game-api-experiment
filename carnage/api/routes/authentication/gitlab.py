@@ -11,7 +11,7 @@ from carnage.api.routes.authentication.base import BaseAuthentication
 from carnage.database.models.account import ProviderEnum
 
 
-class GitlabAuthentication(BaseAuthentication):
+class GitlabAuthenticationRoute(BaseAuthentication):
     def __init__(
         self,
         name: str = "gitlab",
@@ -89,4 +89,4 @@ class GitlabAuthentication(BaseAuthentication):
         return generate_jwt(claims)
 
 
-route = GitlabAuthentication()
+route = GitlabAuthenticationRoute()
