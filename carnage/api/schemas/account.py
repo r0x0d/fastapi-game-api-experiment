@@ -1,6 +1,6 @@
 from pydantic_sqlalchemy import sqlalchemy_to_pydantic
 
-from carnage.database.models.account import AccountModel, ProviderEnum
+from carnage.database.models.account import AccountModel
 
 
 class ListAccountSchema(
@@ -20,13 +20,3 @@ class UpdateAccountSchema(
     ),
 ):
     pass
-
-
-class CreateAccountSchema(
-    sqlalchemy_to_pydantic(  # type: ignore
-        AccountModel,
-        config=None,
-        exclude=("secret_key"),
-    ),
-):
-    provider = ProviderEnum.carnage

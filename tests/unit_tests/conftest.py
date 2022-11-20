@@ -1,6 +1,5 @@
 import uuid
 from collections import namedtuple
-from time import time
 from unittest import mock
 
 import pytest
@@ -41,7 +40,7 @@ def application_instance(database_session_mock):
 
 @pytest.fixture()
 def get_fake_jwt():
-    jwt = generate_jwt(claims={"email": "test@test.com", "exp": time() + 2})
+    jwt = generate_jwt(claims={"email": "test@test.com"})
     return jwt
 
 

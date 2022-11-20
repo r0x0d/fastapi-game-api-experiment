@@ -1,8 +1,10 @@
 from collections import namedtuple
 from time import time
+from unittest import mock
 
 import pytest
 from fastapi import HTTPException
+from jose import ExpiredSignatureError
 
 from carnage.api.auth import authentication
 
@@ -28,9 +30,14 @@ def test_validate_jwt(get_fake_jwt):
 
 def test_validate_jwt_expired():
     token = authentication.generate_jwt(
-        claims={"email": "test@test.com", "exp": time() - 1},
+        claims={"email": "test@test.com"},
     )
-    assert not authentication.validate_jwt(token)
+    with mock.patch.object(
+        authentication.jwt,
+        "decode",
+        side_effect=ExpiredSignatureError,
+    ):
+        assert not authentication.validate_jwt(token)
 
 
 @pytest.mark.anyio
@@ -50,11 +57,17 @@ async def test_jwt_bearer_call_wrong_scheme(get_fake_jwt):
 @pytest.mark.anyio
 async def test_jwt_bearer__call_invalid_token():
     token = authentication.generate_jwt(
-        claims={"email": "test@test.com", "exp": time() - 1},
+        claims={"email": "test@test.com"},
     )
     request = RequestOutput({"Authorization": f"Bearer {token}"})
-    with pytest.raises(HTTPException):
-        await authentication.JWTBearer().__call__(request)
+    with mock.patch.object(
+        authentication.jwt,
+        "decode",
+        side_effect=ExpiredSignatureError,
+    ):
+
+        with pytest.raises(HTTPException):
+            await authentication.JWTBearer().__call__(request)
 
 
 @pytest.mark.anyio
@@ -66,15 +79,25 @@ async def test_jwt_bearer__call_invalid_authorization_code(get_fake_jwt):
 
 @pytest.mark.parametrize(
     ("use_fake_jwt", "expected"),
-    ((True, True), (False, False)),
+    (
+        (True, True),
+        (False, False),
+    ),
 )
 def test_jwt_bearer_verify_jwt(use_fake_jwt, expected, get_fake_jwt):
     token = (
         get_fake_jwt
         if use_fake_jwt
         else authentication.generate_jwt(
-            claims={"email": "test@test.com", "exp": time() - 1},
+            claims={"email": "test@test.com"},
         )
     )
-
-    assert authentication.JWTBearer().verify_jwt(token) == expected
+    if use_fake_jwt:
+        assert authentication.JWTBearer().verify_jwt(token) == expected
+    else:
+        with mock.patch.object(
+            authentication.jwt,
+            "decode",
+            side_effect=ExpiredSignatureError,
+        ):
+            assert authentication.JWTBearer().verify_jwt(token) == expected

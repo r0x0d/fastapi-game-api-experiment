@@ -1,7 +1,6 @@
 import logging
 from typing import Any, Type
 
-from argon2 import PasswordHasher
 from cryptography.fernet import Fernet
 
 from carnage.database.models.account import ProviderEnum
@@ -10,21 +9,13 @@ from carnage.database.seeds.base import BaseSeed
 
 logger = logging.getLogger(__name__)
 
-ph = PasswordHasher()
-
 
 class AccountSeed(BaseSeed):
     name: str = "account"
     data: list[dict[str, str | Any]] = [
         {
-            "username": "admin@carnage.world",
-            "password": ph.hash("admin"),
-            "provider": ProviderEnum.carnage,
-            "secret_key": Fernet.generate_key(),
-        },
-        {
             "username": "rodolfo.olivieri3@gmail.com",
-            "password": ph.hash("admin"),
+            "nickname": "r0x0d",
             "provider": ProviderEnum.google,
             "secret_key": Fernet.generate_key(),
         },

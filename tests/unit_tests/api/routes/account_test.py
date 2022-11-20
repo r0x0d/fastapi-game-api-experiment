@@ -7,12 +7,11 @@ import pytest
 from httpx import AsyncClient
 
 from carnage.api.routes.account import route
-from carnage.database.models.account import ProviderEnum
 from tests.unit_tests.conftest import APPLICATION_PREFIX, DummySchemaFields
 
 AccountOutput = namedtuple(
     "AccountOutput",
-    (*DummySchemaFields._fields, "username", "provider"),
+    (*DummySchemaFields._fields, "username"),
 )
 BASE_URL = f"http://test/{APPLICATION_PREFIX}/account"
 
@@ -29,7 +28,6 @@ BASE_URL = f"http://test/{APPLICATION_PREFIX}/account"
                     updated_at=datetime.now(),
                     deleted_at=None,
                     username="test_username",
-                    provider=ProviderEnum.carnage,
                 ),
             ]
         ),
@@ -65,7 +63,6 @@ async def test_get(output, application_instance, get_fake_jwt):
                     updated_at=datetime.now(),
                     deleted_at=None,
                     username="test_username",
-                    provider=ProviderEnum.carnage,
                 ),
             ]
         ),
@@ -88,31 +85,15 @@ async def test_get_by_id(output, application_instance, get_fake_jwt):
 
 
 @pytest.mark.anyio
-@pytest.mark.parametrize(
-    ("data"),
-    (
-        (
-            {
-                "username": "test_username",
-                "password": "test_password",
-                "provider": 0,
-            }
-        ),
-    ),
-)
-async def test_post(data, application_instance, get_fake_jwt):
-    with mock.patch.object(
-        route.repository,
-        "insert",
-        lambda values: None,
-    ):
-        async with AsyncClient(
-            app=application_instance,
-            base_url=BASE_URL,
-            headers={"Authorization": f"Bearer {get_fake_jwt}"},
-        ) as ac:
-            response = await ac.post("/", json=data)
-        assert response.status_code == 201
+async def test_post(application_instance, get_fake_jwt):
+    async with AsyncClient(
+        app=application_instance,
+        base_url=BASE_URL,
+        headers={"Authorization": f"Bearer {get_fake_jwt}"},
+    ) as ac:
+        response = await ac.post("/")
+    assert response.status_code == 418
+    assert response.json() == {"detail": "I can't do anything. I'm a teapot."}
 
 
 @pytest.mark.anyio
@@ -122,7 +103,7 @@ async def test_post(data, application_instance, get_fake_jwt):
         (
             {
                 "username": "test_username",
-                "password": "test_password",
+                "nickname": "test_nickname",
             }
         ),
     ),

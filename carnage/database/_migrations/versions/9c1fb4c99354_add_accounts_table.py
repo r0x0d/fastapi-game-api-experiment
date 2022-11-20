@@ -29,7 +29,7 @@ def upgrade() -> None:
             nullable=False,
         ),
         sa.Column("username", sa.String(length=100), nullable=False),
-        sa.Column("password", sa.String(length=100), nullable=False),
+        sa.Column("nickname", sa.String(length=100), nullable=False),
         sa.Column("provider", sa.Enum(ProviderEnum)),
         sa.Column("secret_key", sa.String(length=100)),
         sa.Column(
