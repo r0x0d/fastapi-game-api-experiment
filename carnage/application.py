@@ -9,6 +9,7 @@ from carnage.api.routes import (
     account,
     aligment,
     authentication,
+    debug,
     dungeon,
     item,
     monster,
@@ -17,7 +18,6 @@ from carnage.api.routes import (
     size,
     spell,
     vocation,
-    debug,
 )
 from carnage.constants import CARNAGE_ENVIRONMENT, CARNAGE_SECRET_KEY
 

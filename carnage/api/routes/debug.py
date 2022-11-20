@@ -1,6 +1,7 @@
 from fastapi import APIRouter
-from carnage.api.routes.authentication.base import BaseAuthentication
 from fastapi.responses import HTMLResponse
+
+from carnage.api.routes.authentication.base import BaseAuthentication
 
 
 class DebugRoute(BaseAuthentication):
