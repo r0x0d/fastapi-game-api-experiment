@@ -25,27 +25,44 @@ class BaseRepository:
         statement = select(self.model)
 
         with self.session() as session:
-            return session.execute(statement=statement).scalars().all()
+            return (
+                session.execute(statement=statement)
+                .where(self.model.deleted_at != None)  # noqa
+                .scalars()
+                .all()
+            )
 
     @lru_cache
     def select_first(self) -> BaseModel:
         statement = select(self.model)
 
         with self.session() as session:
-            return session.execute(statement=statement).first()
+            return (
+                session.execute(statement=statement)
+                .where(self.model.deleted_at != None)  # noqa
+                .first()
+            )
 
     @lru_cache
     def select_by_id(self, identifier: str) -> BaseModel:
         statement = select(self.model).where(self.model.id == identifier)
         with self.session() as session:
-            return session.execute(statement=statement).first()
+            return (
+                session.execute(statement=statement)
+                .where(self.model.deleted_at != None)  # noqa
+                .first()
+            )
 
     @lru_cache
     def select_by_name(self, name: str) -> BaseModel:
         statement = select(self.model).where(self.model.name == name)
 
         with self.session() as session:
-            return session.execute(statement=statement).first()
+            return (
+                session.execute(statement=statement)
+                .where(self.model.deleted_at != None)  # noqa
+                .first()
+            )
 
     def update(self, values: dict[str, Any], identifier: str) -> None:
         statement = (
