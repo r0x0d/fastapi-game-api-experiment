@@ -18,3 +18,9 @@ class AccountRepository(BaseRepository):
 
         with self.session() as session:
             return session.execute(statement=statement).first()
+
+    def select_by_nickname(self, nickname: str) -> AccountModel:
+        statement = select(self.model).where(self.model.nickname == nickname)
+
+        with self.session() as session:
+            return session.execute(statement=statement).first()

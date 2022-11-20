@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Any
 
 from fastapi import HTTPException, Request
@@ -16,6 +16,12 @@ def generate_jwt(claims: dict[str, Any]) -> str:
     if "at_hash" in claims:
         claims.pop("at_hash")
 
+    # Replace or append whatever iat/exp that the claims have
+    iat = datetime.utcnow()
+    exp = iat + timedelta(hours=1)
+    claims["iat"] = int(iat.timestamp())
+    claims["exp"] = int(exp.timestamp())
+
     token = jwt.encode(
         claims=claims,
         key=JWT_SECRET_KEY,
@@ -32,12 +38,9 @@ def validate_jwt(token: str) -> bool:
             key=JWT_SECRET_KEY,
             algorithms=[JWT_ALGORITHM],
         )
-        return (
-            True
-            if datetime.utcfromtimestamp(decoded_token["exp"])
-            >= datetime.utcnow()
-            else False
-        )
+        utcnow = int(datetime.utcnow().timestamp())
+        is_token_valid = decoded_token["exp"] >= utcnow
+        return is_token_valid
     except ExpiredSignatureError:
         return False
 

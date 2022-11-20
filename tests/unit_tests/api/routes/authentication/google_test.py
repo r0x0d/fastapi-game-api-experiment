@@ -12,7 +12,7 @@ BASE_URL = f"http://test/{APPLICATION_PREFIX}/authentication"
 @pytest.mark.anyio
 async def test_google_login(application_instance):
     with mock.patch.object(
-        authentication.oauth.google,
+        authentication.google.route.oauth.google,
         "authorize_access_token",
         mock.AsyncMock(),
     ):
@@ -27,11 +27,11 @@ async def test_google_login(application_instance):
 @pytest.mark.anyio
 async def test_google_auth(application_instance):
     with mock.patch.object(
-        authentication.oauth.google,
+        authentication.google.route.oauth.google,
         "authorize_access_token",
         mock.AsyncMock(return_value={"userinfo": {"email": "test"}}),
     ), mock.patch.object(
-        authentication.route.account_repository,
+        authentication.google.route.account_repository,
         "select_by_username",
     ):
         async with AsyncClient(
@@ -40,22 +40,28 @@ async def test_google_auth(application_instance):
         ) as ac:
             response = await ac.get("/google/auth")
         assert response.status_code == 200
+        assert isinstance(response.text, str)
 
 
 @pytest.mark.anyio
 async def test_google_auth_no_user_found(application_instance):
     with mock.patch.object(
-        authentication.oauth.google,
+        authentication.google.route.oauth.google,
         "authorize_access_token",
         mock.AsyncMock(return_value={"userinfo": {"email": "test"}}),
     ), mock.patch.object(
-        authentication.route.account_repository,
+        authentication.google.route.account_repository,
         "select_by_username",
         lambda username: False,
+    ), mock.patch.object(
+        authentication.google.route.account_repository,
+        "insert",
+        lambda data: None,
     ):
         async with AsyncClient(
             app=application_instance,
             base_url=BASE_URL,
         ) as ac:
             response = await ac.get("/google/auth")
-        assert response.status_code == 403
+        assert response.status_code == 200
+        assert isinstance(response.text, str)

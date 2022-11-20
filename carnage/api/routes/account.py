@@ -1,17 +1,14 @@
 from typing import Type
 
+from fastapi import HTTPException, Request
+
 from carnage.api.routes.base import BaseRoute
-from carnage.api.schemas.account import (
-    CreateAccountSchema,
-    ListAccountSchema,
-    UpdateAccountSchema,
-)
+from carnage.api.schemas.account import ListAccountSchema, UpdateAccountSchema
 from carnage.database.repository.account import AccountRepository
 
 
 class AccountRoute(BaseRoute):
     list_schema = ListAccountSchema
-    create_schema = CreateAccountSchema
     update_schema = UpdateAccountSchema
 
     def __init__(
@@ -26,14 +23,17 @@ class AccountRoute(BaseRoute):
             repository=repository,
         )
 
+    async def post(self, request: Request) -> None:
+        raise HTTPException(
+            status_code=418,
+            detail="I can't do anything. I'm a teapot.",
+        )
+
     async def get(self) -> list[ListAccountSchema]:
         return await super().get()
 
     async def get_by_id(self, identifier: str) -> ListAccountSchema:
         return await super().get_by_id(identifier)
-
-    async def post(self, request: CreateAccountSchema) -> None:
-        return await super().post(request)
 
     async def put(self, request: UpdateAccountSchema, identifier: str) -> None:
         return await super().put(request, identifier)
