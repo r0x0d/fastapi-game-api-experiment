@@ -35,7 +35,7 @@ itsdangerous = "2.1.2"
 psycopg2-binary = "2.9.5"
 pydantic = { version = "1.10.2", extras = ["email"] }
 sqlalchemy = "1.4.44"
-uvicorn = { version = "0.19.0", extras = ["standard"] }
+uvicorn = { version = "0.20.0", extras = ["standard"] }
 httpx = "0.23.1"
 pydantic-sqlalchemy = "0.0.9"
 rich = "12.6.0"
