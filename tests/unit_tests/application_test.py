@@ -14,6 +14,12 @@ def test_create_app(database_session_mock):
 
 
 @pytest.mark.parametrize(("development"), (("development"), ("production")))
+def test_add_router(development, database_session_mock):
+    with mock.patch.object(application, "CARNAGE_ENVIRONMENT", development):
+        application.add_router(FastAPI())
+
+
+@pytest.mark.parametrize(("development"), (("development"), ("production")))
 def test_add_middleware(development, database_session_mock):
     with mock.patch.object(application, "CARNAGE_ENVIRONMENT", development):
         application.add_middleware(FastAPI())

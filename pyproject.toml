@@ -58,6 +58,7 @@ carnage = "carnage.__main__:main"
 [tool.coverage.run]
 plugins = ["covdefaults"]
 source = ["carnage"]
+omit = ["carnage/api/routes/debug.py"]
 
 [tool.mypy]
 check_untyped_defs = true

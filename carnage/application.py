@@ -17,6 +17,7 @@ from carnage.api.routes import (
     size,
     spell,
     vocation,
+    debug,
 )
 from carnage.constants import CARNAGE_ENVIRONMENT, CARNAGE_SECRET_KEY
 
@@ -50,6 +51,10 @@ def add_router(app: FastAPI) -> None:
             vocation.vocation_spell.route.router,
         ]
     ]
+
+    # Only used during development
+    if CARNAGE_ENVIRONMENT == "development":
+        app.include_router(router=debug.route.router)
 
 
 def add_middleware(app: FastAPI) -> None:
