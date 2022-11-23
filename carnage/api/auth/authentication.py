@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 from typing import Any
 
-from fastapi import HTTPException, Request
+from fastapi import HTTPException, Query, Request
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from jose import jwt
 from jose.exceptions import ExpiredSignatureError
@@ -31,21 +31,25 @@ def generate_jwt(claims: dict[str, Any]) -> str:
     return token
 
 
-def validate_jwt(token: str) -> bool:
-    try:
-        decoded_token = jwt.decode(
-            token=token,
-            key=JWT_SECRET_KEY,
-            algorithms=[JWT_ALGORITHM],
-        )
-        utcnow = int(datetime.utcnow().timestamp())
-        is_token_valid = decoded_token["exp"] >= utcnow
-        return is_token_valid
-    except ExpiredSignatureError:
-        return False
+class BaseJWTBearer(HTTPBearer):
+    def __init__(self, auto_error: bool = True):
+        super().__init__(auto_error=auto_error)
+
+    def verify_jwt(self, token: str) -> bool:
+        try:
+            decoded_token = jwt.decode(
+                token=token,
+                key=JWT_SECRET_KEY,
+                algorithms=[JWT_ALGORITHM],
+            )
+            utcnow = int(datetime.utcnow().timestamp())
+            is_token_valid = decoded_token["exp"] >= utcnow
+            return is_token_valid
+        except ExpiredSignatureError:
+            return False
 
 
-class JWTBearer(HTTPBearer):
+class APIJWTBearer(BaseJWTBearer):
     def __init__(self, auto_error: bool = True):
         super().__init__(auto_error=auto_error)
 
@@ -59,12 +63,31 @@ class JWTBearer(HTTPBearer):
                     status_code=403,
                     detail="Invalid token or expired token.",
                 )
-            return credentials.credentials
+            return True
         else:
             raise HTTPException(
                 status_code=403,
                 detail="Invalid authorization code.",
             )
 
-    def verify_jwt(self, token: str) -> bool:
-        return validate_jwt(token=token)
+
+class WebSocketJWTBearer(BaseJWTBearer):
+    def __init__(self, auto_error: bool = True):
+        super().__init__(auto_error=auto_error)
+
+    async def __call__(
+        self,
+        token: str | None = Query(default=None),
+    ) -> bool:
+        if token:
+            if not self.verify_jwt(token):
+                raise HTTPException(
+                    status_code=403,
+                    detail="Invalid token or expired token.",
+                )
+            return True
+        else:
+            raise HTTPException(
+                status_code=403,
+                detail="No token was provided.",
+            )

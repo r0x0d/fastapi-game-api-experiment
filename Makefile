@@ -1,4 +1,9 @@
-.PHONY: clean setup setup-db test test-coverage
+.PHONY: clean \
+	setup \
+	setup-db \
+	secrets \
+	test \
+	test-coverage \
 
 DIRENV_BINARY := $(shell command -v direnv 2> /dev/null)
 WAIT_TIME_FOR_DB := 10
@@ -32,6 +37,9 @@ ifdef DIRENV_BINARY
 	direnv reload
 endif
 endif
+
+secrets: clean
+	python scripts/generate_secrets.py
 
 setup-db: setup
 	@docker-compose down

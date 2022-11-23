@@ -1,3 +1,4 @@
+from functools import lru_cache
 from typing import Type
 
 from sqlalchemy import select
@@ -13,14 +14,22 @@ class AccountRepository(BaseRepository):
     ) -> None:
         super().__init__(model)
 
+    @lru_cache
     def select_by_username(self, username: str) -> AccountModel:
-        statement = select(self.model).where(self.model.username == username)
+        statement = select(self.model).where(
+            self.model.username == username
+            and self.deleted_at == None,  # type: ignore # noqa
+        )
 
         with self.session() as session:
             return session.execute(statement=statement).first()
 
+    @lru_cache
     def select_by_nickname(self, nickname: str) -> AccountModel:
-        statement = select(self.model).where(self.model.nickname == nickname)
+        statement = select(self.model).where(
+            self.model.nickname == nickname
+            and self.deleted_at == None,  # type: ignore # noqa
+        )
 
         with self.session() as session:
             return session.execute(statement=statement).first()

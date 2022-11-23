@@ -20,7 +20,10 @@ repos:
     hooks:
       - id: flake8
         args:
-          ["--per-file-ignores", "carnage/database/seeds/dungeon/dungeon_schema.py:E501"]
+          [
+            "--per-file-ignores",
+            "carnage/database/seeds/dungeon/dungeon_schema.py:E501",
+          ]
   - repo: https://github.com/asottile/pyupgrade
     rev: v3.2.2
     hooks:

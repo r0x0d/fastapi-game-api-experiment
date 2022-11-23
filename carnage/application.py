@@ -9,6 +9,7 @@ from carnage.api.routes import (
     account,
     aligment,
     authentication,
+    chat,
     debug,
     dungeon,
     item,
@@ -19,7 +20,7 @@ from carnage.api.routes import (
     spell,
     vocation,
 )
-from carnage.constants import CARNAGE_ENVIRONMENT, CARNAGE_SECRET_KEY
+from carnage.constants import CARNAGE_ENVIRONMENT, CARNAGE_SESSION_SECRET_KEY
 
 
 def add_router(app: FastAPI) -> None:
@@ -31,6 +32,8 @@ def add_router(app: FastAPI) -> None:
             authentication.github.route.router,
             authentication.gitlab.route.router,
             authentication.google.route.router,
+            chat.channel_chat.route.router,
+            chat.global_chat.route.router,
             dungeon.dungeon.route.router,
             dungeon.dungeon_difficulty.route.router,
             dungeon.dungeon_schema.route.router,
@@ -58,7 +61,10 @@ def add_router(app: FastAPI) -> None:
 
 
 def add_middleware(app: FastAPI) -> None:
-    app.add_middleware(SessionMiddleware, secret_key=CARNAGE_SECRET_KEY)
+    app.add_middleware(
+        SessionMiddleware,
+        secret_key=CARNAGE_SESSION_SECRET_KEY,
+    )
     app.add_middleware(GZipMiddleware, minimum_size=1000)
     app.add_middleware(
         CORSMiddleware,

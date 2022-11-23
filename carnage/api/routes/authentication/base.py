@@ -27,6 +27,7 @@ class BaseAuthentication:
     async def handle_user_account(
         self,
         username: str,
+        nickname: str,
         provider: ProviderEnum,
     ) -> None:
         account = self.account_repository.select_by_username(
@@ -39,8 +40,8 @@ class BaseAuthentication:
             self.account_repository.insert(
                 {
                     "username": username,
-                    "nickname": "something",
+                    "nickname": nickname,
                     "provider": provider,
-                    "secret_key": Fernet.generate_key(),
+                    "secret_key": Fernet.generate_key().decode(),
                 },
             )

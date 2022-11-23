@@ -1,3 +1,5 @@
+import random
+import string
 from typing import Any
 
 from fastapi import APIRouter, Request
@@ -55,6 +57,9 @@ class GoogleAuthenticationRoute(BaseAuthentication):
 
         await self.handle_user_account(
             username=claims["email"],
+            nickname="".join(
+                random.choice(string.ascii_letters) for _ in range(10)
+            ),
             provider=ProviderEnum.google,
         )
 

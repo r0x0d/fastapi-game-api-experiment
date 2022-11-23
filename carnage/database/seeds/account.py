@@ -17,7 +17,7 @@ class AccountSeed(BaseSeed):
             "username": "rodolfo.olivieri3@gmail.com",
             "nickname": "r0x0d",
             "provider": ProviderEnum.google,
-            "secret_key": Fernet.generate_key(),
+            "secret_key": Fernet.generate_key().decode(),
         },
     ]
 
