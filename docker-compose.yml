@@ -31,7 +31,7 @@ services:
     image: dpage/pgadmin4:latest
     restart: always
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@carnage.rip
+      PGADMIN_DEFAULT_EMAIL: admin@carnage.world
       PGADMIN_DEFAULT_PASSWORD: admin
       PGADMIN_LISTEN_PORT: 80
     ports:

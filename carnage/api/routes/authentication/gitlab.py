@@ -83,6 +83,7 @@ class GitlabAuthenticationRoute(BaseAuthentication):
 
         await self.handle_user_account(
             username=claims["email"],
+            nickname=claims["preferred_username"],
             provider=ProviderEnum.gitlab,
         )
 

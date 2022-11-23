@@ -20,7 +20,8 @@ class DungeonSchemaRepository(BaseRepository):
         dungeon_difficulty_id: str,
     ) -> list[DungeonSchemaModel]:
         statement = select(self.model).where(
-            self.model.dungeon_difficulty_id == dungeon_difficulty_id,
+            self.model.dungeon_difficulty_id == dungeon_difficulty_id
+            and self.deleted_at == None,  # type: ignore # noqa
         )
 
         with self.session() as session:
