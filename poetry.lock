@@ -126,11 +126,11 @@ test = ["flake8 (==3.7.8)", "hypothesis (==3.55.3)"]
 
 [[package]]
 name = "covdefaults"
-version = "2.2.0"
+version = "2.2.2"
 description = "A coverage plugin to provide sensible default settings"
 category = "dev"
 optional = false
-python-versions = ">=3.6.1"
+python-versions = ">=3.7"
 
 [package.dependencies]
 coverage = ">=6.0.2"
@@ -788,7 +788,7 @@ python-versions = ">=3.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.11"
-content-hash = "17921b7109d43f29ca36837c0f0cdb0e2f3791ff28ad1166dd3afc9772bd5569"
+content-hash = "f16d18f990d63ec95f70bd6310e04a6bd737fa0ca08145c9752bd9ba92eebb62"
 
 [metadata.files]
 alembic = [
@@ -913,8 +913,8 @@ commonmark = [
     {file = "commonmark-0.9.1.tar.gz", hash = "sha256:452f9dc859be7f06631ddcb328b6919c67984aca654e5fefb3914d54691aed60"},
 ]
 covdefaults = [
-    {file = "covdefaults-2.2.0-py2.py3-none-any.whl", hash = "sha256:af3c038844cecf29b30142889f621076bc2362a8259b614e1485b82061d2ca16"},
-    {file = "covdefaults-2.2.0.tar.gz", hash = "sha256:237c9a2cf4a6c821a908dd54635027a813988419c9fda83c7e654a61b8c19d56"},
+    {file = "covdefaults-2.2.2-py2.py3-none-any.whl", hash = "sha256:10c193cbf290675961a09166d7cdea8a783655e04009f5493d50685fe6ec82f3"},
+    {file = "covdefaults-2.2.2.tar.gz", hash = "sha256:e543862ee0347769b47b27fa586d690e6b91587a3dcaaf8552fcfb1fac03d061"},
 ]
 coverage = [
     {file = "coverage-6.5.0-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:ef8674b0ee8cc11e2d574e3e2998aea5df5ab242e012286824ea3c6970580e53"},
