@@ -28,7 +28,7 @@ license = "MIT"
 [tool.poetry.dependencies]
 python = "^3.11"
 alembic = "1.8.1"
-authlib = "1.1.0"
+authlib = "1.2.0"
 cryptography = "38.0.4"
 fastapi = "0.88.0"
 itsdangerous = "2.1.2"
