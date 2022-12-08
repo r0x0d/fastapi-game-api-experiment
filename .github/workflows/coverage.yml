@@ -20,11 +20,7 @@ jobs:
       fail-fast: false
       matrix:
         platform:
-          - {
-              name: Linux,
-              distro: ubuntu-latest,
-              pip_cache_path: ~/.cache/pypoetry,
-            }
+          - { name: Linux, distro: ubuntu-latest, pip_cache_path: ~/.cache/pip }
         python:
           - { version: "3.11", tox: py311 }
 
@@ -37,25 +33,20 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: ${{ matrix.platform.pip_cache_path }}
-          key: pip-${{ matrix.platform.name }}-python-${{ matrix.python.version }}-${{ hashFiles('**/poetry.lock') }}
+          key: pip-${{ matrix.platform.name }}-python-${{ matrix.python.version }}-${{ hashFiles('**/setup.cfg') }}-${{ hashFiles('**/requirements.*.txt') }}
 
       - uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python.version }} # Version range or exact version of a Python version to use, using SemVer's version range syntax
           architecture: "x64" # optional x64 or x86. Defaults to x64 if not specified
 
-      - name: Setup poetry
-        run: |
-          sudo apt install curl -y
-          curl -sSL https://install.python-poetry.org/ | python
-
       - name: Install tox
         run: |
-          poetry install
+          pip install tox
 
       - name: Run tests
         run: |
-          poetry run tox -e ${{ matrix.python.tox }}
+          tox -e ${{ matrix.python.tox }}
 
       - uses: codecov/codecov-action@v3
         with:
