@@ -25,7 +25,7 @@ def _render_jinja_template(
     schema: str,
     jinja_arguments: dict[str, Any],
 ) -> dict[str, Any]:
-    template = jinja2.Template(schema)
+    template = jinja2.Template(schema, autoescape=True)
     rendered_template = template.render(jinja_arguments)
     # We were supposed to use json.loads, but we generate an invalid json, so
     # yaml it is!.
