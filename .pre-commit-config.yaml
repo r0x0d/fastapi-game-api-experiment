@@ -11,7 +11,7 @@ repos:
       - id: name-tests-test
       - id: requirements-txt-fixer
   - repo: https://github.com/psf/black
-    rev: 22.10.0
+    rev: 22.12.0
     hooks:
       - id: black
         args: [-l, "79"]
@@ -25,7 +25,7 @@ repos:
             "carnage/database/seeds/dungeon/dungeon_schema.py:E501",
           ]
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.3.0
+    rev: v3.3.1
     hooks:
       - id: pyupgrade
         args: [--py37-plus]
