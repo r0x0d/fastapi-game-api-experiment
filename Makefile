@@ -46,7 +46,7 @@ setup-db: setup
 	docker-compose up -d database
 	@echo "Waiting $(WAIT_TIME_FOR_DB) to run migrations"
 	@sleep $(WAIT_TIME_FOR_DB)
-	alembic upgrade head
+	alembic upgrade heads
 	carnage --debug seed --all
 
 test: setup clean
