@@ -1,7 +1,7 @@
 """add dungeon histories table
 
 Revision ID: 8f12a0e9d6b9
-Revises: fafbc5ff017f
+Revises: dc5cda6ee935
 Create Date: 2022-11-24 23:19:45.397742
 
 """
@@ -13,7 +13,7 @@ from sqlalchemy.dialects.postgresql import UUID
 
 # revision identifiers, used by Alembic.
 revision = "8f12a0e9d6b9"
-down_revision = "fafbc5ff017f"
+down_revision = "dc5cda6ee935"
 branch_labels = None
 depends_on = None
 
