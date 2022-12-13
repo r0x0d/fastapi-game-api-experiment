@@ -5,6 +5,7 @@ from carnage.database.seeds.aligment import AligmentSeed
 from carnage.database.seeds.base import BaseSeed
 from carnage.database.seeds.chat import ChannelChatSeed
 from carnage.database.seeds.condition import ConditionSeed
+from carnage.database.seeds.difficulty import DifficultySeed
 from carnage.database.seeds.dungeon import (
     DungeonDifficultySeed,
     DungeonSchemaSeed,
@@ -57,6 +58,7 @@ class SeedManager:
             PlayerSeed.name: PlayerSeed(),
             ChannelChatSeed.name: ChannelChatSeed(),
             ConditionSeed.name: ConditionSeed(),
+            DifficultySeed.name: DifficultySeed(),
         }
 
     def seed(
