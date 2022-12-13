@@ -11,6 +11,7 @@ from carnage.database.seeds.dungeon import (
     DungeonSchemaSeed,
     DungeonSeed,
 )
+from carnage.database.seeds.game_mode import GameModeSeed
 from carnage.database.seeds.item import (
     ItemBaseTypeSeed,
     ItemMagicalTypeSeed,
@@ -59,6 +60,7 @@ class SeedManager:
             ChannelChatSeed.name: ChannelChatSeed(),
             ConditionSeed.name: ConditionSeed(),
             DifficultySeed.name: DifficultySeed(),
+            GameModeSeed.name: GameModeSeed(),
         }
 
     def seed(
