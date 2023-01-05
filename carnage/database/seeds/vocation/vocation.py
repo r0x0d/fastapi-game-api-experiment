@@ -25,4 +25,8 @@ class VocationSeed(BaseSeed):
         self,
         repository: Type[VocationRepository] = VocationRepository,
     ) -> None:
+        """Default class constructor.
+
+        :param repository: The repository used to issue queries.
+        """
         super().__init__(repository=repository)

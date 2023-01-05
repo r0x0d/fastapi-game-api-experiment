@@ -22,4 +22,8 @@ class AligmentSeed(BaseSeed):
         self,
         repository: Type[AligmentRepository] = AligmentRepository,
     ) -> None:
+        """Default class constructor.
+
+        :param repository: The repository used to issue queries.
+        """
         super().__init__(repository=repository)

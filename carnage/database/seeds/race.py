@@ -19,11 +19,16 @@ class RaceSeed(BaseSeed):
         self,
         repository: Type[RaceRepository] = RaceRepository,
     ) -> None:
+        """Default class constructor.
+
+        :param repository: The repository used to issue queries.
+        """
         super().__init__(repository=repository)
         self.size_repository = SizeRepository()
         self.aligment_repository = AligmentRepository()
 
     def seed(self) -> None:
+        """Method to seed data into the database."""
         aligment = self.aligment_repository.select_first()
         size = self.size_repository.select_first()
 

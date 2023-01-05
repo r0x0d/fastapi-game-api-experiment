@@ -10,6 +10,7 @@ console = Console()
 
 
 def parse_env_file() -> list[str]:
+    """Parse the .env file and replace the secrets."""
     env_list = []
     with open(PATH_TO_ENV_FILE) as handler:
         lines = [line.strip() for line in handler.readlines()]
@@ -44,6 +45,10 @@ def parse_env_file() -> list[str]:
 
 
 def write_env_file(env_list: list[str]) -> None:
+    """Write the environments back to the file.
+
+    :param env_list: List of environment variables to be written.
+    """
     with open(PATH_TO_ENV_FILE, mode="w") as handler:
         for line in env_list:
             line += "\n"
@@ -51,6 +56,7 @@ def write_env_file(env_list: list[str]) -> None:
 
 
 def main() -> int:
+    """Main entrypoint for generating secrets script."""
     if os.path.exists(PATH_TO_ENV_FILE):
         env_list = parse_env_file()
         write_env_file(env_list)

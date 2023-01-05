@@ -9,4 +9,8 @@ class SpellRangeTypeRepository(BaseRepository):
         self,
         model: Type[SpellRangeTypeModel] = SpellRangeTypeModel,
     ) -> None:
+        """Default constructor for repository.
+
+        :param model: The model used in the repository.
+        """
         super().__init__(model)

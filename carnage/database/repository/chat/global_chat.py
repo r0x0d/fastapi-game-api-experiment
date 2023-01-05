@@ -9,4 +9,8 @@ class GlobalChatRepository(BaseRepository):
         self,
         model: Type[GlobalChatModel] = GlobalChatModel,
     ) -> None:
+        """Default constructor for repository.
+
+        :param model: The model used in the repository.
+        """
         super().__init__(model)

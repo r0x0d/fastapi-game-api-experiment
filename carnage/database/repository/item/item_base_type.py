@@ -9,4 +9,8 @@ class ItemBaseTypeRepository(BaseRepository):
         self,
         model: Type[ItemBaseTypeModel] = ItemBaseTypeModel,
     ) -> None:
+        """Default constructor for repository.
+
+        :param model: The model used in the repository.
+        """
         super().__init__(model)

@@ -9,6 +9,7 @@ from carnage.database.repository.chat import GlobalChatRepository
 
 class GlobalChatRoute:
     def __init__(self) -> None:
+        """Default constructor for the API route."""
         self.account_repository = AccountRepository()
         self.repository = GlobalChatRepository()
 
@@ -26,18 +27,30 @@ class GlobalChatRoute:
         from_account_id: str,
         websocket: WebSocket,
     ) -> None:
+        """Async method that handles a new client connection.
+
+        :param from_account_id: The account id connected to the websocket.
+        :param websocket: The webscoket instance to connect.
+        """
         await websocket.accept()
         self._active_connections[from_account_id] = websocket
 
     async def disconnect(
         self,
         from_account_id: str,
-        websocket: WebSocket,
     ) -> None:
+        """Async method that handles the disconnection of a client.
+
+        :param from_account_id: The account id connected to the websocket.
+        """
         self._active_connections.pop(from_account_id)
         await self.broadcast(f"Client {from_account_id} disconnected.")
 
     async def broadcast(self, text: str) -> None:
+        """Async method to broadcast a message to other connections.
+
+        :param text: The text to be sent.
+        """
         for _, websocket in self._active_connections.items():
             await websocket.send_text(text)
 
@@ -47,6 +60,12 @@ class GlobalChatRoute:
         message: str,
         channel: str,
     ) -> None:
+        """Async method to save messages in the database.
+
+        :param from_account_id: The account id connected to the websocket.
+        :param message: The actual message to be processed.
+        :param channel: The chanel that the message was sent.
+        """
         account = self.account_repository.select_by_id(
             identifier=from_account_id,
         )[0]
@@ -70,6 +89,11 @@ class GlobalChatRoute:
         from_account_id: str,
         _: str = Depends(WebSocketJWTBearer()),
     ) -> None:
+        """Async method that handles the webscoket for the global chat route.
+
+        :param websocket: The webscoket instance to connect.
+        :param from_account_id: The account id connected to the websocket.
+        """
         await self.connect(from_account_id, websocket)
         try:
             while True:
@@ -81,7 +105,7 @@ class GlobalChatRoute:
                     data["channel"],
                 )
         except WebSocketDisconnect:
-            await self.disconnect(from_account_id, websocket)
+            await self.disconnect(from_account_id)
 
 
 route = GlobalChatRoute()

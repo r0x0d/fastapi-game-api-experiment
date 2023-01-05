@@ -1,4 +1,4 @@
-"""add global chats table
+"""add global chats table.
 
 Revision ID: fafbc5ff017f
 Revises: df361914ac23

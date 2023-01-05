@@ -9,7 +9,7 @@ from carnage.logger import setup_logger_handler
 
 
 def create_argument_parser() -> argparse.ArgumentParser:
-    """."""
+    """Create the base argument parser for carnage CLI."""
     parser = argparse.ArgumentParser(
         prog="carnage",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
@@ -39,7 +39,7 @@ def create_argument_parser() -> argparse.ArgumentParser:
 
 
 def print_version() -> None:
-    """Prints version information of carnage game and python."""
+    """Prints version information of carnage and python."""
     carnage_version = importlib.metadata.version("carnage")
     print(f"Carnage Version   :         {carnage_version}")
     print(f"Python Version    :         {platform.python_version()}")
@@ -48,6 +48,7 @@ def print_version() -> None:
 
 
 def main() -> int:
+    """Main entrypoint for Carnage API."""
     arg_parser = create_argument_parser()
     cmdline_arguments = arg_parser.parse_args()
 

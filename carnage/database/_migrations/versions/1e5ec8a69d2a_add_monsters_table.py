@@ -1,4 +1,4 @@
-"""Add monsters table
+"""Add monsters table.
 
 Revision ID: 1e5ec8a69d2a
 Revises: faffe495bb96

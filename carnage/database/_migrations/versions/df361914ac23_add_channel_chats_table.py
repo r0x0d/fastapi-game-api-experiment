@@ -1,4 +1,4 @@
-"""add channel chats table
+"""add channel chats table.
 
 Revision ID: df361914ac23
 Revises: 23800d534c41

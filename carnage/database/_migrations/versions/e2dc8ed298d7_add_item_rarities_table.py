@@ -1,4 +1,4 @@
-"""add item rarities table
+"""add item rarities table.
 
 Revision ID: e2dc8ed298d7
 Revises: 95dedd7a6ff7

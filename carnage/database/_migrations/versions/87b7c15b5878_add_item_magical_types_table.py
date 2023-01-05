@@ -1,4 +1,4 @@
-"""add item magical types table
+"""add item magical types table.
 
 Revision ID: 87b7c15b5878
 Revises: 4d66aa8691ab

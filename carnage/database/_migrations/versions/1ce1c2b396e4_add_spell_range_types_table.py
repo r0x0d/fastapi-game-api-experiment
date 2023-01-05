@@ -1,4 +1,4 @@
-"""add spell range types table
+"""add spell range types table.
 
 Revision ID: 1ce1c2b396e4
 Revises: cb4455d1fe66

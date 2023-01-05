@@ -9,4 +9,8 @@ class ChannelChatRepository(BaseRepository):
         self,
         model: Type[ChannelChatModel] = ChannelChatModel,
     ) -> None:
+        """Default constructor for repository.
+
+        :param model: The model used in the repository.
+        """
         super().__init__(model)

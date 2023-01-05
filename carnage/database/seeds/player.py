@@ -20,11 +20,16 @@ class PlayerSeed(BaseSeed):
         self,
         repository: Type[PlayerRepository] = PlayerRepository,
     ) -> None:
+        """Default class constructor.
+
+        :param repository: The repository used to issue queries.
+        """
         super().__init__(repository=repository)
         self.dungeon_repository = DungeonRepository()
         self.vocation_repository = VocationRepository()
 
     def seed(self) -> None:
+        """Method to seed data into the database."""
         dungeon = self.dungeon_repository.select_first()
         vocation = self.vocation_repository.select_first()
 

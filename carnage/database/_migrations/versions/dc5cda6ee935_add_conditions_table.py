@@ -1,4 +1,4 @@
-"""add conditions table
+"""add conditions table.
 
 Revision ID: dc5cda6ee935
 Revises: fafbc5ff017f

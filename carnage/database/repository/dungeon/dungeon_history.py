@@ -12,10 +12,18 @@ class DungeonHistoryRepository(BaseRepository):
         self,
         model: Type[DungeonHistoryModel] = DungeonHistoryModel,
     ) -> None:
+        """Default constructor for repository.
+
+        :param model: The model used in the repository.
+        """
         super().__init__(model)
 
     @lru_cache
     def select_by_player_id(self, player_id: str) -> DungeonHistoryModel:
+        """Get results from database filtering by player id.
+
+        :param player_id: Player id to be used in the filter.
+        """
         statement = select(self.model).where(
             self.model.player_id == player_id
             and self.deleted_at == None,  # type: ignore # noqa
@@ -26,6 +34,10 @@ class DungeonHistoryRepository(BaseRepository):
 
     @lru_cache
     def select_by_dungeon_id(self, dungeon_id: str) -> DungeonHistoryModel:
+        """Get results from database filtering by dungeon id.
+
+        :param dungeon_id: Dungeon id to be used in the filter.
+        """
         statement = select(self.model).where(
             self.model.dungeon_id == dungeon_id
             and self.deleted_at == None,  # type: ignore # noqa
@@ -40,6 +52,11 @@ class DungeonHistoryRepository(BaseRepository):
         player_id: str,
         dungeon_id: str,
     ) -> DungeonHistoryModel:
+        """Get results from database filtering by player and level id.
+
+        :param player_id: Player id to be used in the filter.
+        :param dungeon_id: Dungeon id to be used in the filter.
+        """
         statement = select(self.model).where(
             self.model.player_id == player_id
             and self.model.dungeon_id == dungeon_id

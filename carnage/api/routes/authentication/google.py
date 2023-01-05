@@ -16,6 +16,10 @@ class GoogleAuthenticationRoute(BaseAuthentication):
         name: str = "google",
         config: dict[str, Any] = {},
     ) -> None:
+        """Constructor for HTTP API route.
+
+        :param name: The name of the route
+        """
         super().__init__(
             name=name,
             config=config
@@ -45,6 +49,10 @@ class GoogleAuthenticationRoute(BaseAuthentication):
         )
 
     async def google_login(self, request: Request) -> RedirectResponse:
+        """Async method that handle the initial gitlab login page.
+
+        :param request: The data send throught the request.
+        """
         redirect_uri = request.url_for("google_auth")
         return await self.oauth.google.authorize_redirect(
             request,
@@ -52,6 +60,10 @@ class GoogleAuthenticationRoute(BaseAuthentication):
         )
 
     async def google_auth(self, request: Request) -> str:
+        """Async method that handles the authentication for google.
+
+        :param request: The data send throught the request.
+        """
         token = await self.oauth.google.authorize_access_token(request)
         claims = token["userinfo"]
 

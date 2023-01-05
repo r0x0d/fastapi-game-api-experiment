@@ -1,4 +1,4 @@
-"""add players table
+"""add players table.
 
 Revision ID: 23800d534c41
 Revises: a0f9352b5811

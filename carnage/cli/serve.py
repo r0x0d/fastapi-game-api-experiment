@@ -14,9 +14,11 @@ def add_subparser(
     parents: list[argparse.ArgumentParser],
 ) -> None:
     """Add all init parsers.
+
     Args:
+    ----
         subparsers: subparser we are going to attach to
-        parents: Parent parsers, needed to ensure tree structure in argparse
+        parents: Parent parsers, needed to ensure tree structure in argparse.
     """
     serve_parser = subparsers.add_parser(
         name="serve",

@@ -1,4 +1,4 @@
-"""add vocation spells table
+"""add vocation spells table.
 
 Revision ID: dc8743764847
 Revises: 08503cbf8344

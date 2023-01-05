@@ -1,4 +1,4 @@
-"""add spell schools table
+"""add spell schools table.
 
 Revision ID: cb4455d1fe66
 Revises: 9c1fb4c99354

@@ -1,4 +1,4 @@
-"""add item base types table
+"""add item base types table.
 
 Revision ID: 4d66aa8691ab
 Revises: e2dc8ed298d7

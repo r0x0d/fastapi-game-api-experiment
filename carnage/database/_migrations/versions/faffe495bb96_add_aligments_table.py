@@ -1,4 +1,4 @@
-"""Add aligments table
+"""Add aligments table.
 
 Revision ID: faffe495bb96
 Revises: 3952c0015b7e

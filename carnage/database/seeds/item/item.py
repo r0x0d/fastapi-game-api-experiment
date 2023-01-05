@@ -29,12 +29,17 @@ class ItemSeed(BaseSeed):
         self,
         repository: Type[ItemRepository] = ItemRepository,
     ) -> None:
+        """Default class constructor.
+
+        :param repository: The repository used to issue queries.
+        """
         super().__init__(repository=repository)
         self.item_rarity_repository = ItemRarityRepository()
         self.item_base_type_repository = ItemBaseTypeRepository()
         self.item_magical_type_repository = ItemMagicalTypeRepository()
 
     def seed(self) -> None:
+        """Method to seed data into the database."""
         item_rarity = self.item_rarity_repository.select_first()
         item_base_type = self.item_base_type_repository.select_first()
         item_magical_type = self.item_magical_type_repository.select_first()

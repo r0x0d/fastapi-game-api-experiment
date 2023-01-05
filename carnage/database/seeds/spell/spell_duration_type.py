@@ -39,4 +39,8 @@ class SpellDurationTypeSeed(BaseSeed):
             SpellDurationTypeRepository
         ] = SpellDurationTypeRepository,
     ) -> None:
+        """Default class constructor.
+
+        :param repository: The repository used to issue queries.
+        """
         super().__init__(repository=repository)

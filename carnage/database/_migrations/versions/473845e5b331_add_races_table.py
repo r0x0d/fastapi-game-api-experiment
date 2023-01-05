@@ -1,4 +1,4 @@
-"""add races table
+"""add races table.
 
 Revision ID: 473845e5b331
 Revises: 47f45d3c3177

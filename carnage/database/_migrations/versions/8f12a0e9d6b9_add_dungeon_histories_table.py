@@ -1,4 +1,4 @@
-"""add dungeon histories table
+"""add dungeon histories table.
 
 Revision ID: 8f12a0e9d6b9
 Revises: dc5cda6ee935

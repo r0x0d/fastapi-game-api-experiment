@@ -6,4 +6,8 @@ from carnage.database.repository.base import BaseRepository
 
 class DungeonRepository(BaseRepository):
     def __init__(self, model: Type[DungeonModel] = DungeonModel) -> None:
+        """Default constructor for repository.
+
+        :param model: The model used in the repository.
+        """
         super().__init__(model)
