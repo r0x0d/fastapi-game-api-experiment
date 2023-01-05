@@ -1,4 +1,4 @@
-"""add dungeon difficulties table
+"""add dungeon difficulties table.
 
 Revision ID: 105b44e2cd80
 Revises: dc8743764847

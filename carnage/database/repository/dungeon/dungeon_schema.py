@@ -12,6 +12,10 @@ class DungeonSchemaRepository(BaseRepository):
         self,
         model: Type[DungeonSchemaModel] = DungeonSchemaModel,
     ) -> None:
+        """Default constructor for repository.
+
+        :param model: The model used in the repository.
+        """
         super().__init__(model)
 
     @lru_cache
@@ -19,6 +23,11 @@ class DungeonSchemaRepository(BaseRepository):
         self,
         dungeon_difficulty_id: str,
     ) -> list[DungeonSchemaModel]:
+        """Get results from database filtering by dungeon difficulty id.
+
+        :param dungeon_difficulty_id: Dungeon difficulty id to be used in the
+            filter.
+        """
         statement = select(self.model).where(
             self.model.dungeon_difficulty_id == dungeon_difficulty_id
             and self.deleted_at == None,  # type: ignore # noqa

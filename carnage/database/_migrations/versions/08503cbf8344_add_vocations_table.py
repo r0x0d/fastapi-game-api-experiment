@@ -1,4 +1,4 @@
-"""add vocations table
+"""add vocations table.
 
 Revision ID: 08503cbf8344
 Revises: 473845e5b331

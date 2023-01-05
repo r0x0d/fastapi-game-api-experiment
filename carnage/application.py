@@ -27,6 +27,10 @@ from carnage.constants import CARNAGE_ENVIRONMENT, CARNAGE_SESSION_SECRET_KEY
 
 
 def add_router(app: FastAPI) -> None:
+    """Add routes to the main instance of FastAPI.
+
+    :param app: The FastAPI instance used.
+    """
     [
         app.include_router(router=router, prefix="/api/v1")
         for router in [
@@ -67,6 +71,10 @@ def add_router(app: FastAPI) -> None:
 
 
 def add_middleware(app: FastAPI) -> None:
+    """Add FastAPI middlewares to the main application.
+
+    :param app: The FastAPI instance used.
+    """
     app.add_middleware(
         SessionMiddleware,
         secret_key=CARNAGE_SESSION_SECRET_KEY,
@@ -90,7 +98,7 @@ def add_middleware(app: FastAPI) -> None:
 
 
 def create_app() -> FastAPI:
-    """."""
+    """Create the initial FastAPI application."""
     app = FastAPI()
 
     add_router(app)

@@ -10,6 +10,10 @@ from carnage.constants import JWT_ALGORITHM, JWT_SECRET_KEY
 
 
 def generate_jwt(claims: dict[str, Any]) -> str:
+    """Generate a valid jwt token based on the claims provided.
+
+    :param claims: Dictionary with claims from login providers.
+    """
     if "aud" in claims:
         claims.pop("aud")
 
@@ -33,9 +37,17 @@ def generate_jwt(claims: dict[str, Any]) -> str:
 
 class BaseJWTBearer(HTTPBearer):
     def __init__(self, auto_error: bool = True):
+        """Base class that handles the JWT Bearer authentication workflow.
+
+        :param auto_error: If the class should error in case of any mismatch.
+        """
         super().__init__(auto_error=auto_error)
 
     def verify_jwt(self, token: str) -> bool:
+        """Verify if the JWT token passed on the request is valid or not.
+
+        :param token: The token to be analyzed.
+        """
         try:
             decoded_token = jwt.decode(
                 token=token,
@@ -51,9 +63,19 @@ class BaseJWTBearer(HTTPBearer):
 
 class APIJWTBearer(BaseJWTBearer):
     def __init__(self, auto_error: bool = True):
+        """API class to handle JWT Bearer authentication throught requests.
+
+        :param auto_error: If the class should error in case of any mismatch.
+        """
         super().__init__(auto_error=auto_error)
 
     async def __call__(self, request: Request) -> bool:
+        """Asynchronous handler for JWT Token verification.
+
+        :param request: The request that contains the token.
+        :raises HTTPException: In case of the token not being valid or the
+            request is wrong.
+        """
         credentials: HTTPAuthorizationCredentials = await super().__call__(
             request,
         )
@@ -73,12 +95,22 @@ class APIJWTBearer(BaseJWTBearer):
 
 class WebSocketJWTBearer(BaseJWTBearer):
     def __init__(self, auto_error: bool = True):
+        """Websocket class to handle JWT authentication throught requests.
+
+        :param auto_error: If the class should error in case of any mismatch.
+        """
         super().__init__(auto_error=auto_error)
 
     async def __call__(
         self,
         token: str | None = Query(default=None),
     ) -> bool:
+        """Asynchronous handler for JWT Token verification.
+
+        :param token: The token itself to be analyzed.
+        :raises HTTPException: In case of the token not being valid or the
+            request is wrong.
+        """
         if token:
             if not self.verify_jwt(token):
                 raise HTTPException(

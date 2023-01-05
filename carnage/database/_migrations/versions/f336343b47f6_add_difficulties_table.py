@@ -1,4 +1,4 @@
-"""add difficulties table
+"""add difficulties table.
 
 Revision ID: f336343b47f6
 Revises: 8f12a0e9d6b9

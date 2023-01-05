@@ -1,4 +1,4 @@
-"""Add sizes table
+"""Add sizes table.
 
 Revision ID: 658ed39ab41d
 Revises:

@@ -9,4 +9,8 @@ class ConditionRepository(BaseRepository):
         self,
         model: Type[ConditionModel] = ConditionModel,
     ) -> None:
+        """Default constructor for repository.
+
+        :param model: The model used in the repository.
+        """
         super().__init__(model)

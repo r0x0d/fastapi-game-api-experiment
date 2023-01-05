@@ -33,4 +33,8 @@ class SpellRangeTypeSeed(BaseSeed):
         self,
         repository: Type[SpellRangeTypeRepository] = SpellRangeTypeRepository,
     ) -> None:
+        """Default class constructor.
+
+        :param repository: The repository used to issue queries.
+        """
         super().__init__(repository=repository)

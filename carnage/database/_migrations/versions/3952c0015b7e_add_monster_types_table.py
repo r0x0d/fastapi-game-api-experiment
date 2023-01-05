@@ -1,4 +1,4 @@
-"""Add monster types table
+"""Add monster types table.
 
 Revision ID: 3952c0015b7e
 Revises: 658ed39ab41d

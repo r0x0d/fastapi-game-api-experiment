@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 from fastapi.responses import HTMLResponse
 
+#: Template for the websocket page. Used only for debug purposes.
 WEBSOCKET_PAGE_TEMPLATE: str = """
 <!DOCTYPE html>
 <html>
@@ -48,7 +49,7 @@ WEBSOCKET_PAGE_TEMPLATE: str = """
 
 class DebugRoute:
     def __init__(self) -> None:
-
+        """Route that is used only for debug purposes."""
         self.router = APIRouter(
             prefix="/debug",
             tags=["debug"],
@@ -68,6 +69,7 @@ class DebugRoute:
         )
 
     async def socials_auth(self) -> HTMLResponse:
+        """Async method that defines the social logins authentication."""
         template = '<li><a href="/api/v1/authentication/{}/login">{}</a></li>'
         html = [
             template.format(social, social.title())
@@ -76,6 +78,7 @@ class DebugRoute:
         return HTMLResponse("<ul>{}</ul>".format("".join(html)))
 
     async def global_chat(self) -> HTMLResponse:
+        """Async method that defines the chat."""
         html = WEBSOCKET_PAGE_TEMPLATE % (
             "Global Chat",
             "Global Chat",

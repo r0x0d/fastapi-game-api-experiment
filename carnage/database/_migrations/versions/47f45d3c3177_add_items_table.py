@@ -1,4 +1,4 @@
-"""add items table
+"""add items table.
 
 Revision ID: 47f45d3c3177
 Revises: 87b7c15b5878

@@ -1,4 +1,4 @@
-"""add spell duration types table
+"""add spell duration types table.
 
 Revision ID: 270b23de31a6
 Revises: 1ce1c2b396e4

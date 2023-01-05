@@ -1,4 +1,4 @@
-"""add dungeon schemas table
+"""add dungeon schemas table.
 
 Revision ID: 8a31d6b9e7ad
 Revises: 105b44e2cd80

@@ -140,11 +140,15 @@ class DungeonSchemaSeed(BaseSeed):
         self,
         repository: Type[DungeonSchemaRepository] = DungeonSchemaRepository,
     ) -> None:
+        """Default class constructor.
+
+        :param repository: The repository used to issue queries.
+        """
         super().__init__(repository=repository)
         self.dungeon_difficulty_repository = DungeonDifficultyRepository()
 
     def seed(self) -> None:
-
+        """Method to seed data into the database."""
         for item in self.data:
             dungeon_difficulty = (
                 self.dungeon_difficulty_repository.select_by_level(

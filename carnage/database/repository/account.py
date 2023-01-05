@@ -12,10 +12,18 @@ class AccountRepository(BaseRepository):
         self,
         model: Type[AccountModel] = AccountModel,
     ) -> None:
+        """Default constructor for repository.
+
+        :param model: The model used in the repository.
+        """
         super().__init__(model)
 
     @lru_cache
     def select_by_username(self, username: str) -> AccountModel:
+        """Get results from database filtering by username.
+
+        :param username: Username to be used in the filter.
+        """
         statement = select(self.model).where(
             self.model.username == username
             and self.deleted_at == None,  # type: ignore # noqa
@@ -26,6 +34,10 @@ class AccountRepository(BaseRepository):
 
     @lru_cache
     def select_by_nickname(self, nickname: str) -> AccountModel:
+        """Get results from database filtering by nickname.
+
+        :param nickanem: Nickname to be used in the filter.
+        """
         statement = select(self.model).where(
             self.model.nickname == nickname
             and self.deleted_at == None,  # type: ignore # noqa

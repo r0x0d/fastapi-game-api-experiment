@@ -1,4 +1,4 @@
-"""add dungeons table
+"""add dungeons table.
 
 Revision ID: a0f9352b5811
 Revises: 8a31d6b9e7ad

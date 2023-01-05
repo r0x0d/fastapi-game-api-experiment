@@ -15,9 +15,9 @@ def add_subparser(
     parents: list[argparse.ArgumentParser],
 ) -> None:
     """Add all init parsers.
-    Args:
-        subparsers: subparser we are going to attach to
-        parents: Parent parsers, needed to ensure tree structure in argparse
+
+    :param subparsers: subparser we are going to attach to
+    :param parents: Parent parsers, needed to ensure tree structure argparse.
     """
     seed_parser = subparsers.add_parser(
         name="seed",
@@ -46,6 +46,10 @@ def add_subparser(
 
 
 def _print_seeds_table(manager: SeedManager) -> None:
+    """Print the seed table available for seeding.
+
+    :param manager: The seed manager class that handles the seed order.
+    """
     table = Table(title="Available Seeds")
 
     table.add_column("Name", justify="left", style="cyan", no_wrap=False)
@@ -58,6 +62,10 @@ def _print_seeds_table(manager: SeedManager) -> None:
 
 
 def run(args: argparse.Namespace) -> None:
+    """Default method that is executed that is tied to the seed command.
+
+    :param args: Arguments passed down to the command.
+    """
     manager = SeedManager()
 
     if args.list_seeds:

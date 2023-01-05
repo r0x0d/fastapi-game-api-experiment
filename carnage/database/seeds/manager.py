@@ -35,7 +35,15 @@ logger = logging.getLogger(__name__)
 
 class SeedManager:
     def seed_mapping(self) -> dict[str, BaseSeed]:
-        # WARNING: Do not change the order of this dictionary.
+        """Method that maps the current database seeds and their order.
+
+        .. note::
+            Do not change the order of the seeds as they have a specific
+            dependency order to run.
+
+        :return: A dictionary with the seed name as key and a seed class
+        instance as value.
+        """
         return {
             AccountSeed.name: AccountSeed(),
             AligmentSeed.name: AligmentSeed(),
@@ -68,7 +76,20 @@ class SeedManager:
         all_seeds: bool = True,
         seed_name: str | None = None,
     ) -> None:
-        """ """
+        """Method that seeds the database.
+
+        This method can run only one seed or multiple if needed.
+
+        .. note::
+            If both `all_seeds` and `seed_name` are specified, then the program
+            will crash and exit, as they cannot be used together.
+
+        :param all_seeds: A boolean flag that indicates if all seeds needs to
+        run.
+        :param seed_name: A seed name to run only one seed,
+        :raises AssertionError: If the `seed_name` passed to this method does
+        not exist.
+        """
         seeds_mapping = self.seed_mapping()
         if all_seeds:
             for _, seed in seeds_mapping.items():

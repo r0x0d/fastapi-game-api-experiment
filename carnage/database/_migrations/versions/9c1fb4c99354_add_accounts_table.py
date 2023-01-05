@@ -1,4 +1,4 @@
-"""add accounts table
+"""add accounts table.
 
 Revision ID: 9c1fb4c99354
 Revises: 1e5ec8a69d2a

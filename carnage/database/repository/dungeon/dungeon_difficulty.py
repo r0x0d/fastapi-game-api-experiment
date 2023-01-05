@@ -14,10 +14,18 @@ class DungeonDifficultyRepository(BaseRepository):
         self,
         model: Type[DungeonDifficultyModel] = DungeonDifficultyModel,
     ) -> None:
+        """Default constructor for repository.
+
+        :param model: The model used in the repository.
+        """
         super().__init__(model)
 
     @lru_cache
     def select_by_level(self, level: str) -> DungeonDifficultyModel:
+        """Get results from database filtering by level.
+
+        :param level: Level to be used in the filter.
+        """
         statement = select(self.model).where(
             self.model.level == level and self.deleted_at == None,  # type: ignore # noqa
         )

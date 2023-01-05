@@ -23,6 +23,10 @@ class DungeonDifficultySeed(BaseSeed):
     ]
 
     def validate_seed(self, seed: dict[str, str]) -> bool:
+        """Validate if a seed already exists in the database.
+
+        :param seed: The current seed being seeded.
+        """
         logger.debug(
             "Validating the current seed with level: '%s'",
             seed["level"],
@@ -43,4 +47,8 @@ class DungeonDifficultySeed(BaseSeed):
             DungeonDifficultyRepository
         ] = DungeonDifficultyRepository,
     ) -> None:
+        """Default class constructor.
+
+        :param repository: The repository used to issue queries.
+        """
         super().__init__(repository=repository)

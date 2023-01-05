@@ -9,4 +9,8 @@ class ItemMagicalTypeRepository(BaseRepository):
         self,
         model: Type[ItemMagicalTypeModel] = ItemMagicalTypeModel,
     ) -> None:
+        """Default constructor for repository.
+
+        :param model: The model used in the repository.
+        """
         super().__init__(model)

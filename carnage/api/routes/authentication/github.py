@@ -1,6 +1,5 @@
 import random
 import string
-from typing import Any
 
 import httpx
 from fastapi import APIRouter, Request
@@ -15,12 +14,14 @@ class GithubAuthenticationRoute(BaseAuthentication):
     def __init__(
         self,
         name: str = "github",
-        config: dict[str, Any] = {},
     ) -> None:
+        """Constructor for HTTP API route.
+
+        :param name: The name of the route
+        """
         super().__init__(
             name=name,
-            config=config
-            or {
+            config={
                 "api_base_url": "https://api.github.com/",
                 "access_token_url": "https://github.com/login/oauth/access_token",  # noqa
                 "authorize_url": "https://github.com/login/oauth/authorize",
@@ -47,6 +48,10 @@ class GithubAuthenticationRoute(BaseAuthentication):
         )
 
     async def github_login(self, request: Request) -> RedirectResponse:
+        """Async method that handle the initial github login page.
+
+        :param request: The data send throught the request.
+        """
         redirect_uri = request.url_for("github_auth")
         return await self.oauth.github.authorize_redirect(
             request,
@@ -54,6 +59,10 @@ class GithubAuthenticationRoute(BaseAuthentication):
         )
 
     async def github_auth(self, request: Request) -> str:
+        """Async method that handles the authentication for github.
+
+        :param request: The data send throught the request.
+        """
         token = await self.oauth.github.authorize_access_token(request)
 
         userinfo = httpx.get(

@@ -1,4 +1,4 @@
-"""add game modes table
+"""add game modes table.
 
 Revision ID: f4f1c4da349e
 Revises: f336343b47f6

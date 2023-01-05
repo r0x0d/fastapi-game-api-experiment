@@ -12,10 +12,18 @@ class VocationSpellRepository(BaseRepository):
         self,
         model: Type[VocationSpellModel] = VocationSpellModel,
     ) -> None:
+        """Default constructor for repository.
+
+        :param model: The model used in the repository.
+        """
         super().__init__(model)
 
     @lru_cache
     def select_by_spell_id(self, spell_id: str) -> VocationSpellModel:
+        """Get results from database filtering by spell id.
+
+        :param spell_id: Spell id to be used in the filter.
+        """
         statement = select(self.model).where(
             self.model.spell_id == spell_id
             and self.deleted_at == None,  # type: ignore # noqa

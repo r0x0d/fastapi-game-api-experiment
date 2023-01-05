@@ -9,4 +9,8 @@ class SpellRepository(BaseRepository):
         self,
         model: Type[SpellModel] = SpellModel,
     ) -> None:
+        """Default constructor for repository.
+
+        :param model: The model used in the repository.
+        """
         super().__init__(model)

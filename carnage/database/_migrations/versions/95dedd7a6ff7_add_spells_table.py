@@ -1,4 +1,4 @@
-"""add spells table
+"""add spells table.
 
 Revision ID: 95dedd7a6ff7
 Revises: 270b23de31a6

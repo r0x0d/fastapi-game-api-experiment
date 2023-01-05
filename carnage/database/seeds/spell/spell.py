@@ -22,12 +22,17 @@ class SpellSeed(BaseSeed):
         self,
         repository: Type[SpellRepository] = SpellRepository,
     ) -> None:
+        """Default class constructor.
+
+        :param repository: The repository used to issue queries.
+        """
         super().__init__(repository=repository)
         self.spell_school_repository = SpellSchoolRepository()
         self.spell_duration_type_repository = SpellDurationTypeRepository()
         self.spell_range_type_repository = SpellRangeTypeRepository()
 
     def seed(self) -> None:
+        """Method to seed data into the database."""
         spell_school = self.spell_school_repository.select_first()
         spell_duration_type = (
             self.spell_duration_type_repository.select_first()

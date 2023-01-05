@@ -22,6 +22,10 @@ class AccountSeed(BaseSeed):
     ]
 
     def validate_seed(self, seed: dict[str, str]) -> bool:
+        """Validate if a seed already exists in the database.
+
+        :param seed: The current seed being seeded.
+        """
         logger.debug(
             "Validating the current seed with username: '%s'",
             seed["username"],
@@ -40,4 +44,8 @@ class AccountSeed(BaseSeed):
         self,
         repository: Type[AccountRepository] = AccountRepository,
     ) -> None:
+        """Default class constructor.
+
+        :param repository: The repository used to issue queries.
+        """
         super().__init__(repository=repository)

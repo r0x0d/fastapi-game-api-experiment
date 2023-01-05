@@ -70,12 +70,17 @@ class MonsterSeed(BaseSeed):
         self,
         repository: Type[MonsterRepository] = MonsterRepository,
     ) -> None:
+        """Default class constructor.
+
+        :param repository: The repository used to issue queries.
+        """
         super().__init__(repository=repository)
         self.size_repository = SizeRepository()
         self.monster_type_repository = MonsterTypeRepository()
         self.aligment_repository = AligmentRepository()
 
     def seed(self) -> None:
+        """Method to seed data into the database."""
         aligment = self.aligment_repository.select_first()
         size = self.size_repository.select_first()
         monster_type = self.monster_type_repository.select_first()

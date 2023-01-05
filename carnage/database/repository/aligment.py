@@ -8,4 +8,8 @@ class AligmentRepository(BaseRepository):
         self,
         model: BaseModel = AligmentModel,
     ) -> None:
+        """Default constructor for repository.
+
+        :param model: The model used in the repository.
+        """
         super().__init__(model)

@@ -23,11 +23,19 @@ class VocationSpellSeed(BaseSeed):
         self,
         repository: Type[VocationSpellRepository] = VocationSpellRepository,
     ) -> None:
+        """Default class constructor.
+
+        :param repository: The repository used to issue queries.
+        """
         super().__init__(repository=repository)
         self.vocation_repository = VocationRepository()
         self.spell_repository = SpellRepository()
 
     def validate_seed(self, seed: dict[str, str]) -> bool:
+        """Validate if a seed already exists in the database.
+
+        :param seed: The current seed being seeded.
+        """
         logger.debug(
             "Validating the current seed with spell_id: '%s'",
             seed["spell_id"],
@@ -43,6 +51,7 @@ class VocationSpellSeed(BaseSeed):
         return False
 
     def seed(self) -> None:
+        """Method to seed data into the database."""
         vocation = self.vocation_repository.select_first()
         spell = self.spell_repository.select_first()
 

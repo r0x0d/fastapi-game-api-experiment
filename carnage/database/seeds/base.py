@@ -14,9 +14,17 @@ class BaseSeed:
         self,
         repository: Type[BaseRepository] = BaseRepository,
     ) -> None:
+        """Default class constructor.
+
+        :param repository: The repository used to issue queries.
+        """
         self.repository = repository()
 
     def validate_seed(self, seed: dict[str, str]) -> bool:
+        """Validate if a seed already exists in the database.
+
+        :param seed: The current seed being seeded.
+        """
         logger.debug(
             "Validating the current seed with name: '%s'",
             seed["name"],
@@ -30,6 +38,7 @@ class BaseSeed:
         return False
 
     def seed(self) -> None:
+        """Method to seed data into the database."""
         if not self.data:
             raise ValueError(f"No seed data found for {self.name}")
 
