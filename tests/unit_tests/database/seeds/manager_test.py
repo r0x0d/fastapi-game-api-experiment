@@ -6,7 +6,7 @@ import pytest
 from carnage.database.seeds import manager
 
 
-def test_seed_manager_init(database_session_mock):
+def test_seed_manager_can_initialize(database_session_mock):
     seed = manager.SeedManager()
 
     assert isinstance(seed, manager.SeedManager)

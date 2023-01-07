@@ -32,10 +32,13 @@ def upgrade() -> None:
         sa.Column("strength", sa.Integer()),
         sa.Column("dexterity", sa.Integer()),
         sa.Column("intelligence", sa.Integer()),
+        sa.Column("luck", sa.Integer()),
         sa.Column("base_damage", sa.Integer()),
         sa.Column("base_magical_damage", sa.Integer()),
         sa.Column("base_armor_resistance", sa.Integer()),
         sa.Column("base_magical_resistance", sa.Integer()),
+        sa.Column("attack_threshold", sa.Float(), nullable=False),
+        sa.Column("critical_attack_threshold", sa.Float(), nullable=False),
         sa.Column(
             "created_at",
             sa.DateTime(),
