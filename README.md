@@ -2,7 +2,6 @@
 [![Coverage](https://github.com/r0x0d/carnage/actions/workflows/coverage.yml/badge.svg)](https://github.com/r0x0d/carnage/actions/workflows/coverage.yml)
 [![codecov](https://codecov.io/gh/r0x0d/carnage/branch/main/graph/badge.svg?token=9IDP4U4E3T)](https://codecov.io/gh/r0x0d/carnage)
 [![Code Scanning - Action](https://github.com/r0x0d/carnage/actions/workflows/codeql.yml/badge.svg)](https://github.com/r0x0d/carnage/actions/workflows/codeql.yml)
-[![Bors enabled](https://bors.tech/images/badge_small.svg)](https://app.bors.tech/repositories/55439)
 
 # carnage
 
