@@ -13,8 +13,8 @@ class MonsterSeed(BaseSeed):
     name: str = "monster"
     data: list[dict[str, Any]] = [
         {
-            "name": "Test",
-            "description": "Test description",
+            "name": "Dragon",
+            "description": "A mighty dragon.",
             "hitpoints": 200,
             "strength": 10,
             "dexterity": 10,
