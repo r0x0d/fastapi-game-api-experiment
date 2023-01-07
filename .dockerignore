@@ -1,11 +1,14 @@
+.github
 venv
 .venv
 .tox
 .vscode
 .pytest_cache
 .mypy_cache
+.ruff_cache
 htmlcov
 .git
 dist
 .coverage
 coverage.xml
+tests

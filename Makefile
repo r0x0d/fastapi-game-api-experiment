@@ -25,10 +25,14 @@ clean:
 	find . -name '*.pyc' -exec rm -f {} +
 	find . -name '*.pyo' -exec rm -f {} +
 	find . -name '*~' -exec rm -f  {} +
+	find . -name '.coverage' -exec rm -f  {} +
+	find . -name 'coverage.xml' -exec rm -f  {} +
 	rm -rf build/
 	rm -rf .mypy_cache/
 	rm -rf dist/
 	rm -rf docs/build
+	rm -rf .tox
+	rm -rf .ruff_cache
 
 setup:
 ifneq ($(shell test -s .env && echo -n yes),yes)
@@ -49,9 +53,9 @@ setup-db: setup
 	alembic upgrade heads
 	carnage --debug seed --all
 
-test: setup clean
+test: setup
 	pytest tests
 
-test-coverage: setup clean
+test-coverage: setup
 	tox
 	coverage html
