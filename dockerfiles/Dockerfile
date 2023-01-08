@@ -1,32 +1,41 @@
 FROM python:3.11-slim as base
 
-ENV DEBIAN_FRONTEND="noninteractive"
+# Skip all interaction with apt
+ENV DEBIAN_FRONTEND="noninteractive" \
+    # Update $PATH preferences
+    PATH="/home/carnage/.local/bin:/opt/venv/bin:/root/.local/bin:$PATH" \
+    # Set language preferences to C.UTF-8
+    LANGUAGE="C.UTF-8" \
+    LANG="C.UTF-8" \
+    LC_ALL="C.UTF-8" \
+    LC_CTYPE="C.UTF-8" \
+    LC_MESSAGES="C.UTF-8"
 
-# make sure we use the virtualenv
-ENV PATH="/opt/venv/bin:$PATH"
+SHELL ["/bin/bash", "-o", "pipefail", "-o", "errexit", "-o", "nounset", "-o", "nolog", "-c"]
+
+# Create the user
+RUN groupadd --gid 1000 carnage \
+    && useradd --uid 1000 --gid 1000 -m carnage
 
 FROM base as build
 
-ENV PATH="/root/.local/bin:$PATH"
-
 WORKDIR /build
-
-COPY ["./pyproject.toml", "./poetry.lock", "./LICENSE", "./README.md", "/build/"]
+COPY ["pyproject.toml", "README.md", "LICENSE", "/build/"]
 ADD carnage /build/carnage
 
-RUN apt update -y \
-    && apt install curl --no-install-recommends -y \
-    && curl -sSL https://install.python-poetry.org/ | python \
-    && python -m venv /opt/venv \
-    && . /opt/venv/bin/activate && poetry install --no-dev --no-root --no-interaction \
-    && . /opt/venv/bin/activate && poetry build -f wheel -n \
-    && . /opt/venv/bin/activate && pip install --no-deps dist/carnage*.whl \
-    && rm -rf dist *.egg-info
+RUN python -m venv --copies /opt/venv
+RUN . /opt/venv/bin/activate && pip install --no-cache-dir --upgrade pip build && \
+    . /opt/venv/bin/activate && python -m build
 
 FROM base as runner
 
-COPY --from=build /opt/venv /opt/venv
+COPY --chown=carnage:carnage --from=build /build/dist /tmp
 
-RUN useradd -rm -d /carnage -s /sbin/nologin -g root -u 1001 carnage && groupadd -g 1001 carnage
+USER carnage
 
-ENTRYPOINT ["carnage", "serve"]
+RUN pip install --user --no-cache-dir /tmp/*.whl && \
+    rm -rf /tmp/*
+
+EXPOSE 5050
+
+CMD [ "carnage", "serve" ]

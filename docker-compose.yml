@@ -3,6 +3,7 @@ version: '3'
 services:
   carnage:
     image: carnage:latest
+    init: true
     build:
       dockerfile: dockerfiles/Dockerfile
       context: .
@@ -10,11 +11,12 @@ services:
       - 5050:5050
     env_file:
       - .env
-    depends_on:
-      - database
+    # depends_on:
+    #   - database
 
   database:
     image: postgres:latest
+    init: true
     ports:
       - 5432:5432
 
@@ -25,6 +27,7 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4:latest
+    init: true
     restart: always
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@carnage.world
