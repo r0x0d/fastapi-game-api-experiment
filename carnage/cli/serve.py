@@ -15,10 +15,8 @@ def add_subparser(
 ) -> None:
     """Add all init parsers.
 
-    Args:
-    ----
-        subparsers: subparser we are going to attach to
-        parents: Parent parsers, needed to ensure tree structure in argparse.
+    :param subparsers: subparser we are going to attach to
+    :param parents: Parent parsers, needed to ensure tree structure argparse.
     """
     serve_parser = subparsers.add_parser(
         name="serve",
@@ -41,7 +39,10 @@ def add_subparser(
 
 
 def run(args: argparse.Namespace) -> None:
-    """."""
+    """Default method that is executed that is tied to the serve command.
+
+    :param args: Arguments passed down to the command.
+    """
     logger.debug(
         "Serving carnage at host '%s' with port '%s'.",
         (args.host, args.port),
