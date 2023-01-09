@@ -43,7 +43,7 @@ find = { exclude = ["tests*"] }
 line-length = 79
 
 select = ["F", "E", "W", "I", "D", "PLC", "PLE", "PLR", "PLW"]
-ignore = ["D213", "D100", "D101"]
+ignore = ["D203", "D213", "D100", "D101"]
 
 # Exclude a variety of commonly ignored directories.
 exclude = [
