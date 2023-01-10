@@ -17,7 +17,7 @@ class DungeonSchemaRoute(BaseRoute):
     def __init__(
         self,
         name: str = "dungeon_schema",
-        tags: list[str] = ["dungeon", "dungeon_schema"],
+        tags: list[str] = ["dungeon", "dungeon-schema"],
         repository: Type[DungeonSchemaRepository] = DungeonSchemaRepository,
     ) -> None:
         """Constructor for HTTP API route.

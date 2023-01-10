@@ -17,7 +17,7 @@ class DungeonDifficultyRoute(BaseRoute):
     def __init__(
         self,
         name: str = "dungeon_difficulty",
-        tags: list[str] = ["dungeon", "dungeon_difficulty"],
+        tags: list[str] = ["dungeon", "dungeon-difficulty"],
         repository: Type[
             DungeonDifficultyRepository
         ] = DungeonDifficultyRepository,

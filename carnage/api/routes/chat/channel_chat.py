@@ -17,7 +17,7 @@ class ChannelChatRoute(BaseRoute):
     def __init__(
         self,
         name: str = "channel_chat",
-        tags: list[str] = ["channel_chat"],
+        tags: list[str] = ["channel-chat"],
         repository: Type[ChannelChatRepository] = ChannelChatRepository,
     ) -> None:
         """Constructor for HTTP API route.
