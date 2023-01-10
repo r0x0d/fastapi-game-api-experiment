@@ -68,7 +68,7 @@ def main() -> int:
         logger.error(
             "Failed to run CLI command due to an exception.",
         )
-        logger.exception("%s: %s", (e.__class__.__name__, e))
+        logger.exception("%s", e)
         return 1
 
     return 0
