@@ -18,6 +18,8 @@ class VocationSeed(BaseSeed):
             "base_magical_damage": 10,
             "base_armor_resistance": 10,
             "base_magical_resistance": 10,
+            "attack_threshold": 90,
+            "critical_attack_threshold": 50,
         },
     ]
 

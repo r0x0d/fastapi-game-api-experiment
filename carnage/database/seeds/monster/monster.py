@@ -24,6 +24,8 @@ class MonsterSeed(BaseSeed):
             "base_armor_resistance": 10,
             "base_magical_resistance": 10,
             "is_boss": False,
+            "attack_threshold": 90,
+            "critical_attack_threshold": 50,
         },
         {
             "name": "Test2",
@@ -37,6 +39,8 @@ class MonsterSeed(BaseSeed):
             "base_armor_resistance": 10,
             "base_magical_resistance": 10,
             "is_boss": False,
+            "attack_threshold": 90,
+            "critical_attack_threshold": 50,
         },
         {
             "name": "Test3",
@@ -50,6 +54,8 @@ class MonsterSeed(BaseSeed):
             "base_armor_resistance": 10,
             "base_magical_resistance": 10,
             "is_boss": False,
+            "attack_threshold": 90,
+            "critical_attack_threshold": 50,
         },
         {
             "name": "Test4",
@@ -63,6 +69,8 @@ class MonsterSeed(BaseSeed):
             "base_armor_resistance": 10,
             "base_magical_resistance": 10,
             "is_boss": True,
+            "attack_threshold": 90,
+            "critical_attack_threshold": 50,
         },
     ]
 
