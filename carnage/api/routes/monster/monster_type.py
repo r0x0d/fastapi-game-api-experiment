@@ -19,7 +19,7 @@ class MonsterTypeRoute(BaseRoute):
     def __init__(
         self,
         name: str = "monster_type",
-        tags: list[str] = ["monster", "monster_type"],
+        tags: list[str] = ["monster", "monster-type"],
         repository: Type[MonsterTypeRepository] = MonsterTypeRepository,
     ) -> None:
         """Constructor for HTTP API route.
