@@ -60,7 +60,7 @@ class BaseRoute:
         self.router.add_api_route(
             "/{identifier}",
             self.put,
-            methods=["PUT", "PATCH"],
+            methods=["PUT"],
             status_code=204,
         )
         self.router.add_api_route(
