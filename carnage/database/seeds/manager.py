@@ -42,7 +42,7 @@ class SeedManager:
             dependency order to run.
 
         :return: A dictionary with the seed name as key and a seed class
-        instance as value.
+            instance as value.
         """
         return {
             AccountSeed.name: AccountSeed(),
@@ -85,10 +85,10 @@ class SeedManager:
             will crash and exit, as they cannot be used together.
 
         :param all_seeds: A boolean flag that indicates if all seeds needs to
-        run.
+            run.
         :param seed_name: A seed name to run only one seed,
         :raises AssertionError: If the `seed_name` passed to this method does
-        not exist.
+            not exist.
         """
         seeds_mapping = self.seed_mapping()
         if all_seeds:
