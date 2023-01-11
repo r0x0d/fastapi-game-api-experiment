@@ -24,21 +24,21 @@ def test_generate_jwt(claims):
     assert result is not None
 
 
-@pytest.mark.anyio
+@pytest.mark.anyio()
 async def test_api_jwt_bearer_call(get_fake_jwt):
     request = APIJWTBearerOutput({"Authorization": f"Bearer {get_fake_jwt}"})
     result = await authentication.APIJWTBearer().__call__(request)
     assert result
 
 
-@pytest.mark.anyio
+@pytest.mark.anyio()
 async def test_api_jwt_bearer_call_wrong_scheme(get_fake_jwt):
     request = APIJWTBearerOutput({"Authorization": f"test {get_fake_jwt}"})
     with pytest.raises(HTTPException):
         await authentication.APIJWTBearer().__call__(request)
 
 
-@pytest.mark.anyio
+@pytest.mark.anyio()
 async def test_api_jwt_bearer__call_invalid_token():
     token = authentication.generate_jwt(
         claims={"email": "test@test.com"},
@@ -54,7 +54,7 @@ async def test_api_jwt_bearer__call_invalid_token():
             await authentication.APIJWTBearer().__call__(request)
 
 
-@pytest.mark.anyio
+@pytest.mark.anyio()
 async def test_api_jwt_bearer__call_invalid_authorization_code(get_fake_jwt):
     request = APIJWTBearerOutput({"Authorization": f"test {get_fake_jwt}"})
     with pytest.raises(HTTPException):
@@ -87,13 +87,13 @@ def test_api_jwt_bearer_verify_jwt(use_fake_jwt, expected, get_fake_jwt):
             assert authentication.APIJWTBearer().verify_jwt(token) == expected
 
 
-@pytest.mark.anyio
+@pytest.mark.anyio()
 async def test_websocket_jwt_bearer_call(get_fake_jwt):
     result = await authentication.WebSocketJWTBearer().__call__(get_fake_jwt)
     assert result
 
 
-@pytest.mark.anyio
+@pytest.mark.anyio()
 async def test_websocket_jwt_bearer__call_invalid_token():
     token = authentication.generate_jwt(
         claims={"email": "test@test.com"},
@@ -108,7 +108,7 @@ async def test_websocket_jwt_bearer__call_invalid_token():
             await authentication.WebSocketJWTBearer().__call__(token)
 
 
-@pytest.mark.anyio
+@pytest.mark.anyio()
 async def test_websocket_websocket_jwt_bearer__call_no_token_provided(
     get_fake_jwt,
 ):

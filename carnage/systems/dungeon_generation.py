@@ -51,7 +51,7 @@ def generate_dungeon(
     )
     monsters = tuple(monster_repository.select())
 
-    dungeon = _render_jinja_template(
+    return _render_jinja_template(
         dungeon_schema[0].schema,
         jinja_arguments={
             "randint": randint,
@@ -59,4 +59,3 @@ def generate_dungeon(
             "pick_random_monster": _pick_random_monster,
         },
     )
-    return dungeon

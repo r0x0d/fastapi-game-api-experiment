@@ -1,17 +1,17 @@
 import argparse
 import logging
+from typing import Any
 
 from rich.console import Console
 from rich.table import Table
 
-from carnage.cli import SubparserType
 from carnage.database.seeds.manager import SeedManager
 
 logger = logging.getLogger(__name__)
 
 
 def add_subparser(
-    subparsers: SubparserType,
+    subparsers: Any,
     parents: list[argparse.ArgumentParser],
 ) -> None:
     """Add all init parsers.

@@ -58,7 +58,7 @@ class HTTPXMultipleResponseMock:
             return [data]
 
 
-@pytest.mark.anyio
+@pytest.mark.anyio()
 async def test_github_login(application_instance):
     with mock.patch.object(
         authentication.github.route.oauth.github,
@@ -73,7 +73,7 @@ async def test_github_login(application_instance):
         assert response.status_code == 302
 
 
-@pytest.mark.anyio
+@pytest.mark.anyio()
 async def test_github_auth(application_instance):
     with mock.patch.object(
         authentication.github.route.oauth.github,
@@ -96,7 +96,7 @@ async def test_github_auth(application_instance):
         assert isinstance(response.text, str)
 
 
-@pytest.mark.anyio
+@pytest.mark.anyio()
 async def test_github_auth_no_user_found(application_instance):
     with mock.patch.object(
         authentication.github.route.oauth.github,
@@ -124,7 +124,7 @@ async def test_github_auth_no_user_found(application_instance):
         assert isinstance(response.text, str)
 
 
-@pytest.mark.anyio
+@pytest.mark.anyio()
 async def test_github_auth_no_primary_email(application_instance):
     with mock.patch.object(
         authentication.github.route.oauth.github,
@@ -147,7 +147,7 @@ async def test_github_auth_no_primary_email(application_instance):
         assert isinstance(response.text, str)
 
 
-@pytest.mark.anyio
+@pytest.mark.anyio()
 async def test_github_auth_no_primary_email_at_all(application_instance):
     with mock.patch.object(
         authentication.github.route.oauth.github,

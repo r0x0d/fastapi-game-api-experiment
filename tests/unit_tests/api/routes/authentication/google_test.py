@@ -9,7 +9,7 @@ from tests.unit_tests.conftest import APPLICATION_PREFIX
 BASE_URL = f"http://test/{APPLICATION_PREFIX}/authentication"
 
 
-@pytest.mark.anyio
+@pytest.mark.anyio()
 async def test_google_login(application_instance):
     with mock.patch.object(
         authentication.google.route.oauth.google,
@@ -24,7 +24,7 @@ async def test_google_login(application_instance):
         assert response.status_code == 302
 
 
-@pytest.mark.anyio
+@pytest.mark.anyio()
 async def test_google_auth(application_instance):
     with mock.patch.object(
         authentication.google.route.oauth.google,
@@ -43,7 +43,7 @@ async def test_google_auth(application_instance):
         assert isinstance(response.text, str)
 
 
-@pytest.mark.anyio
+@pytest.mark.anyio()
 async def test_google_auth_no_user_found(application_instance):
     with mock.patch.object(
         authentication.google.route.oauth.google,

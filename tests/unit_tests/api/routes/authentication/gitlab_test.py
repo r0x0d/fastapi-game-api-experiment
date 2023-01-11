@@ -29,7 +29,7 @@ class HTTPXResponseMock:
         }
 
 
-@pytest.mark.anyio
+@pytest.mark.anyio()
 async def test_gitlab_login(application_instance):
     with mock.patch.object(
         authentication.gitlab.route.oauth.gitlab,
@@ -44,7 +44,7 @@ async def test_gitlab_login(application_instance):
         assert response.status_code == 302
 
 
-@pytest.mark.anyio
+@pytest.mark.anyio()
 async def test_gitlab_auth(application_instance):
     with mock.patch.object(
         authentication.gitlab.route.oauth.gitlab,
@@ -67,7 +67,7 @@ async def test_gitlab_auth(application_instance):
         assert isinstance(response.text, str)
 
 
-@pytest.mark.anyio
+@pytest.mark.anyio()
 async def test_gitlab_auth_no_user_found(application_instance):
     with mock.patch.object(
         authentication.gitlab.route.oauth.gitlab,

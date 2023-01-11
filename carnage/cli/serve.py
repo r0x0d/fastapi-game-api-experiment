@@ -1,16 +1,16 @@
 import argparse
 import logging
+from typing import Any
 
 import uvicorn
 
 from carnage.application import create_app
-from carnage.cli import SubparserType
 
 logger = logging.getLogger(__name__)
 
 
 def add_subparser(
-    subparsers: SubparserType,
+    subparsers: Any,
     parents: list[argparse.ArgumentParser],
 ) -> None:
     """Add all init parsers.
