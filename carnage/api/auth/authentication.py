@@ -26,13 +26,11 @@ def generate_jwt(claims: dict[str, Any]) -> str:
     claims["iat"] = int(iat.timestamp())
     claims["exp"] = int(exp.timestamp())
 
-    token = jwt.encode(
+    return jwt.encode(
         claims=claims,
         key=JWT_SECRET_KEY,
         algorithm=JWT_ALGORITHM,
     )
-
-    return token
 
 
 class BaseJWTBearer(HTTPBearer):
@@ -86,11 +84,11 @@ class APIJWTBearer(BaseJWTBearer):
                     detail="Invalid token or expired token.",
                 )
             return True
-        else:
-            raise HTTPException(
-                status_code=403,
-                detail="Invalid authorization code.",
-            )
+
+        raise HTTPException(
+            status_code=403,
+            detail="Invalid authorization code.",
+        )
 
 
 class WebSocketJWTBearer(BaseJWTBearer):
@@ -118,8 +116,8 @@ class WebSocketJWTBearer(BaseJWTBearer):
                     detail="Invalid token or expired token.",
                 )
             return True
-        else:
-            raise HTTPException(
-                status_code=403,
-                detail="No token was provided.",
-            )
+
+        raise HTTPException(
+            status_code=403,
+            detail="No token was provided.",
+        )

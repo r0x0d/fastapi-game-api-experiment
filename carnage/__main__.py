@@ -1,7 +1,5 @@
 import argparse
-import importlib.metadata
 import logging
-import platform
 import sys
 
 from carnage.cli import seed, serve
@@ -14,13 +12,6 @@ def create_argument_parser() -> argparse.ArgumentParser:
         prog="carnage",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
         description="Command-line for Carnage.",
-    )
-
-    parser.add_argument(
-        "--version",
-        action="store_true",
-        default=argparse.SUPPRESS,
-        help="Print installed Carnage version",
     )
     parser.add_argument(
         "--debug",
@@ -38,15 +29,6 @@ def create_argument_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def print_version() -> None:
-    """Prints version information of carnage and python."""
-    carnage_version = importlib.metadata.version("carnage")
-    print(f"Carnage Version   :         {carnage_version}")
-    print(f"Python Version    :         {platform.python_version()}")
-    print(f"Operating System  :         {platform.platform()}")
-    print(f"Python Path       :         {sys.executable}")
-
-
 def main() -> int:
     """Main entrypoint for Carnage API."""
     arg_parser = create_argument_parser()
@@ -57,8 +39,6 @@ def main() -> int:
     try:
         if hasattr(cmdline_arguments, "func"):
             cmdline_arguments.func(cmdline_arguments)
-        elif hasattr(cmdline_arguments, "version"):
-            print_version()
         else:
             # user has not provided a subcommand, let's print the help
             logger.warning("No command specified.")

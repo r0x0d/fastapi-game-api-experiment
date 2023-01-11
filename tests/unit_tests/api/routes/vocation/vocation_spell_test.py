@@ -21,7 +21,7 @@ VocationSpellOutput = namedtuple(
 BASE_URL = f"http://test/{APPLICATION_PREFIX}/vocation_spell"
 
 
-@pytest.mark.anyio
+@pytest.mark.anyio()
 @pytest.mark.parametrize(
     ("output"),
     (
@@ -57,7 +57,7 @@ async def test_get(output, application_instance, get_fake_jwt):
         assert len(response.json()) > 0
 
 
-@pytest.mark.anyio
+@pytest.mark.anyio()
 @pytest.mark.parametrize(
     ("output"),
     (
@@ -92,7 +92,7 @@ async def test_get_by_id(output, application_instance, get_fake_jwt):
         assert isinstance(response.json(), dict)
 
 
-@pytest.mark.anyio
+@pytest.mark.anyio()
 @pytest.mark.parametrize(
     ("data"),
     (
@@ -120,7 +120,7 @@ async def test_post(data, application_instance, get_fake_jwt):
         assert response.status_code == 201
 
 
-@pytest.mark.anyio
+@pytest.mark.anyio()
 @pytest.mark.parametrize(
     ("data"),
     (
@@ -151,7 +151,7 @@ async def test_put(data, application_instance, get_fake_jwt):
     assert response.status_code == 204
 
 
-@pytest.mark.anyio
+@pytest.mark.anyio()
 async def test_delete(application_instance, get_fake_jwt):
     with mock.patch.object(
         route.repository,

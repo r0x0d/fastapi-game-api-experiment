@@ -73,12 +73,16 @@ class GithubAuthenticationRoute(BaseAuthentication):
             },
         ).json()
 
+        email_verified = False
+        if userinfo.get("email", None):
+            email_verified = True
+
         claims = {
             "iss": "https://api.github.com/",
             "azp": "api.github.com",
             "sub": str(userinfo.get("id")),
             "email": userinfo.get("email"),
-            "email_verified": False if not userinfo.get("email") else True,
+            "email_verified": email_verified,
             "nonce": "".join(
                 random.choice(string.ascii_letters) for _ in range(10)
             ),

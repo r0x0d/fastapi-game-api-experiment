@@ -22,5 +22,4 @@ class MonsterManager:
 
         :param monster: The name of the monster to be selected.
         """
-        selected_monster = self._monster_mapping.get(monster)
-        return selected_monster
+        return self._monster_mapping.get(monster)

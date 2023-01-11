@@ -30,7 +30,7 @@ class AccountRoute(BaseRoute):
             repository=repository,
         )
 
-    async def post(self, request: Request) -> None:
+    async def post(self, _: Request) -> None:
         """Async method that represents a post request to this API.
 
         :param request: The data send throught the request.

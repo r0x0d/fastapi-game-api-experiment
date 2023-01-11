@@ -45,6 +45,6 @@ def get_fake_jwt():
     return jwt
 
 
-@pytest.fixture
+@pytest.fixture()
 def anyio_backend():
     return "asyncio"

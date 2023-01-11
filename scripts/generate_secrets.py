@@ -61,9 +61,9 @@ def main() -> int:
         env_list = parse_env_file()
         write_env_file(env_list)
         return 0
-    else:
-        console.log(f"'{PATH_TO_ENV_FILE}' not found.")
-        return 1
+
+    console.log(f"'{PATH_TO_ENV_FILE}' not found.")
+    return 1
 
 
 if __name__ == "__main__":
