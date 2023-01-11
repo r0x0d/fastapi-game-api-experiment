@@ -11,7 +11,7 @@ class MonsterManager:
         """Method that maps the available monsters to their simplified name.
 
         :return: A dictionary with the seed name as key and a seed class
-        instance as value.
+            instance as value.
         """
         # TODO(r0x0d): Change type annotation for this property in the future
         # for `BaseMonster`

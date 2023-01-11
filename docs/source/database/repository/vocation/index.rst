@@ -1,0 +1,8 @@
+Vocation Repositories
+=====================
+
+.. toctree::
+   :maxdepth: 2
+
+   vocation
+   vocation_spell
