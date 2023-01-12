@@ -1,8 +1,8 @@
 name: "Check Sphinx Docs"
 
 on:
-  pull_request_target:
-    types: [opened, reopened]
+  pull_request:
+    branches: [main]
 
 jobs:
   check-for-missing-docs:
@@ -18,4 +18,6 @@ jobs:
 
       - name: Call script
         run: |
-          exit make check-sphinx-docs
+          make check-sphinx-docs
+          RETURN_CODE=$(echo $?)
+          exit $RETURN_CODE
