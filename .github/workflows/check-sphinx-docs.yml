@@ -1,0 +1,23 @@
+name: "Check Sphinx Docs"
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  check-for-missing-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.11" # Version range or exact version of a Python version to use, using SemVer's version range syntax
+          architecture: "x64" # optional x64 or x86. Defaults to x64 if not specified
+
+      - name: Call script
+        run: |
+          make check-sphinx-docs
+          RETURN_CODE=$(echo $?)
+          exit $RETURN_CODE
