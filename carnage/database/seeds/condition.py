@@ -1,5 +1,3 @@
-from typing import Type
-
 from carnage.database.repository.condition import ConditionRepository
 from carnage.database.seeds.base import BaseSeed
 
@@ -21,7 +19,7 @@ class ConditionSeed(BaseSeed):
 
     def __init__(
         self,
-        repository: Type[ConditionRepository] = ConditionRepository,
+        repository: type[ConditionRepository] = ConditionRepository,
     ) -> None:
         """Default class constructor.
 

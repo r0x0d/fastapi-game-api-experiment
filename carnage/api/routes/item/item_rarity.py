@@ -1,5 +1,3 @@
-from typing import Type
-
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.item import (
     CreateItemRaritySchema,
@@ -18,7 +16,7 @@ class ItemRarityRoute(BaseRoute):
         self,
         name: str = "item_rarity",
         tags: list[str] = ["item", "item-rarity"],
-        repository: Type[ItemRarityRepository] = ItemRarityRepository,
+        repository: type[ItemRarityRepository] = ItemRarityRepository,
     ) -> None:
         """Constructor for HTTP API route.
 

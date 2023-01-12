@@ -1,5 +1,3 @@
-from typing import Type
-
 from carnage.database.repository.item import ItemRarityRepository
 from carnage.database.seeds.base import BaseSeed
 
@@ -25,7 +23,7 @@ class ItemRaritySeed(BaseSeed):
 
     def __init__(
         self,
-        repository: Type[ItemRarityRepository] = ItemRarityRepository,
+        repository: type[ItemRarityRepository] = ItemRarityRepository,
     ) -> None:
         """Default class constructor.
 

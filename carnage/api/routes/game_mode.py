@@ -1,5 +1,3 @@
-from typing import Type
-
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.game_mode import (
     CreateGameModeSchema,
@@ -18,7 +16,7 @@ class GameModeRoute(BaseRoute):
         self,
         name: str = "game_mode",
         tags: list[str] = ["game-mode"],
-        repository: Type[GameModeRepository] = GameModeRepository,
+        repository: type[GameModeRepository] = GameModeRepository,
     ) -> None:
         """Constructor for HTTP API route.
 

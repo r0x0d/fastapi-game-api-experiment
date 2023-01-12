@@ -1,5 +1,3 @@
-from typing import Type
-
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.vocation import (
     CreateVocationSchema,
@@ -18,7 +16,7 @@ class VocationRoute(BaseRoute):
         self,
         name: str = "vocation",
         tags: list[str] = ["vocation"],
-        repository: Type[VocationRepository] = VocationRepository,
+        repository: type[VocationRepository] = VocationRepository,
     ) -> None:
         """Constructor for HTTP API route.
 

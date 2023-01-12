@@ -1,5 +1,3 @@
-from typing import Type
-
 from carnage.database.repository.aligment import AligmentRepository
 from carnage.database.seeds.base import BaseSeed
 
@@ -20,7 +18,7 @@ class AligmentSeed(BaseSeed):
 
     def __init__(
         self,
-        repository: Type[AligmentRepository] = AligmentRepository,
+        repository: type[AligmentRepository] = AligmentRepository,
     ) -> None:
         """Default class constructor.
 

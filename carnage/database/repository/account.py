@@ -1,5 +1,4 @@
 from functools import lru_cache
-from typing import Type
 
 from sqlalchemy import select
 
@@ -10,7 +9,7 @@ from carnage.database.repository.base import BaseRepository
 class AccountRepository(BaseRepository):
     def __init__(
         self,
-        model: Type[AccountModel] = AccountModel,
+        model: type[AccountModel] = AccountModel,
     ) -> None:
         """Default constructor for repository.
 

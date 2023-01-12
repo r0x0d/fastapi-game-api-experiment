@@ -1,5 +1,3 @@
-from typing import Type
-
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.monster import (
     CreateMonsterTypeSchema,
@@ -20,7 +18,7 @@ class MonsterTypeRoute(BaseRoute):
         self,
         name: str = "monster_type",
         tags: list[str] = ["monster", "monster-type"],
-        repository: Type[MonsterTypeRepository] = MonsterTypeRepository,
+        repository: type[MonsterTypeRepository] = MonsterTypeRepository,
     ) -> None:
         """Constructor for HTTP API route.
 

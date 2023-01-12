@@ -1,5 +1,3 @@
-from typing import Type
-
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.spell import (
     CreateSpellRangeTypeSchema,
@@ -18,7 +16,7 @@ class SpellRangeTypeRoute(BaseRoute):
         self,
         name: str = "spell_range_type",
         tags: list[str] = ["spell", "spell-range-type"],
-        repository: Type[SpellRangeTypeRepository] = SpellRangeTypeRepository,
+        repository: type[SpellRangeTypeRepository] = SpellRangeTypeRepository,
     ) -> None:
         """Constructor for HTTP API route.
 

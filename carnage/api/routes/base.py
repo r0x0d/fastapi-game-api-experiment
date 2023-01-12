@@ -1,5 +1,3 @@
-from typing import Type
-
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel
 
@@ -16,7 +14,7 @@ class BaseRoute:
         self,
         name: str = "base",
         tags: list[str] = ["base"],
-        repository: Type[BaseRepository] = BaseRepository,
+        repository: type[BaseRepository] = BaseRepository,
         dependencies: list[Depends] = [Depends(APIJWTBearer())],
     ) -> None:
         """Base constructor for all API routes.

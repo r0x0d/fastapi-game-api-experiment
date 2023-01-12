@@ -1,5 +1,3 @@
-from typing import Type
-
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.spell import (
     CreateSpellSchoolSchema,
@@ -18,7 +16,7 @@ class SpellSchoolRoute(BaseRoute):
         self,
         name: str = "spell_school",
         tags: list[str] = ["spell", "spell-school"],
-        repository: Type[SpellSchoolRepository] = SpellSchoolRepository,
+        repository: type[SpellSchoolRepository] = SpellSchoolRepository,
     ) -> None:
         """Constructor for HTTP API route.
 

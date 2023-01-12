@@ -1,5 +1,5 @@
 import logging
-from typing import Any, Type
+from typing import Any
 
 from carnage.database.repository.spell import SpellRepository
 from carnage.database.repository.vocation import (
@@ -21,7 +21,7 @@ class VocationSpellSeed(BaseSeed):
 
     def __init__(
         self,
-        repository: Type[VocationSpellRepository] = VocationSpellRepository,
+        repository: type[VocationSpellRepository] = VocationSpellRepository,
     ) -> None:
         """Default class constructor.
 

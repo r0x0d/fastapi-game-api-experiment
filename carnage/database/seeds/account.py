@@ -1,5 +1,5 @@
 import logging
-from typing import Any, Type
+from typing import Any
 
 from cryptography.fernet import Fernet
 
@@ -42,7 +42,7 @@ class AccountSeed(BaseSeed):
 
     def __init__(
         self,
-        repository: Type[AccountRepository] = AccountRepository,
+        repository: type[AccountRepository] = AccountRepository,
     ) -> None:
         """Default class constructor.
 

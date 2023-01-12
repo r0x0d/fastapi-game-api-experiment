@@ -1,4 +1,4 @@
-from typing import Any, Type
+from typing import Any
 
 from carnage.database.repository.aligment import AligmentRepository
 from carnage.database.repository.monster import (
@@ -76,7 +76,7 @@ class MonsterSeed(BaseSeed):
 
     def __init__(
         self,
-        repository: Type[MonsterRepository] = MonsterRepository,
+        repository: type[MonsterRepository] = MonsterRepository,
     ) -> None:
         """Default class constructor.
 

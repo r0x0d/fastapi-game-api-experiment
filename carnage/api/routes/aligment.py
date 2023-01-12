@@ -1,5 +1,3 @@
-from typing import Type
-
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.aligment import (
     CreateAligmentSchema,
@@ -18,7 +16,7 @@ class AligmentRoute(BaseRoute):
         self,
         name: str = "aligment",
         tags: list[str] = ["aligment"],
-        repository: Type[AligmentRepository] = AligmentRepository,
+        repository: type[AligmentRepository] = AligmentRepository,
     ) -> None:
         """Constructor for HTTP API route.
 

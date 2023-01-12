@@ -1,5 +1,5 @@
 import logging
-from typing import Any, Type
+from typing import Any
 
 from carnage.database.repository.base import BaseRepository
 
@@ -12,7 +12,7 @@ class BaseSeed:
 
     def __init__(
         self,
-        repository: Type[BaseRepository] = BaseRepository,
+        repository: type[BaseRepository] = BaseRepository,
     ) -> None:
         """Default class constructor.
 

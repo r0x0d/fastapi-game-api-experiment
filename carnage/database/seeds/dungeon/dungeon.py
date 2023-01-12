@@ -1,4 +1,4 @@
-from typing import Any, Type
+from typing import Any
 
 from carnage.database.repository.dungeon import (
     DungeonDifficultyRepository,
@@ -21,7 +21,7 @@ class DungeonSeed(BaseSeed):
 
     def __init__(
         self,
-        repository: Type[DungeonRepository] = DungeonRepository,
+        repository: type[DungeonRepository] = DungeonRepository,
     ) -> None:
         """Default class constructor.
 

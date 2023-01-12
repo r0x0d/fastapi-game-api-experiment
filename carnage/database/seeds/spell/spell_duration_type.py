@@ -1,5 +1,3 @@
-from typing import Type
-
 from carnage.database.repository.spell import SpellDurationTypeRepository
 from carnage.database.seeds.base import BaseSeed
 
@@ -35,7 +33,7 @@ class SpellDurationTypeSeed(BaseSeed):
 
     def __init__(
         self,
-        repository: Type[
+        repository: type[
             SpellDurationTypeRepository
         ] = SpellDurationTypeRepository,
     ) -> None:

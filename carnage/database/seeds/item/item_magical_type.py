@@ -1,5 +1,3 @@
-from typing import Type
-
 from carnage.database.repository.item import ItemMagicalTypeRepository
 from carnage.database.seeds.base import BaseSeed
 
@@ -25,7 +23,7 @@ class ItemMagicalTypeSeed(BaseSeed):
 
     def __init__(
         self,
-        repository: Type[
+        repository: type[
             ItemMagicalTypeRepository
         ] = ItemMagicalTypeRepository,
     ) -> None:

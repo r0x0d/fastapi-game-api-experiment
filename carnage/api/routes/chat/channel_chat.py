@@ -1,5 +1,3 @@
-from typing import Type
-
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.chat import (
     CreateChannelChatSchema,
@@ -18,7 +16,7 @@ class ChannelChatRoute(BaseRoute):
         self,
         name: str = "channel_chat",
         tags: list[str] = ["channel-chat"],
-        repository: Type[ChannelChatRepository] = ChannelChatRepository,
+        repository: type[ChannelChatRepository] = ChannelChatRepository,
     ) -> None:
         """Constructor for HTTP API route.
 

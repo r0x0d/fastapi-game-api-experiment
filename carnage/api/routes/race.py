@@ -1,5 +1,3 @@
-from typing import Type
-
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.race import (
     CreateRaceSchema,
@@ -18,7 +16,7 @@ class RaceRoute(BaseRoute):
         self,
         name: str = "race",
         tags: list[str] = ["race"],
-        repository: Type[RaceRepository] = RaceRepository,
+        repository: type[RaceRepository] = RaceRepository,
     ) -> None:
         """Constructor for HTTP API route.
 

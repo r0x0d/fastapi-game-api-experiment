@@ -1,5 +1,3 @@
-from typing import Type
-
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.spell import (
     CreateSpellDurationTypeSchema,
@@ -18,7 +16,7 @@ class SpellDurationTypeRoute(BaseRoute):
         self,
         name: str = "spell_duration_type",
         tags: list[str] = ["spell", "spell-duration-type"],
-        repository: Type[
+        repository: type[
             SpellDurationTypeRepository
         ] = SpellDurationTypeRepository,
     ) -> None:
