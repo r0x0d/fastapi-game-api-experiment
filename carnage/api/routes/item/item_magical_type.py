@@ -1,5 +1,3 @@
-from typing import Type
-
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.item import (
     CreateItemMagicalTypeSchema,
@@ -18,7 +16,7 @@ class ItemMagicalTypeRoute(BaseRoute):
         self,
         name: str = "item_magical_type",
         tags: list[str] = ["item", "item-magical-type"],
-        repository: Type[
+        repository: type[
             ItemMagicalTypeRepository
         ] = ItemMagicalTypeRepository,
     ) -> None:

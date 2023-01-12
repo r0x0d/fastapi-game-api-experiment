@@ -1,5 +1,3 @@
-from typing import Type
-
 from carnage.database.repository.spell import SpellSchoolRepository
 from carnage.database.seeds.base import BaseSeed
 
@@ -17,7 +15,7 @@ class SpellSchoolSeed(BaseSeed):
 
     def __init__(
         self,
-        repository: Type[SpellSchoolRepository] = SpellSchoolRepository,
+        repository: type[SpellSchoolRepository] = SpellSchoolRepository,
     ) -> None:
         """Default class constructor.
 

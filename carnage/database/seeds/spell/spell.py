@@ -1,4 +1,4 @@
-from typing import Any, Type
+from typing import Any
 
 from carnage.database.repository.spell import (
     SpellDurationTypeRepository,
@@ -20,7 +20,7 @@ class SpellSeed(BaseSeed):
 
     def __init__(
         self,
-        repository: Type[SpellRepository] = SpellRepository,
+        repository: type[SpellRepository] = SpellRepository,
     ) -> None:
         """Default class constructor.
 

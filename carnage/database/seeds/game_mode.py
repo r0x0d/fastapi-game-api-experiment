@@ -1,4 +1,4 @@
-from typing import Any, Type
+from typing import Any
 
 from carnage.database.repository.game_mode import GameModeRepository
 from carnage.database.seeds.base import BaseSeed
@@ -19,7 +19,7 @@ class GameModeSeed(BaseSeed):
 
     def __init__(
         self,
-        repository: Type[GameModeRepository] = GameModeRepository,
+        repository: type[GameModeRepository] = GameModeRepository,
     ) -> None:
         """Default class constructor.
 

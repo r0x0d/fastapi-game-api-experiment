@@ -1,4 +1,4 @@
-from typing import Any, Type
+from typing import Any
 
 from carnage.database.repository.size import SizeRepository
 from carnage.database.seeds.base import BaseSeed
@@ -20,7 +20,7 @@ class SizeSeed(BaseSeed):
 
     def __init__(
         self,
-        repository: Type[SizeRepository] = SizeRepository,
+        repository: type[SizeRepository] = SizeRepository,
     ) -> None:
         """Default class constructor.
 

@@ -65,12 +65,14 @@ def main() -> int:
 
     if not missing_documents:
         print(
-            "Hoorray! It seems that all your source files have a correspnding document for sphinx!",
+            "Hoorray! It seems that all your source files have a "
+            "correspnding document for sphinx!",
         )
         return 0
 
     print(
-        "Oh no! It seems that some of your source files are not present in the docs!\n",
+        "Oh no! It seems that some of your source files are not present in "
+        "the docs!\n",
     )
     print("\n".join(missing_documents))
     return 1

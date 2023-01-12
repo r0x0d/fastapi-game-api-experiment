@@ -1,4 +1,4 @@
-from typing import Any, Type
+from typing import Any
 
 from carnage.database.repository.difficulty import DifficultyRepository
 from carnage.database.seeds.base import BaseSeed
@@ -15,7 +15,7 @@ class DifficultySeed(BaseSeed):
 
     def __init__(
         self,
-        repository: Type[DifficultyRepository] = DifficultyRepository,
+        repository: type[DifficultyRepository] = DifficultyRepository,
     ) -> None:
         """Default class constructor.
 

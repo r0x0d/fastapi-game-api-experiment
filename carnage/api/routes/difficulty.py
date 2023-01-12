@@ -1,5 +1,3 @@
-from typing import Type
-
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.difficulty import (
     CreateDifficultySchema,
@@ -18,7 +16,7 @@ class DifficultyRoute(BaseRoute):
         self,
         name: str = "difficulty",
         tags: list[str] = ["difficulty"],
-        repository: Type[DifficultyRepository] = DifficultyRepository,
+        repository: type[DifficultyRepository] = DifficultyRepository,
     ) -> None:
         """Constructor for HTTP API route.
 

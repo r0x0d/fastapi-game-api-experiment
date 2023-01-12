@@ -1,4 +1,4 @@
-from typing import Any, Type
+from typing import Any
 
 from carnage.database.repository.item import (
     ItemBaseTypeRepository,
@@ -27,7 +27,7 @@ class ItemSeed(BaseSeed):
 
     def __init__(
         self,
-        repository: Type[ItemRepository] = ItemRepository,
+        repository: type[ItemRepository] = ItemRepository,
     ) -> None:
         """Default class constructor.
 

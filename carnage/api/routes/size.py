@@ -1,5 +1,3 @@
-from typing import Type
-
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.size import (
     CreateSizeSchema,
@@ -18,7 +16,7 @@ class SizeRoute(BaseRoute):
         self,
         name: str = "size",
         tags: list[str] = ["size"],
-        repository: Type[SizeRepository] = SizeRepository,
+        repository: type[SizeRepository] = SizeRepository,
     ) -> None:
         """Constructor for HTTP API route.
 

@@ -1,5 +1,3 @@
-from typing import Type
-
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.player import (
     CreatePlayerSchema,
@@ -18,7 +16,7 @@ class PlayerRoute(BaseRoute):
         self,
         name: str = "player",
         tags: list[str] = ["player"],
-        repository: Type[PlayerRepository] = PlayerRepository,
+        repository: type[PlayerRepository] = PlayerRepository,
     ) -> None:
         """Constructor for HTTP API route.
 

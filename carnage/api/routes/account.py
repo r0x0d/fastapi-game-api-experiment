@@ -1,5 +1,3 @@
-from typing import Type
-
 from fastapi import HTTPException, Request
 
 from carnage.api.routes.base import BaseRoute
@@ -15,7 +13,7 @@ class AccountRoute(BaseRoute):
         self,
         name: str = "account",
         tags: list[str] = ["account"],
-        repository: Type[AccountRepository] = AccountRepository,
+        repository: type[AccountRepository] = AccountRepository,
     ) -> None:
         """Constructor for HTTP API route.
 

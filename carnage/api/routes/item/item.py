@@ -1,5 +1,3 @@
-from typing import Type
-
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.item import (
     CreateItemSchema,
@@ -18,7 +16,7 @@ class ItemRoute(BaseRoute):
         self,
         name: str = "item",
         tags: list[str] = ["item"],
-        repository: Type[ItemRepository] = ItemRepository,
+        repository: type[ItemRepository] = ItemRepository,
     ) -> None:
         """Constructor for HTTP API route.
 

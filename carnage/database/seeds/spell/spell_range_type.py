@@ -1,5 +1,3 @@
-from typing import Type
-
 from carnage.database.repository.spell import SpellRangeTypeRepository
 from carnage.database.seeds.base import BaseSeed
 
@@ -31,7 +29,7 @@ class SpellRangeTypeSeed(BaseSeed):
 
     def __init__(
         self,
-        repository: Type[SpellRangeTypeRepository] = SpellRangeTypeRepository,
+        repository: type[SpellRangeTypeRepository] = SpellRangeTypeRepository,
     ) -> None:
         """Default class constructor.
 

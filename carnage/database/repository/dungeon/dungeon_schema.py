@@ -1,5 +1,4 @@
 from functools import lru_cache
-from typing import Type
 
 from sqlalchemy import select
 
@@ -10,7 +9,7 @@ from carnage.database.repository.base import BaseRepository
 class DungeonSchemaRepository(BaseRepository):
     def __init__(
         self,
-        model: Type[DungeonSchemaModel] = DungeonSchemaModel,
+        model: type[DungeonSchemaModel] = DungeonSchemaModel,
     ) -> None:
         """Default constructor for repository.
 

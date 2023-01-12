@@ -1,5 +1,3 @@
-from typing import Type
-
 from carnage.database.repository.chat import ChannelChatRepository
 from carnage.database.seeds.base import BaseSeed
 
@@ -16,7 +14,7 @@ class ChannelChatSeed(BaseSeed):
 
     def __init__(
         self,
-        repository: Type[ChannelChatRepository] = ChannelChatRepository,
+        repository: type[ChannelChatRepository] = ChannelChatRepository,
     ) -> None:
         """Default class constructor.
 

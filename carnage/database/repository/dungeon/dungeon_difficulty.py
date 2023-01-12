@@ -1,5 +1,4 @@
 from functools import lru_cache
-from typing import Type
 
 from sqlalchemy import select
 
@@ -12,7 +11,7 @@ from carnage.database.repository.base import BaseRepository
 class DungeonDifficultyRepository(BaseRepository):
     def __init__(
         self,
-        model: Type[DungeonDifficultyModel] = DungeonDifficultyModel,
+        model: type[DungeonDifficultyModel] = DungeonDifficultyModel,
     ) -> None:
         """Default constructor for repository.
 

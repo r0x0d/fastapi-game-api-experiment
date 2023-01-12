@@ -1,5 +1,3 @@
-from typing import Type
-
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.dungeon import (
     CreateDungeonDifficultySchema,
@@ -18,7 +16,7 @@ class DungeonDifficultyRoute(BaseRoute):
         self,
         name: str = "dungeon_difficulty",
         tags: list[str] = ["dungeon", "dungeon-difficulty"],
-        repository: Type[
+        repository: type[
             DungeonDifficultyRepository
         ] = DungeonDifficultyRepository,
     ) -> None:

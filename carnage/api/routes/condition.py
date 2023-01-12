@@ -1,5 +1,3 @@
-from typing import Type
-
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.condition import (
     CreateConditionSchema,
@@ -18,7 +16,7 @@ class ConditionRoute(BaseRoute):
         self,
         name: str = "condition",
         tags: list[str] = ["condition"],
-        repository: Type[ConditionRepository] = ConditionRepository,
+        repository: type[ConditionRepository] = ConditionRepository,
     ) -> None:
         """Constructor for HTTP API route.
 

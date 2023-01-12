@@ -1,4 +1,4 @@
-from typing import Any, Type
+from typing import Any
 
 from carnage.database.repository.vocation import VocationRepository
 from carnage.database.seeds.base import BaseSeed
@@ -25,7 +25,7 @@ class VocationSeed(BaseSeed):
 
     def __init__(
         self,
-        repository: Type[VocationRepository] = VocationRepository,
+        repository: type[VocationRepository] = VocationRepository,
     ) -> None:
         """Default class constructor.
 

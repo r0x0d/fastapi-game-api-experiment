@@ -1,4 +1,4 @@
-from typing import Any, Type
+from typing import Any
 
 from carnage.database.repository.aligment import AligmentRepository
 from carnage.database.repository.race import RaceRepository
@@ -17,7 +17,7 @@ class RaceSeed(BaseSeed):
 
     def __init__(
         self,
-        repository: Type[RaceRepository] = RaceRepository,
+        repository: type[RaceRepository] = RaceRepository,
     ) -> None:
         """Default class constructor.
 

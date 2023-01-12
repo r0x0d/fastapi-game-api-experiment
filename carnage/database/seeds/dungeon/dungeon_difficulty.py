@@ -1,5 +1,4 @@
 import logging
-from typing import Type
 
 from carnage.database.repository.dungeon import DungeonDifficultyRepository
 from carnage.database.seeds.base import BaseSeed
@@ -43,7 +42,7 @@ class DungeonDifficultySeed(BaseSeed):
 
     def __init__(
         self,
-        repository: Type[
+        repository: type[
             DungeonDifficultyRepository
         ] = DungeonDifficultyRepository,
     ) -> None:

@@ -1,5 +1,3 @@
-from typing import Type
-
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.dungeon import (
     CreateDungeonSchemaSchema,
@@ -18,7 +16,7 @@ class DungeonSchemaRoute(BaseRoute):
         self,
         name: str = "dungeon_schema",
         tags: list[str] = ["dungeon", "dungeon-schema"],
-        repository: Type[DungeonSchemaRepository] = DungeonSchemaRepository,
+        repository: type[DungeonSchemaRepository] = DungeonSchemaRepository,
     ) -> None:
         """Constructor for HTTP API route.
 

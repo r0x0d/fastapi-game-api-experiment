@@ -1,5 +1,4 @@
 from functools import lru_cache
-from typing import Type
 
 from sqlalchemy import select
 
@@ -10,7 +9,7 @@ from carnage.database.repository.base import BaseRepository
 class VocationSpellRepository(BaseRepository):
     def __init__(
         self,
-        model: Type[VocationSpellModel] = VocationSpellModel,
+        model: type[VocationSpellModel] = VocationSpellModel,
     ) -> None:
         """Default constructor for repository.
 
