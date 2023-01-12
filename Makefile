@@ -16,10 +16,14 @@ help:
 	@echo "        Setup carnage configuration files."
 	@echo "    setup-db"
 	@echo "        Setup carnage database."
+	@echo "    secrets"
+	@echo "        Run custom script to generate secrets for the project."
 	@echo "    test"
 	@echo "        Run pytest on tests/."
 	@echo "    test-coverage"
 	@echo "        Run pytest with tox on tests/."
+	@echo "	   check-sphinx-docs"
+	@echo " 	   Run custom script to check for docs presence."
 
 clean:
 	find . -name '*.pyc' -exec rm -f {} +
@@ -48,6 +52,9 @@ endif
 
 secrets: clean
 	python scripts/generate_secrets.py
+
+check-sphinx-docs:
+	python scripts/check_sphinx_docs.py
 
 setup-db: setup
 	@docker-compose down
