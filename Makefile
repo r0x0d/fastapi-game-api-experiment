@@ -40,7 +40,6 @@ clean:
 	rm -rf dist/
 	rm -rf docs/build
 	rm -rf .tox
-	rm -rf .ruff_cache
 
 setup:
 ifneq ($(shell test -s .env && echo -n yes),yes)
@@ -61,7 +60,7 @@ setup-db: setup
 	docker-compose up -d database
 	@echo "Waiting $(WAIT_TIME_FOR_DB) to run migrations"
 	@sleep $(WAIT_TIME_FOR_DB)
-	alembic upgrade heads
+	carnage --debug migration
 	carnage --debug seed --all
 
 test: setup
