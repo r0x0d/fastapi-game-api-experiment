@@ -2,8 +2,9 @@
 [![Coverage](https://github.com/r0x0d/carnage/actions/workflows/coverage.yml/badge.svg)](https://github.com/r0x0d/carnage/actions/workflows/coverage.yml)
 [![codecov](https://codecov.io/gh/r0x0d/carnage/branch/main/graph/badge.svg?token=9IDP4U4E3T)](https://codecov.io/gh/r0x0d/carnage)
 [![Code Scanning - Action](https://github.com/r0x0d/carnage/actions/workflows/codeql.yml/badge.svg)](https://github.com/r0x0d/carnage/actions/workflows/codeql.yml)
+[![Documentation Status](https://readthedocs.org/projects/carnage/badge/?version=latest)](https://carnage.readthedocs.io/en/latest/?badge=latest)
 
-# carnage
+# Carnage
 
 A hardcore game
 
