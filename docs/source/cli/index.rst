@@ -6,3 +6,4 @@ CLI
 
    seed
    serve
+   migration
