@@ -8,7 +8,7 @@ class VocationSeed(BaseSeed):
     name: str = "vocation"
     data: list[dict[str, Any]] = [
         {
-            "name": "Test",
+            "name": "Knight",
             "description": "Test description",
             "hitpoints": 200,
             "strength": 10,

@@ -1,4 +1,4 @@
-from carnage.database.models.monster.monster import MonsterModel
+from carnage.database.models.monster import MonsterModel
 from carnage.monsters.base import BaseMonster
 
 
