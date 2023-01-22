@@ -1,3 +1,5 @@
+"""Module that implements the Item Magical Type Route."""
+
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.item import (
     CreateItemMagicalTypeSchema,
@@ -8,6 +10,8 @@ from carnage.database.repository.item import ItemMagicalTypeRepository
 
 
 class ItemMagicalTypeRoute(BaseRoute):
+    """Class that overrides the base routes for an API request."""
+
     list_schema = ListItemMagicalTypeSchema
     create_schema = CreateItemMagicalTypeSchema
     update_schema = UpdateItemMagicalTypeSchema

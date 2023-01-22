@@ -1,8 +1,12 @@
+"""Module that represents the Item Rarity seeding."""
+
 from carnage.database.repository.item import ItemRarityRepository
 from carnage.database.seeds.base import BaseSeed
 
 
 class ItemRaritySeed(BaseSeed):
+    """Class that overrides the base seed methods."""
+
     name: str = "item-rarity"
     data: list[dict[str, str]] = [
         {

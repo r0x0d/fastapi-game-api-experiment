@@ -1,9 +1,13 @@
+"""Module that represents the Vocation Model."""
+
 from sqlalchemy import Column, Float, Integer, String
 
 from carnage.database.models.base import BaseModel
 
 
 class VocationModel(BaseModel):
+    """A model-class that represents an Vocation."""
+
     __tablename__ = "vocations"
 
     name = Column(String(100))

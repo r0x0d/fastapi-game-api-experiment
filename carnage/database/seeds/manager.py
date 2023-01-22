@@ -1,3 +1,4 @@
+"""Module that manages all the seeds in the project."""
 import logging
 
 from carnage.database.seeds.account import AccountSeed
@@ -34,6 +35,8 @@ logger = logging.getLogger(__name__)
 
 
 class SeedManager:
+    """Class that manages the seeds and the order to run them."""
+
     def seed_mapping(self) -> dict[str, BaseSeed]:
         """Method that maps the current database seeds and their order.
 

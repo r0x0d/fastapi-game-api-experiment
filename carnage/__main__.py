@@ -1,3 +1,4 @@
+"""Main module entrypoint for carnage."""
 import argparse
 import logging
 import sys

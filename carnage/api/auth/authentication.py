@@ -1,3 +1,4 @@
+"""Module to handle the authentication process, as well, generating tokens."""
 from datetime import datetime, timedelta
 from typing import Any
 
@@ -34,6 +35,8 @@ def generate_jwt(claims: dict[str, Any]) -> str:
 
 
 class BaseJWTBearer(HTTPBearer):
+    """Base class that implements the basic methods for JWT authentication."""
+
     def __init__(self, auto_error: bool = True):
         """Base class that handles the JWT Bearer authentication workflow.
 
@@ -60,6 +63,8 @@ class BaseJWTBearer(HTTPBearer):
 
 
 class APIJWTBearer(BaseJWTBearer):
+    """Class that handles the JWT authentication via Restful API request."""
+
     def __init__(self, auto_error: bool = True):
         """API class to handle JWT Bearer authentication throught requests.
 
@@ -92,6 +97,8 @@ class APIJWTBearer(BaseJWTBearer):
 
 
 class WebSocketJWTBearer(BaseJWTBearer):
+    """Class that handles the the JWT authentication via websockets."""
+
     def __init__(self, auto_error: bool = True):
         """Websocket class to handle JWT authentication throught requests.
 

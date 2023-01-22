@@ -1,3 +1,5 @@
+"""Module that represents the Dungeon seeding."""
+
 from typing import Any
 
 from carnage.database.repository.dungeon import (
@@ -10,6 +12,8 @@ from carnage.systems.dungeon_generation import generate_dungeon
 
 
 class DungeonSeed(BaseSeed):
+    """Class that overrides the base seed methods."""
+
     name: str = "dungeon"
     data: list[dict[str, Any]] = [
         {

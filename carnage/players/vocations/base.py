@@ -1,3 +1,4 @@
+"""Modules that maps a base vocation."""
 from functools import cached_property
 from random import SystemRandom
 
@@ -5,6 +6,8 @@ from carnage.database.models.vocation import VocationModel
 
 
 class BaseVocation:
+    """Class that has all methods and properties of a base vocation."""
+
     def __init__(self, vocation: VocationModel) -> None:
         """Default constructor for a vocation class mapping.
 

@@ -1,3 +1,5 @@
+"""Module that implements the Channel Chat Route."""
+
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.chat import (
     CreateChannelChatSchema,
@@ -8,6 +10,8 @@ from carnage.database.repository.chat import ChannelChatRepository
 
 
 class ChannelChatRoute(BaseRoute):
+    """Class that implements the base routes for an API request."""
+
     list_schema = ListChannelChatSchema
     create_schema = CreateChannelChatSchema
     update_schema = UpdateChannelChatSchema

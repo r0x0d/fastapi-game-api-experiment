@@ -1,3 +1,5 @@
+"""Module that represents the Item Model."""
+
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.dialects.postgresql import UUID
 
@@ -5,6 +7,8 @@ from carnage.database.models.base import BaseModel
 
 
 class ItemModel(BaseModel):
+    """A model-class that represents an Item."""
+
     __tablename__ = "items"
 
     name = Column(String(100))

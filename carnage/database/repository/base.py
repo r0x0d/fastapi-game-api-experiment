@@ -1,3 +1,5 @@
+"""Module that represents the Base repository."""
+
 from datetime import datetime
 from functools import lru_cache
 from typing import Any
@@ -9,6 +11,8 @@ from carnage.database.session import session
 
 
 class BaseRepository:
+    """Class that implements the base repository methods."""
+
     def __init__(self, model: BaseModel = BaseModel) -> None:
         """Default constructor for base repository.
 

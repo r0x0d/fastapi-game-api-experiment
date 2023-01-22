@@ -1,3 +1,5 @@
+"""Module that implements the Item Rarity Route."""
+
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.item import (
     CreateItemRaritySchema,
@@ -8,6 +10,8 @@ from carnage.database.repository.item import ItemRarityRepository
 
 
 class ItemRarityRoute(BaseRoute):
+    """Class that overrides the base routes for an API request."""
+
     list_schema = ListItemRaritySchema
     create_schema = CreateItemRaritySchema
     update_schema = UpdateItemRaritySchema

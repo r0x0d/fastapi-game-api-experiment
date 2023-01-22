@@ -1,3 +1,5 @@
+"""Module that represents the Vocation Spell repository."""
+
 from functools import lru_cache
 
 from sqlalchemy import select
@@ -7,6 +9,8 @@ from carnage.database.repository.base import BaseRepository
 
 
 class VocationSpellRepository(BaseRepository):
+    """Class that overrides the base repository methods."""
+
     def __init__(
         self,
         model: type[VocationSpellModel] = VocationSpellModel,

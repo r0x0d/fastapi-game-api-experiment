@@ -1,3 +1,5 @@
+"""Module that represents the Game Mode seeding."""
+
 from typing import Any
 
 from carnage.database.repository.game_mode import GameModeRepository
@@ -5,6 +7,8 @@ from carnage.database.seeds.base import BaseSeed
 
 
 class GameModeSeed(BaseSeed):
+    """Class that overrides the base seed methods."""
+
     name: str = "game_mode"
     data: list[dict[str, Any]] = [
         {

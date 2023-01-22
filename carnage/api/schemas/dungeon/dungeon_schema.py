@@ -1,3 +1,5 @@
+"""Module to represent an Dungeon Schema schema."""
+
 from pydantic import Field
 from pydantic_sqlalchemy import sqlalchemy_to_pydantic
 
@@ -10,16 +12,8 @@ class ListDungeonSchemaSchema(
         exclude=("schema",),
     ),
 ):
-    dungeon_schema: str = Field(alias="schema")
+    """Class that represents a listing of elements."""
 
-
-class CreateDungeonSchemaSchema(
-    sqlalchemy_to_pydantic(  # type: ignore
-        DungeonSchemaModel,
-        config=None,
-        exclude=("schema",),
-    ),
-):
     dungeon_schema: str = Field(alias="schema")
 
 
@@ -30,4 +24,18 @@ class UpdateDungeonSchemaSchema(
         exclude=("schema",),
     ),
 ):
+    """Class that represents an update of elements."""
+
+    dungeon_schema: str = Field(alias="schema")
+
+
+class CreateDungeonSchemaSchema(
+    sqlalchemy_to_pydantic(  # type: ignore
+        DungeonSchemaModel,
+        config=None,
+        exclude=("schema",),
+    ),
+):
+    """Class that represents an creation of elements."""
+
     dungeon_schema: str = Field(alias="schema")

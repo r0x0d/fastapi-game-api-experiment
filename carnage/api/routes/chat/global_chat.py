@@ -1,3 +1,5 @@
+"""Module that implements the Global Chat Route."""
+
 from cryptography.fernet import Fernet, MultiFernet
 from fastapi import APIRouter, Depends, WebSocket, WebSocketDisconnect
 
@@ -8,6 +10,8 @@ from carnage.database.repository.chat import GlobalChatRepository
 
 
 class GlobalChatRoute:
+    """Class that implements the global chat routes for an websocket."""
+
     def __init__(self) -> None:
         """Default constructor for the API route."""
         self.account_repository = AccountRepository()

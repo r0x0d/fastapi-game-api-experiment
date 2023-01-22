@@ -1,3 +1,5 @@
+"""Module that implements the Base Authentication Route."""
+
 import logging
 from typing import Any
 
@@ -12,6 +14,8 @@ logger = logging.getLogger(__name__)
 
 
 class BaseAuthentication:
+    """Class that implements the base routes for an API request."""
+
     def __init__(self, name: str, config: dict[str, Any] = {}) -> None:
         """Base constructor for all authentication API routes.
 

@@ -1,8 +1,12 @@
+"""Module that represents the Channel Chat seeding."""
+
 from carnage.database.repository.chat import ChannelChatRepository
 from carnage.database.seeds.base import BaseSeed
 
 
 class ChannelChatSeed(BaseSeed):
+    """Class that overrides the base seed methods."""
+
     name: str = "channel_chat"
     data: list[dict[str, str]] = [
         {

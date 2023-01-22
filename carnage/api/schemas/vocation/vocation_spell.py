@@ -1,3 +1,5 @@
+"""Module to represent an Vocation Spell schema."""
+
 from pydantic_sqlalchemy import sqlalchemy_to_pydantic
 
 from carnage.database.models.vocation import VocationSpellModel
@@ -6,7 +8,7 @@ from carnage.database.models.vocation import VocationSpellModel
 class ListVocationSpellSchema(
     sqlalchemy_to_pydantic(VocationSpellModel),  # type: ignore
 ):
-    pass
+    """Class that represents a listing of elements."""
 
 
 class UpdateVocationSpellSchema(
@@ -15,7 +17,7 @@ class UpdateVocationSpellSchema(
         config=None,
     ),
 ):
-    pass
+    """Class that represents an update of elements."""
 
 
 class CreateVocationSpellSchema(
@@ -24,4 +26,4 @@ class CreateVocationSpellSchema(
         config=None,
     ),
 ):
-    pass
+    """Class that represents an creation of elements."""

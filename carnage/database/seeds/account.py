@@ -1,3 +1,4 @@
+"""Module that represents the Account seeding."""
 import logging
 from typing import Any
 
@@ -11,6 +12,8 @@ logger = logging.getLogger(__name__)
 
 
 class AccountSeed(BaseSeed):
+    """Class that overrides the base seed methods."""
+
     name: str = "account"
     data: list[dict[str, str | Any]] = [
         {

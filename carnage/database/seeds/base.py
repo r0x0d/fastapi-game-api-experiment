@@ -1,3 +1,5 @@
+"""Module that represents the Base seeding."""
+
 import logging
 from typing import Any
 
@@ -7,6 +9,8 @@ logger = logging.getLogger(__name__)
 
 
 class BaseSeed:
+    """Class that implements the base seed methods."""
+
     name: str = "base"
     data: list[dict[str, Any]] = [{}]
 

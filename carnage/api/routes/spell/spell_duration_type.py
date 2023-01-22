@@ -1,3 +1,5 @@
+"""Module that implements the Spell Duration Type Route."""
+
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.spell import (
     CreateSpellDurationTypeSchema,
@@ -8,6 +10,8 @@ from carnage.database.repository.spell import SpellDurationTypeRepository
 
 
 class SpellDurationTypeRoute(BaseRoute):
+    """Class that overrides the base routes for an API request."""
+
     list_schema = ListSpellDurationTypeSchema
     create_schema = CreateSpellDurationTypeSchema
     update_schema = UpdateSpellDurationTypeSchema

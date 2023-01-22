@@ -1,12 +1,16 @@
+"""Module that represents the Dungeon History repository."""
+
 from functools import lru_cache
 
 from sqlalchemy import select
 
-from carnage.database.models.dungeon.dungeon_history import DungeonHistoryModel
+from carnage.database.models.dungeon import DungeonHistoryModel
 from carnage.database.repository.base import BaseRepository
 
 
 class DungeonHistoryRepository(BaseRepository):
+    """Class that overrides the base repository methods."""
+
     def __init__(
         self,
         model: type[DungeonHistoryModel] = DungeonHistoryModel,

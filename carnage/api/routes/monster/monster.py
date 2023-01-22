@@ -1,3 +1,5 @@
+"""Module that implements the Monster Route."""
+
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.monster import (
     CreateMonsterSchema,
@@ -8,6 +10,8 @@ from carnage.database.repository.monster import MonsterRepository
 
 
 class MonsterRoute(BaseRoute):
+    """Class that overrides the base routes for an API request."""
+
     list_schema = ListMonsterSchema
     create_schema = CreateMonsterSchema
     update_schema = UpdateMonsterSchema

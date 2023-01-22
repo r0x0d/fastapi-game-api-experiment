@@ -1,8 +1,12 @@
+"""Module that represents the Item Magical Type seeding."""
+
 from carnage.database.repository.item import ItemMagicalTypeRepository
 from carnage.database.seeds.base import BaseSeed
 
 
 class ItemMagicalTypeSeed(BaseSeed):
+    """Class that overrides the base seed methods."""
+
     name: str = "item-magical-type"
     data: list[dict[str, str]] = [
         {

@@ -1,3 +1,5 @@
+"""Module that implements the Player Route."""
+
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.player import (
     CreatePlayerSchema,
@@ -8,6 +10,8 @@ from carnage.database.repository.player import PlayerRepository
 
 
 class PlayerRoute(BaseRoute):
+    """Class that overrides the base routes for an API request."""
+
     list_schema = ListPlayerSchema
     create_schema = CreatePlayerSchema
     update_schema = UpdatePlayerSchema

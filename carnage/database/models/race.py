@@ -1,3 +1,5 @@
+"""Module that represents the Race Model."""
+
 from sqlalchemy import Column, ForeignKey, String
 from sqlalchemy.dialects.postgresql import UUID
 
@@ -5,6 +7,8 @@ from carnage.database.models.base import BaseModel
 
 
 class RaceModel(BaseModel):
+    """A model-class that represents an Race."""
+
     __tablename__ = "races"
 
     name = Column(String(100))

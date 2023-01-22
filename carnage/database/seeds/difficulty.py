@@ -1,3 +1,5 @@
+"""Module that represents the Difficulty seeding."""
+
 from typing import Any
 
 from carnage.database.repository.difficulty import DifficultyRepository
@@ -5,6 +7,8 @@ from carnage.database.seeds.base import BaseSeed
 
 
 class DifficultySeed(BaseSeed):
+    """Class that overrides the base seed methods."""
+
     name: str = "difficulty"
     data: list[dict[str, Any]] = [
         {

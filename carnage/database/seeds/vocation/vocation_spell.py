@@ -1,3 +1,5 @@
+"""Module that represents the Vocation Spell seeding."""
+
 import logging
 from typing import Any
 
@@ -12,6 +14,8 @@ logger = logging.getLogger(__name__)
 
 
 class VocationSpellSeed(BaseSeed):
+    """Class that overrides the base seed methods."""
+
     name: str = "vocation_spell"
     data: list[dict[str, Any]] = [
         {

@@ -1,3 +1,5 @@
+"""Module that implements the Vocation Route."""
+
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.vocation import (
     CreateVocationSchema,
@@ -8,6 +10,8 @@ from carnage.database.repository.vocation import VocationRepository
 
 
 class VocationRoute(BaseRoute):
+    """Class that overrides the base routes for an API request."""
+
     list_schema = ListVocationSchema
     create_schema = CreateVocationSchema
     update_schema = UpdateVocationSchema

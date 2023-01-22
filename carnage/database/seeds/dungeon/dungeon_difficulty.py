@@ -1,3 +1,5 @@
+"""Module that represents the Dungeon Difficulty seeding."""
+
 import logging
 
 from carnage.database.repository.dungeon import DungeonDifficultyRepository
@@ -7,6 +9,8 @@ logger = logging.getLogger(__name__)
 
 
 class DungeonDifficultySeed(BaseSeed):
+    """Class that overrides the base seed methods."""
+
     name: str = "dungeon_difficulty"
     data: list[dict[str, str]] = [
         {

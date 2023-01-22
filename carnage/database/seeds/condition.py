@@ -1,8 +1,12 @@
+"""Module that represents the Condition seeding."""
+
 from carnage.database.repository.condition import ConditionRepository
 from carnage.database.seeds.base import BaseSeed
 
 
 class ConditionSeed(BaseSeed):
+    """Class that overrides the base seed methods."""
+
     name: str = "condition"
     data: list[dict[str, str | bool]] = [
         {

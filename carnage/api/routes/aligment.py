@@ -1,3 +1,5 @@
+"""Module that implements the Aligment Route."""
+
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.aligment import (
     CreateAligmentSchema,
@@ -8,6 +10,8 @@ from carnage.database.repository.aligment import AligmentRepository
 
 
 class AligmentRoute(BaseRoute):
+    """Class that overrides the base routes for an API request."""
+
     list_schema = ListAligmentSchema
     create_schema = CreateAligmentSchema
     update_schema = UpdateAligmentSchema

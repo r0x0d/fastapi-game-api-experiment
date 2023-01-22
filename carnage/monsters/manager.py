@@ -1,3 +1,4 @@
+"""Modules that manages the monsters available."""
 from functools import cached_property
 from typing import Any
 
@@ -6,6 +7,8 @@ from carnage.monsters.dragon import Dragon
 
 
 class MonsterManager:
+    """Class that manages and maps the monsters."""
+
     @cached_property
     def _monster_mapping(self) -> dict[str, Any]:
         """Method that maps the available monsters to their simplified name.
@@ -14,7 +17,7 @@ class MonsterManager:
             instance as value.
         """
         # TODO(r0x0d): Change type annotation for this property in the future
-        # for `BaseMonster`
+        # to `BaseMonster`
         return {"dragon": Dragon}
 
     def select(self, monster: str) -> BaseMonster | None:
