@@ -1,7 +1,11 @@
+"""Module that implements the Health Check Route."""
+
 from fastapi import APIRouter
 
 
 class HealthCheckRoute:
+    """Class that implements the health check routes for an API request."""
+
     def __init__(self) -> None:
         """Constructor for HTTP API route."""
         self.router = APIRouter(

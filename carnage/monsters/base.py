@@ -1,3 +1,4 @@
+"""Module that represents the base of a monster."""
 from functools import cached_property
 from random import SystemRandom
 
@@ -5,6 +6,8 @@ from carnage.database.models.monster import MonsterModel
 
 
 class BaseMonster:
+    """Class that maps the essential methods and properties of a monster."""
+
     def __init__(self, monster: MonsterModel) -> None:
         """Default constructor for a monster class mapping.
 

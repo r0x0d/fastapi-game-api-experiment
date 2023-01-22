@@ -1,3 +1,5 @@
+"""Module that represents the Item seeding."""
+
 from typing import Any
 
 from carnage.database.repository.item import (
@@ -10,6 +12,8 @@ from carnage.database.seeds.base import BaseSeed
 
 
 class ItemSeed(BaseSeed):
+    """Class that overrides the base seed methods."""
+
     name: str = "item"
     data: list[dict[str, Any]] = [
         {

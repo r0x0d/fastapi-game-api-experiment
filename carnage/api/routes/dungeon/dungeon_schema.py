@@ -1,3 +1,5 @@
+"""Module that implements the Dungeon Schema Route."""
+
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.dungeon import (
     CreateDungeonSchemaSchema,
@@ -8,6 +10,8 @@ from carnage.database.repository.dungeon import DungeonSchemaRepository
 
 
 class DungeonSchemaRoute(BaseRoute):
+    """Class that overrides the base routes for an API request."""
+
     list_schema = ListDungeonSchemaSchema
     create_schema = CreateDungeonSchemaSchema
     update_schema = UpdateDungeonSchemaSchema

@@ -1,3 +1,4 @@
+"""Module that implements the Base Route defaults methods."""
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel
 
@@ -6,6 +7,8 @@ from carnage.database.repository.base import BaseRepository
 
 
 class BaseRoute:
+    """Class that implements the base routes for an API request."""
+
     list_schema = BaseModel
     create_schema = BaseModel
     update_schema = BaseModel

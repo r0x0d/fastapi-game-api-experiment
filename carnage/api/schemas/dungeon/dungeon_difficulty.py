@@ -1,3 +1,5 @@
+"""Module to represent an Dungeon Difficulty schema."""
+
 from pydantic_sqlalchemy import sqlalchemy_to_pydantic
 
 from carnage.database.models.dungeon import DungeonDifficultyModel
@@ -6,7 +8,7 @@ from carnage.database.models.dungeon import DungeonDifficultyModel
 class ListDungeonDifficultySchema(
     sqlalchemy_to_pydantic(DungeonDifficultyModel),  # type: ignore
 ):
-    pass
+    """Class that represents a listing of elements."""
 
 
 class UpdateDungeonDifficultySchema(
@@ -15,7 +17,7 @@ class UpdateDungeonDifficultySchema(
         config=None,
     ),
 ):
-    pass
+    """Class that represents an update of elements."""
 
 
 class CreateDungeonDifficultySchema(
@@ -24,4 +26,4 @@ class CreateDungeonDifficultySchema(
         config=None,
     ),
 ):
-    pass
+    """Class that represents an creation of elements."""

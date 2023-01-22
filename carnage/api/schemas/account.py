@@ -1,3 +1,4 @@
+"""Module to represent an Account schema."""
 from pydantic_sqlalchemy import sqlalchemy_to_pydantic
 
 from carnage.database.models.account import AccountModel
@@ -9,7 +10,7 @@ class ListAccountSchema(
         exclude=("password", "secret_key"),
     ),
 ):
-    pass
+    """Class that represents a listing of elements."""
 
 
 class UpdateAccountSchema(
@@ -19,4 +20,4 @@ class UpdateAccountSchema(
         exclude=("provider", "secret_key"),
     ),
 ):
-    pass
+    """Class that represents an update of elements."""

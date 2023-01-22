@@ -1,3 +1,5 @@
+"""Module to represent an Condition schema."""
+
 from pydantic_sqlalchemy import sqlalchemy_to_pydantic
 
 from carnage.database.models.condition import ConditionModel
@@ -6,7 +8,7 @@ from carnage.database.models.condition import ConditionModel
 class ListConditionSchema(
     sqlalchemy_to_pydantic(ConditionModel),  # type: ignore
 ):
-    pass
+    """Class that represents a listing of elements."""
 
 
 class UpdateConditionSchema(
@@ -15,7 +17,7 @@ class UpdateConditionSchema(
         config=None,
     ),
 ):
-    pass
+    """Class that represents an update of elements."""
 
 
 class CreateConditionSchema(
@@ -24,4 +26,4 @@ class CreateConditionSchema(
         config=None,
     ),
 ):
-    pass
+    """Class that represents an creation of elements."""

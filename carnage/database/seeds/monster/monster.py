@@ -1,3 +1,5 @@
+"""Module that represents the Monster seeding."""
+
 from typing import Any
 
 from carnage.database.repository.aligment import AligmentRepository
@@ -10,6 +12,8 @@ from carnage.database.seeds.base import BaseSeed
 
 
 class MonsterSeed(BaseSeed):
+    """Class that overrides the base seed methods."""
+
     name: str = "monster"
     data: list[dict[str, Any]] = [
         {

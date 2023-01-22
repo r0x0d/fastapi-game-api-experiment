@@ -1,3 +1,4 @@
+"""Module that manages all vocations available."""
 from functools import cached_property
 from typing import Any
 
@@ -6,6 +7,8 @@ from carnage.players.vocations.knight import Knight
 
 
 class VocationManager:
+    """Class that maps the order and the vocations."""
+
     @cached_property
     def _vocation_mapping(self) -> dict[str, Any]:
         """Method that maps the available vocations to their simplified name.

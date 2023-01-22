@@ -66,3 +66,12 @@ exclude = "((.eggs | .git | .pytest_cache | build | dist))"
 [tool.isort]
 profile = "black"
 line_length = 79
+
+[tool.interrogate]
+ignore-init-method = false
+ignore-init-module = true
+fail-under = 100
+exclude = ["carnage/database/_migrations"]
+quiet = false
+color = true
+omit-covered-files = true

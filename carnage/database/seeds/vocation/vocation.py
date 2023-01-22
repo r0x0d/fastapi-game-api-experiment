@@ -1,3 +1,5 @@
+"""Module that represents the Vocation seeding."""
+
 from typing import Any
 
 from carnage.database.repository.vocation import VocationRepository
@@ -5,6 +7,8 @@ from carnage.database.seeds.base import BaseSeed
 
 
 class VocationSeed(BaseSeed):
+    """Class that overrides the base seed methods."""
+
     name: str = "vocation"
     data: list[dict[str, Any]] = [
         {

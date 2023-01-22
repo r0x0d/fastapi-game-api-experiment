@@ -1,3 +1,4 @@
+"""Module to hold all global pre-defined variables."""
 import os
 
 CARNAGE_ENVIRONMENT: str | None = os.getenv(

@@ -1,7 +1,8 @@
+"""Module that implements the Debug Route."""
+
 from fastapi import APIRouter
 from fastapi.responses import HTMLResponse
 
-#: Template for the websocket page. Used only for debug purposes.
 WEBSOCKET_PAGE_TEMPLATE: str = """
 <!DOCTYPE html>
 <html>
@@ -45,9 +46,12 @@ WEBSOCKET_PAGE_TEMPLATE: str = """
     </body>
 </html>
 """
+"""Template for the websocket page. Used only for debug purposes."""
 
 
 class DebugRoute:
+    """Class that implements some debug routes for an API request."""
+
     def __init__(self) -> None:
         """Route that is used only for debug purposes."""
         self.router = APIRouter(

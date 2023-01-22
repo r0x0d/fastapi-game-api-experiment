@@ -1,3 +1,5 @@
+"""Module to represent an Spell Range Type schema."""
+
 from pydantic_sqlalchemy import sqlalchemy_to_pydantic
 
 from carnage.database.models.spell import SpellRangeTypeModel
@@ -6,7 +8,7 @@ from carnage.database.models.spell import SpellRangeTypeModel
 class ListSpellRangeTypeSchema(
     sqlalchemy_to_pydantic(SpellRangeTypeModel),  # type: ignore
 ):
-    pass
+    """Class that represents a listing of elements."""
 
 
 class UpdateSpellRangeTypeSchema(
@@ -15,7 +17,7 @@ class UpdateSpellRangeTypeSchema(
         config=None,
     ),
 ):
-    pass
+    """Class that represents an update of elements."""
 
 
 class CreateSpellRangeTypeSchema(
@@ -24,4 +26,4 @@ class CreateSpellRangeTypeSchema(
         config=None,
     ),
 ):
-    pass
+    """Class that represents an creation of elements."""

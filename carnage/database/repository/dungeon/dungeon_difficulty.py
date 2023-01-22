@@ -1,3 +1,5 @@
+"""Module that represents the Dungeon Difficulty repository."""
+
 from functools import lru_cache
 
 from sqlalchemy import select
@@ -9,6 +11,8 @@ from carnage.database.repository.base import BaseRepository
 
 
 class DungeonDifficultyRepository(BaseRepository):
+    """Class that overrides the base repository methods."""
+
     def __init__(
         self,
         model: type[DungeonDifficultyModel] = DungeonDifficultyModel,

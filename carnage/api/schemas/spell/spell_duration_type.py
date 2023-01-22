@@ -1,3 +1,5 @@
+"""Module to represent an Spell Duration Type schema."""
+
 from pydantic_sqlalchemy import sqlalchemy_to_pydantic
 
 from carnage.database.models.spell import SpellDurationTypeModel
@@ -6,7 +8,7 @@ from carnage.database.models.spell import SpellDurationTypeModel
 class ListSpellDurationTypeSchema(
     sqlalchemy_to_pydantic(SpellDurationTypeModel),  # type: ignore
 ):
-    pass
+    """Class that represents a listing of elements."""
 
 
 class UpdateSpellDurationTypeSchema(
@@ -15,7 +17,7 @@ class UpdateSpellDurationTypeSchema(
         config=None,
     ),
 ):
-    pass
+    """Class that represents an update of elements."""
 
 
 class CreateSpellDurationTypeSchema(
@@ -24,4 +26,4 @@ class CreateSpellDurationTypeSchema(
         config=None,
     ),
 ):
-    pass
+    """Class that represents an creation of elements."""

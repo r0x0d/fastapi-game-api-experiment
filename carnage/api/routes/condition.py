@@ -1,3 +1,5 @@
+"""Module that implements the Condition Route."""
+
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.condition import (
     CreateConditionSchema,
@@ -8,6 +10,8 @@ from carnage.database.repository.condition import ConditionRepository
 
 
 class ConditionRoute(BaseRoute):
+    """Class that overrides the base routes for an API request."""
+
     list_schema = ListConditionSchema
     create_schema = CreateConditionSchema
     update_schema = UpdateConditionSchema

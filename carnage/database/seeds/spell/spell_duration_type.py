@@ -1,8 +1,12 @@
+"""Module that represents the Spell Duration Type seeding."""
+
 from carnage.database.repository.spell import SpellDurationTypeRepository
 from carnage.database.seeds.base import BaseSeed
 
 
 class SpellDurationTypeSeed(BaseSeed):
+    """Class that overrides the base seed methods."""
+
     name: str = "spell-duration-type"
     data: list[dict[str, str]] = [
         {

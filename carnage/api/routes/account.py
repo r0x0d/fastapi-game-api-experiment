@@ -1,3 +1,4 @@
+"""Module that implements the Account Route."""
 from fastapi import HTTPException, Request
 
 from carnage.api.routes.base import BaseRoute
@@ -6,6 +7,8 @@ from carnage.database.repository.account import AccountRepository
 
 
 class AccountRoute(BaseRoute):
+    """Class that overrides the base routes for an API request."""
+
     list_schema = ListAccountSchema
     update_schema = UpdateAccountSchema
 

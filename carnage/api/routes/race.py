@@ -1,3 +1,5 @@
+"""Module that implements the Race Route."""
+
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.race import (
     CreateRaceSchema,
@@ -8,6 +10,8 @@ from carnage.database.repository.race import RaceRepository
 
 
 class RaceRoute(BaseRoute):
+    """Class that overrides the base routes for an API request."""
+
     list_schema = ListRaceSchema
     update_schema = CreateRaceSchema
     create_schema = UpdateRaceSchema

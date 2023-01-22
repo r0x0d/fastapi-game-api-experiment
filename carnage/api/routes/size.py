@@ -1,3 +1,5 @@
+"""Module that implements the Size Route."""
+
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.size import (
     CreateSizeSchema,
@@ -8,6 +10,8 @@ from carnage.database.repository.size import SizeRepository
 
 
 class SizeRoute(BaseRoute):
+    """Class that overrides the base routes for an API request."""
+
     list_schema = ListSizeSchema
     create_schema = CreateSizeSchema
     update_schema = UpdateSizeSchema

@@ -1,3 +1,5 @@
+"""Module that implements the Difficulty Route."""
+
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.difficulty import (
     CreateDifficultySchema,
@@ -8,6 +10,8 @@ from carnage.database.repository.difficulty import DifficultyRepository
 
 
 class DifficultyRoute(BaseRoute):
+    """Class that overrides the base routes for an API request."""
+
     list_schema = ListDifficultySchema
     update_schema = CreateDifficultySchema
     create_schema = UpdateDifficultySchema

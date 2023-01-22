@@ -1,8 +1,12 @@
+"""Module that represents the Race repository."""
+
 from carnage.database.models.race import RaceModel
 from carnage.database.repository.base import BaseRepository
 
 
 class RaceRepository(BaseRepository):
+    """Class that overrides the base repository methods."""
+
     def __init__(self, model: type[RaceModel] = RaceModel) -> None:
         """Default constructor for repository.
 

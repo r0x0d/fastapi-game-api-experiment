@@ -1,3 +1,5 @@
+"""Module that implements the Spell Range Type Route."""
+
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.spell import (
     CreateSpellRangeTypeSchema,
@@ -8,6 +10,8 @@ from carnage.database.repository.spell import SpellRangeTypeRepository
 
 
 class SpellRangeTypeRoute(BaseRoute):
+    """Class that overrides the base routes for an API request."""
+
     list_schema = ListSpellRangeTypeSchema
     create_schema = CreateSpellRangeTypeSchema
     update_schema = UpdateSpellRangeTypeSchema

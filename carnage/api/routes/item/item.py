@@ -1,3 +1,5 @@
+"""Module that implements the Item Route."""
+
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.item import (
     CreateItemSchema,
@@ -8,6 +10,8 @@ from carnage.database.repository.item import ItemRepository
 
 
 class ItemRoute(BaseRoute):
+    """Class that overrides the base routes for an API request."""
+
     list_schema = ListItemSchema
     create_schema = CreateItemSchema
     update_schema = UpdateItemSchema

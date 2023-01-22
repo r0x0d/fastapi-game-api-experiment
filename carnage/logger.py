@@ -1,3 +1,4 @@
+"""Module to implement and override logger setups."""
 import logging
 import logging.config
 

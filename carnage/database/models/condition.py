@@ -1,9 +1,13 @@
+"""Module that implements the Condition Route."""
+
 from sqlalchemy import Boolean, Column, String
 
 from carnage.database.models.base import BaseModel
 
 
 class ConditionModel(BaseModel):
+    """A model-class that represents an Condition."""
+
     __tablename__ = "conditions"
 
     name = Column(String(100))

@@ -1,3 +1,5 @@
+"""Module that implements the Google Route."""
+
 import random
 import string
 from typing import Any
@@ -11,6 +13,8 @@ from carnage.database.models.account import ProviderEnum
 
 
 class GoogleAuthenticationRoute(BaseAuthentication):
+    """Class that overrides the base routes for an API request."""
+
     def __init__(
         self,
         name: str = "google",

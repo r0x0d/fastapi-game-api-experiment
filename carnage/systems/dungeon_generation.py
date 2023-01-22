@@ -1,3 +1,4 @@
+"""Module that handles the generation of new dungeons."""
 import logging
 from functools import lru_cache
 from random import choice, randint

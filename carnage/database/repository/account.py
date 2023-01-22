@@ -1,3 +1,4 @@
+"""Module that represents the Account repository."""
 from functools import lru_cache
 
 from sqlalchemy import select
@@ -7,6 +8,8 @@ from carnage.database.repository.base import BaseRepository
 
 
 class AccountRepository(BaseRepository):
+    """Class that overrides the base repository methods."""
+
     def __init__(
         self,
         model: type[AccountModel] = AccountModel,

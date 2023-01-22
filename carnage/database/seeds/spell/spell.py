@@ -1,3 +1,5 @@
+"""Module that represents the Spell seeding."""
+
 from typing import Any
 
 from carnage.database.repository.spell import (
@@ -10,6 +12,8 @@ from carnage.database.seeds.base import BaseSeed
 
 
 class SpellSeed(BaseSeed):
+    """Class that overrides the base seed methods."""
+
     name: str = "spell"
     data: list[dict[str, Any]] = [
         {

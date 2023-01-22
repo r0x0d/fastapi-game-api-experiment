@@ -1,3 +1,5 @@
+"""Module that represents the Monster Model."""
+
 from sqlalchemy import Boolean, Column, Float, ForeignKey, Integer, String
 from sqlalchemy.dialects.postgresql import UUID
 
@@ -5,6 +7,8 @@ from carnage.database.models.base import BaseModel
 
 
 class MonsterModel(BaseModel):
+    """A model-class that represents an Monster."""
+
     __tablename__ = "monsters"
 
     name = Column(String(100))

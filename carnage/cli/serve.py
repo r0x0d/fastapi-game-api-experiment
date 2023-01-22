@@ -1,3 +1,5 @@
+"""Module that represents the `serve` command."""
+
 import argparse
 import logging
 from typing import Any

@@ -1,3 +1,5 @@
+"""Module that implements the Spell School Route."""
+
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.spell import (
     CreateSpellSchoolSchema,
@@ -8,6 +10,8 @@ from carnage.database.repository.spell import SpellSchoolRepository
 
 
 class SpellSchoolRoute(BaseRoute):
+    """Class that overrides the base routes for an API request."""
+
     list_schema = ListSpellSchoolSchema
     create_schema = CreateSpellSchoolSchema
     update_schema = UpdateSpellSchoolSchema

@@ -1,3 +1,4 @@
+"""Module that represents the Player seeding."""
 from typing import Any
 
 from carnage.database.repository.dungeon import DungeonRepository
@@ -7,6 +8,8 @@ from carnage.database.seeds.base import BaseSeed
 
 
 class PlayerSeed(BaseSeed):
+    """Class that overrides the base seed methods."""
+
     name: str = "player"
     data: list[dict[str, Any]] = [
         {

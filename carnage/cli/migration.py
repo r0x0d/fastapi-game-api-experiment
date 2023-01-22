@@ -1,3 +1,4 @@
+"""Module that represents the `migration` command."""
 import argparse
 import logging
 import os
@@ -39,6 +40,7 @@ def add_subparser(
 
 
 def _load_alembic_init() -> Config:
+    """Internal function to load the alembic config file."""
     ini_path = os.path.join(os.getcwd(), "alembic.ini")
     logger.debug(f"Loading configuration file from {ini_path}")
 

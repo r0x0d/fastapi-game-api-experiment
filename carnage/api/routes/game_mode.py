@@ -1,3 +1,5 @@
+"""Module that implements the Game Mode Route."""
+
 from carnage.api.routes.base import BaseRoute
 from carnage.api.schemas.game_mode import (
     CreateGameModeSchema,
@@ -8,6 +10,8 @@ from carnage.database.repository.game_mode import GameModeRepository
 
 
 class GameModeRoute(BaseRoute):
+    """Class that overrides the base routes for an API request."""
+
     list_schema = ListGameModeSchema
     update_schema = CreateGameModeSchema
     create_schema = UpdateGameModeSchema

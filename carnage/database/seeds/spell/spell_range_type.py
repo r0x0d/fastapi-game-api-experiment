@@ -1,8 +1,12 @@
+"""Module that represents the Spell Range Type seeding."""
+
 from carnage.database.repository.spell import SpellRangeTypeRepository
 from carnage.database.seeds.base import BaseSeed
 
 
 class SpellRangeTypeSeed(BaseSeed):
+    """Class that overrides the base seed methods."""
+
     name: str = "spell-range-type"
     data: list[dict[str, str]] = [
         {

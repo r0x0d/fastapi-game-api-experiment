@@ -5,7 +5,6 @@ repos:
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
-      - id: check-docstring-first
       - id: check-yaml
       - id: check-toml
       - id: debug-statements
@@ -47,3 +46,11 @@ repos:
     hooks:
       - id: mypy
         additional_dependencies: [types-all]
+  - repo: https://github.com/econchick/interrogate
+    rev: 1.5.0
+    hooks:
+      - id: interrogate
+        exclude: ^(docs/conf.py|setup.py|tests/|scripts)
+        args: ["-vv", "-c", "pyproject.toml", "carnage"]
+        # Workaround mentioned at https://github.com/econchick/interrogate/issues/60#issuecomment-735436566
+        pass_filenames: false
