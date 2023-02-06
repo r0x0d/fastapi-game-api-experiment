@@ -1,5 +1,11 @@
 {
   "extends": [
     "config:base"
-  ]
+  ],
+  "pip_requirements": {
+    "fileMatch": [
+      "requirements/requirements.*.txt",
+      "pyproject.toml"
+    ]
+  }
 }
