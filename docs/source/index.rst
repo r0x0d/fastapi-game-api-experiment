@@ -17,8 +17,8 @@ Welcome to carnage's documentation!
    database/index
    logger
    monsters/index
-   players/index
    systems/index
+   vocations/index
 
 Indices and tables
 ==================

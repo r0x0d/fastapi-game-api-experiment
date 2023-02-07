@@ -22,7 +22,7 @@ help:
 	@echo "        Run pytest on tests/."
 	@echo "    test-coverage"
 	@echo "        Run pytest with tox on tests/."
-	@echo "	   check-sphinx-docs"
+	@echo "    check-sphinx-docs"
 	@echo " 	   Run custom script to check for docs presence."
 
 clean:

@@ -1,7 +1,7 @@
-Base Vocation
-=============
+Knight
+======
 
-.. automodule:: carnage.players.vocations.base
+.. automodule:: carnage.vocations.knight
    :members:
    :undoc-members:
    :private-members:
