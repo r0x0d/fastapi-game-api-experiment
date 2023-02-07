@@ -1,7 +1,7 @@
 import pytest
 
 from carnage.database.models.vocation import VocationModel
-from carnage.players.vocations.knight import Knight
+from carnage.vocations.knight import Knight
 
 
 def test_vocation_can_initialize():
