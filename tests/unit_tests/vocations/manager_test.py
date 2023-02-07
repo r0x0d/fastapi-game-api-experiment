@@ -1,7 +1,7 @@
 import pytest
 
-from carnage.players.vocations import manager
-from carnage.players.vocations.knight import Knight
+from carnage.vocations import manager
+from carnage.vocations.knight import Knight
 
 
 def test_vocation_manager_can_initialize():

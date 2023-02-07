@@ -19,31 +19,17 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-"""Module that manages all vocations available."""
-from functools import cached_property
-from typing import Any
-
-from carnage.players.vocations.base import BaseVocation
-from carnage.players.vocations.knight import Knight
+"""Module that represents a Knight vocation."""
+from carnage.database.models.vocation.vocation import VocationModel
+from carnage.vocations.base import BaseVocation
 
 
-class VocationManager:
-    """Class that maps the order and the vocations."""
+class Knight(BaseVocation):
+    """Class that overrides methods and properties of vocation."""
 
-    @cached_property
-    def _vocation_mapping(self) -> dict[str, Any]:
-        """Method that maps the available vocations to their simplified name.
+    def __init__(self, vocation: VocationModel) -> None:
+        """Class that interprets an specific player.
 
-        :return: A dictionary with the seed name as key and a seed class
-            instance as value.
+        :param vocation: The model that represents a vocation.
         """
-        # TODO(r0x0d): Change type annotation for this property in the future
-        # for `BaseVocation`
-        return {"knight": Knight}
-
-    def select(self, vocation: str) -> BaseVocation | None:
-        """Select an vocation out of the list of available ones and return it.
-
-        :param vocation: The name of the vocation to be selected.
-        """
-        return self._vocation_mapping.get(vocation)
+        super().__init__(vocation)
