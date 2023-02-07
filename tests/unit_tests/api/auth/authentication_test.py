@@ -49,7 +49,6 @@ async def test_api_jwt_bearer__call_invalid_token():
         "decode",
         side_effect=ExpiredSignatureError,
     ):
-
         with pytest.raises(HTTPException):
             await authentication.APIJWTBearer().__call__(request)
 
@@ -103,7 +102,6 @@ async def test_websocket_jwt_bearer__call_invalid_token():
         "decode",
         side_effect=ExpiredSignatureError,
     ):
-
         with pytest.raises(HTTPException):
             await authentication.WebSocketJWTBearer().__call__(token)
 
