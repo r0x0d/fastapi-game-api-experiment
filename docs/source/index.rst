@@ -17,6 +17,7 @@ Welcome to carnage's documentation!
    database/index
    logger
    monsters/index
+   spells/index
    systems/index
    vocations/index
 

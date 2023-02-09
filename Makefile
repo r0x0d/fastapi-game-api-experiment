@@ -50,10 +50,10 @@ endif
 endif
 
 secrets: clean
-	python scripts/generate_secrets.py
+	@python scripts/generate_secrets.py
 
 check-sphinx-docs:
-	python scripts/check_sphinx_docs.py
+	@python scripts/check_sphinx_docs.py
 
 setup-db: setup
 	@docker-compose down

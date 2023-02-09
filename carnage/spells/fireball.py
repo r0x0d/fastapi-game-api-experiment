@@ -1,6 +1,6 @@
 # MIT License
 #
-# Copyright (c) 2022, Rodolfo Olivieri
+# Copyright (c) 2023, Rodolfo Olivieri
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -19,35 +19,17 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-"""Module that represents the Spell Model."""
-
-from sqlalchemy import Column, Float, ForeignKey, Integer, String
-from sqlalchemy.dialects.postgresql import UUID
-
-from carnage.database.models.base import BaseModel
+"""Module that represents a Fireball spell."""
+from carnage.database.models.spell.spell import SpellModel
+from carnage.spells.base import BaseSpell
 
 
-class SpellModel(BaseModel):
-    """A model-class that represents an Spell."""
+class Fireball(BaseSpell):
+    """Class that overrides methods and properties of spell."""
 
-    __tablename__ = "spells"
+    def __init__(self, spell: SpellModel) -> None:
+        """Class that interprets an specific player.
 
-    name = Column(String(100), nullable=False)
-    description = Column(String(), nullable=False)
-    base_magical_damage = Column(Integer(), nullable=False)
-    attack_threshold = Column(Float(), nullable=False)
-    critical_attack_threshold = Column(Float(), nullable=False)
-
-    # ForeignKeys
-    spell_duration_type_id = Column(
-        UUID(as_uuid=True),
-        ForeignKey("spell_duration_types.id"),
-    )
-    spell_range_type_id = Column(
-        UUID(as_uuid=True),
-        ForeignKey("spell_range_types.id"),
-    )
-    spell_school_id = Column(
-        UUID(as_uuid=True),
-        ForeignKey("spell_schools.id"),
-    )
+        :param spell: The model that represents a spell.
+        """
+        super().__init__(spell)

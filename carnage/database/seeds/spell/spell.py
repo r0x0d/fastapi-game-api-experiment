@@ -38,8 +38,11 @@ class SpellSeed(BaseSeed):
     name: str = "spell"
     data: list[dict[str, Any]] = [
         {
-            "name": "Test",
-            "description": "Test description",
+            "name": "Fireball",
+            "description": "An powerfull fire ball.",
+            "base_magical_damage": 10,
+            "attack_threshold": 70.0,
+            "critical_attack_threshold": 90.0,
         },
     ]
 
