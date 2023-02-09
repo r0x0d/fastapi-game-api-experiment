@@ -34,6 +34,7 @@ class SpellModel(BaseModel):
 
     name = Column(String(100), nullable=False)
     description = Column(String(), nullable=False)
+    base_damage = Column(Integer(), nullable=False)
     base_magical_damage = Column(Integer(), nullable=False)
     attack_threshold = Column(Float(), nullable=False)
     critical_attack_threshold = Column(Float(), nullable=False)
