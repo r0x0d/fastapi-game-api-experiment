@@ -1,6 +1,6 @@
 # MIT License
 #
-# Copyright (c) 2022, Rodolfo Olivieri
+# Copyright (c) 2023, Rodolfo Olivieri
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -19,36 +19,31 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-"""Module that represents the Spell Model."""
+"""Modules that manages the spells available."""
+from functools import cached_property
+from typing import Any
 
-from sqlalchemy import Column, Float, ForeignKey, Integer, String
-from sqlalchemy.dialects.postgresql import UUID
-
-from carnage.database.models.base import BaseModel
+from carnage.spells.base import BaseSpell
+from carnage.spells.fireball import Fireball
 
 
-class SpellModel(BaseModel):
-    """A model-class that represents an Spell."""
+class SpellManager:
+    """Class that manages and maps the spells."""
 
-    __tablename__ = "spells"
+    @cached_property
+    def _spell_mapping(self) -> dict[str, Any]:
+        """Method that maps the available spells to their simplified name.
 
-    name = Column(String(100), nullable=False)
-    description = Column(String(), nullable=False)
-    base_damage = Column(Integer(), nullable=False)
-    base_magical_damage = Column(Integer(), nullable=False)
-    attack_threshold = Column(Float(), nullable=False)
-    critical_attack_threshold = Column(Float(), nullable=False)
+        :return: A dictionary with the seed name as key and a seed class
+            instance as value.
+        """
+        # TODO(r0x0d): Change type annotation for this property in the future
+        # to `BaseSpell`
+        return {"fireball": Fireball}
 
-    # ForeignKeys
-    spell_duration_type_id = Column(
-        UUID(as_uuid=True),
-        ForeignKey("spell_duration_types.id"),
-    )
-    spell_range_type_id = Column(
-        UUID(as_uuid=True),
-        ForeignKey("spell_range_types.id"),
-    )
-    spell_school_id = Column(
-        UUID(as_uuid=True),
-        ForeignKey("spell_schools.id"),
-    )
+    def select(self, spell: str) -> BaseSpell | None:
+        """Select an spell out of the list of available ones and return it.
+
+        :param spell: The name of the spell to be selected.
+        """
+        return self._spell_mapping.get(spell)

@@ -49,6 +49,10 @@ def upgrade() -> None:
         ),
         sa.Column("name", sa.String(length=100), nullable=False),
         sa.Column("description", sa.String(), nullable=False),
+        sa.Column("base_damage", sa.Integer()),
+        sa.Column("base_magical_damage", sa.Integer()),
+        sa.Column("attack_threshold", sa.Float(), nullable=False),
+        sa.Column("critical_attack_threshold", sa.Float(), nullable=False),
         sa.Column(
             "spell_duration_type_id",
             UUID(as_uuid=True),
