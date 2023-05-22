@@ -18,7 +18,7 @@ dependencies = [
     "alembic==1.9.1",
     "authlib==1.2.0",
     "cryptography==39.0.2",
-    "fastapi==0.88.0",
+    "fastapi==0.95.2",
     "itsdangerous==2.1.2",
     "psycopg2-binary==2.9.6",
     "pydantic[email]==1.10.4",
