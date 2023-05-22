@@ -21,7 +21,7 @@ dependencies = [
     "fastapi==0.88.0",
     "itsdangerous==2.1.2",
     "psycopg2-binary==2.9.6",
-    "pydantic[email]==1.10.4",
+    "pydantic[email]==1.10.7",
     "sqlalchemy==1.4.46",
     "uvicorn[standard]==0.20.0",
     "pydantic-sqlalchemy==0.0.9",
