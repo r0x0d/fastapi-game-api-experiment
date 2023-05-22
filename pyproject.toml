@@ -15,7 +15,7 @@ classifiers = [
     "Programming Language :: Python :: 3 :: Only",
 ]
 dependencies = [
-    "alembic==1.9.1",
+    "alembic==1.11.1",
     "authlib==1.2.0",
     "cryptography==39.0.2",
     "fastapi==0.95.2",
