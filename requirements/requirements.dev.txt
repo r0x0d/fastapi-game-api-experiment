@@ -1,5 +1,5 @@
 anyio==3.6.2 # Also for FastAPI to use TestClient properly.
-covdefaults==2.2.2
+covdefaults==2.3.0
 pytest==7.2.1
 pytest-cov==4.0.0
 pytest-env==0.8.1
