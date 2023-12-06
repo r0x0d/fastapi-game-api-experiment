@@ -11,7 +11,7 @@ repos:
       - id: name-tests-test
       - id: requirements-txt-fixer
   - repo: https://github.com/psf/black
-    rev: 23.3.0
+    rev: 23.9.1
     hooks:
       - id: black
   - repo: https://github.com/pycqa/isort
@@ -19,21 +19,21 @@ repos:
     hooks:
       - id: isort
   - repo: https://github.com/PyCQA/autoflake
-    rev: v2.1.1
+    rev: v2.2.1
     hooks:
       - id: autoflake
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.4.0
+    rev: v3.11.0
     hooks:
       - id: pyupgrade
         args: [--py311-plus]
   - repo: https://github.com/asottile/add-trailing-comma
-    rev: v2.4.0
+    rev: v3.1.0
     hooks:
       - id: add-trailing-comma
         args: [--py36-plus]
   - repo: https://github.com/PyCQA/flake8
-    rev: 6.0.0
+    rev: 6.1.0
     hooks:
       - id: flake8
         args:
@@ -42,7 +42,7 @@ repos:
             "carnage/database/seeds/dungeon/dungeon_schema.py:E501",
           ]
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.3.0
+    rev: v1.5.1
     hooks:
       - id: mypy
         additional_dependencies: [types-all]
